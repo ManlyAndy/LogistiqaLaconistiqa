@@ -1,9 +1,8 @@
-alert("NEW SCRIPT VERSION")
-var modelRules = {
-    "micro 11": { allowedDiameters: [10, 20] },
-    "micro l": { allowedDiameters: [10, 20] },
-    "скрытый strong": { allowedDiameters: [20] }
-};
+//var modelRules = //{
+    //"micro 11": { allowedDiameters: [10, 20] },
+    //"micro l": { allowedDiameters: [10, 20] },
+    //"скрытый strong": { allowedDiameters: [20] }
+//};
 window.calculatePackagingWeight = function (packagingResult) {
     let weight = 0;
     document.getElementById("close").addEventListener ("click", () => {
@@ -415,6 +414,7 @@ if (!tube) {
     }
    }
    });
+
 
 
 
