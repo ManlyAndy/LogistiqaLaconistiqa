@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Расчёт заказа</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Laconistiq  </h1>
+
+    <div id="items">
+        <div class="item">
+            <div class="autocomplete">
+                <input type="text" placeholder="Название товара">
+                <div class="list"></div>
+            </div>
+            <input type="number" placeholder="Кол-во" min="1">
+        </div>
+    </div>
+
+    <button id="add">+ Добавить ещё</button>
+    <br><br>
+    <button id="total">Итого</button>
+</div>
+
+<div id="modal" class="modal hidden">
+    <div class="modal-content">
+        <h3>Результат расчёта</h3>
+        <div id="resultText"></div>
+        <button id="close">Закрыть</button>
+    </div>
+</div>
+<script src="script.js"defer></script>
+</body>
+</html>
