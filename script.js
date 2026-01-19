@@ -354,7 +354,8 @@ if (!modelKey) {
 
     const length = getLengthFromName(product.name);
     if (!length) return null; 
-
+// Временный лог
+console.log("Определена модель",modelKey, "для", product.name);
     //варианты туб 
     const possible = [];
 
@@ -426,5 +427,6 @@ if (!tube) {
 
 
    // в 15:56 обновился js
+
 
 
