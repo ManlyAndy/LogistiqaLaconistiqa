@@ -1,3 +1,4 @@
+console.log("script version 1");
 var modelRules = {
     "micro 11": { allowedDiameters: [10, 20] },
     "micro l": { allowedDiameters: [10, 20] },
@@ -426,6 +427,7 @@ if (!tube) {
 
 
    // в 15:56 обновился js
+
 
 
 
