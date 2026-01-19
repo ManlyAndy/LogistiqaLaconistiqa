@@ -1,6 +1,6 @@
 var modelRules = {
     "micro 11": { allowedDiameters: [10, 20] },
-    "Micro-L": { allowedDiameters: [10, 20] },
+    "micro l": { allowedDiameters: [10, 20] },
     "скрытый strong": { allowedDiameters: [20] }
 };
 window.calculatePackagingWeight = function (packagingResult) {
@@ -427,6 +427,7 @@ if (!tube) {
 
 
    // в 15:56 обновился js
+
 
 
 
