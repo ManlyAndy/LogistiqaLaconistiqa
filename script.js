@@ -265,8 +265,8 @@ const result = calculatePackaging(orderItems)
 let tubesPlaces = 0;
 
 if (result.tubesResult) {
-    Object.values(result.tubesResult).forEach(tube => {
-        tubesPlaces += tube.count;
+    Object.values(result.tubesResult).forEach(count => {
+        tubesPlaces += count;
     });
 }
 let output = "<strong>Упаковка:</strong><br>";
@@ -293,7 +293,6 @@ const safeTotalWeight = Number(result.totalWeight || 0);
 
 output += `<strong>Общий вес:</strong> ${safeTotalWeight.toFixed(2)} кг`;
 
-resultText.innerHTML = output;
 
 const packagingWeight = calculatePackagingWeight(result);
 const totalWeight = productsWeight + packagingWeight;
@@ -341,7 +340,7 @@ const productNameNormalized = normalizeName(product.name);
 let modelKey = null;
 
 for (const key in modelRules) {
-    if (productNameNormalizded.includes(normalizeName(key))) {
+    if (productNameNormalized.includes(normalizeName(key))) {
         modelKey = key;
         break;
     }
@@ -427,6 +426,7 @@ if (!tube) {
 
 
    // в 15:56 обновился js
+
 
 
 
