@@ -325,16 +325,23 @@ function getLengthFromName(name) {
     return isNaN(length) ? null : length;
 
 }
+       function normalizeName(str) {
+    return str
+        .toLowerCase()
+        .replace(/-/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+       }
 function selectTube(productName) {
     const product = products.find(p => p.name === productName);
     if (!product || product.type.toLowerCase() !== "tube") return null;
     // определяем модель из названия
-const productNameLower = product.name.toLowerCase();
+const productNameNormalized = normalizeName(product.name);
 
 let modelKey = null;
 
 for (const key in modelRules) {
-    if (productNameLower.includes(key)) {
+    if (productNameNormalizded.includes(normalizeName(key))) {
         modelKey = key;
         break;
     }
@@ -419,4 +426,5 @@ if (!tube) {
 
 
    // в 15:56 обновился js
+
 
