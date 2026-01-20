@@ -238,7 +238,38 @@ document.addEventListener("input", function (e) {
         }
     });
 });
+document.getElementById("addRow").addEventListener("click", addRow);
+document.getElementById("excelInput").addEventListener("change", handleExcelUpload);
+function handleExcelUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
 
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, { type: "array" });
+
+        const sheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[sheetName];
+
+        const rows = XLSX.utils.sheet_to_json(worksheet);
+
+        products = rows.map(row => ({
+            name: String(row["наименование"]).trim(),
+            weight: Number(row["вес"]),
+            type: row["тип упаковки"].toLowerCase().includes("короб")
+                ? "box"
+                : "tube",
+            maxItems: Number(row["максимум"])
+        }));
+
+        console.log("Загружено из Excel:", products);
+        alert("Номенклатура успешно загружена");
+    };
+
+    reader.readAsArrayBuffer(file);
+}
 
 // ===== ИТОГО =====
 const resultText = document.getElementById("resultText");
@@ -427,6 +458,7 @@ if (!tube) {
 
 
    // в 15:56 обновился js
+
 
 
 
