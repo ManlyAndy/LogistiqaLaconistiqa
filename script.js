@@ -10,7 +10,6 @@ window.calculatePackagingWeight = function (packagingResult) {
     document.getElementById("modal").classList.add("hidden");
 });
 
-    // Тубы
     for (const key in packagingResult.tubesResult) {
         const count = packagingResult.tubesResult[key];
 
@@ -29,7 +28,6 @@ window.calculatePackagingWeight = function (packagingResult) {
         }
     }
 
-    // Коробки
     weight += packagingResult.boxesCount * BOX_WEIGHT;
 
     return weight;
@@ -134,7 +132,6 @@ const products = [
       weight: 0.4,
     type: "box",
  
- 
 },
 
     { name: "Реклама L",
@@ -193,10 +190,9 @@ const tubes = [
         weight: 7.0
     }
 ];
-// ===== ДОБАВИТЬ СТРОКУ =====
+
 const addButton = document.getElementById("add");
 const itemsDiv = document.getElementById("items");
-
 addButton.addEventListener("click", () => {
     const div = document.createElement("div");
     div.className = "item";
@@ -212,7 +208,6 @@ addButton.addEventListener("click", () => {
     itemsDiv.appendChild(div);
 });
 
-// ===== АВТОПОДСКАЗКА =====
 document.addEventListener("input", function (e) {
     if (e.target.type !== "text") return;
 
@@ -239,7 +234,6 @@ document.addEventListener("input", function (e) {
     });
 });
 document.getElementById("addRow").addEventListener("click", addRow);
-// ===== ЗАГРУЗКА EXCEL =====
 document.getElementById("excelInput").addEventListener("change", handleExcelUpload);
 
 function handleExcelUpload(event) {
@@ -251,7 +245,7 @@ function handleExcelUpload(event) {
     reader.onload = function (e) {
         const data = new Uint8Array(e.target.result);
         const workbook = XLSX.read(data, { type: "array" });
-
+        
         const sheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[sheetName];
         const rows = XLSX.utils.sheet_to_json(worksheet);
@@ -259,7 +253,6 @@ function handleExcelUpload(event) {
         const newProducts = [];
 
         rows.forEach(row => {
-            // 1. игнорируем серые / пустые строки
             if (!row["Наименование"] || !row["Weight of one piece"]) return;
 
             const typeRaw = String(row["Type of packaging"] || "").toLowerCase();
@@ -290,9 +283,6 @@ function handleExcelUpload(event) {
 
     reader.readAsArrayBuffer(file);
 }
-// ===== КОНЕЦ EXCEL =====
-
-// ===== ИТОГО =====
 const resultText = document.getElementById("resultText");
    document.getElementById("total").addEventListener("click", () => {
 
@@ -305,7 +295,6 @@ const resultText = document.getElementById("resultText");
             orderItems.push({ name, qty });
         }
     });
-   
 let productsWeight = 0;
 orderItems.forEach(item => {
     const product = products.find(p => p.name === item.name);
@@ -345,12 +334,10 @@ const safeTotalWeight = Number(result.totalWeight || 0);
 
 output += `<strong>Общий вес:</strong> ${safeTotalWeight.toFixed(2)} кг`;
 
-
 const packagingWeight = calculatePackagingWeight(result);
 const totalWeight = productsWeight + packagingWeight;
 
 const modal = document.getElementById("modal");
-
 
 resultText.innerHTML = `
     <p><strong>Мест всего:</strong> ${result.totalPlaces}</p>
@@ -362,10 +349,8 @@ resultText.innerHTML = `
 modal.classList.remove("hidden");
 
 function getLengthFromName(name) {
-    // ищем (2.5 м) или (2,5 м)
     let match = name.match(/\(([\d.,]+)\s*м\)/i);
 
-    // если не нашли — ищем просто (2.5)
     if (!match) {
         match = name.match(/\(([\d.,]+)\)/);
     }
@@ -386,7 +371,6 @@ function getLengthFromName(name) {
 function selectTube(productName) {
     const product = products.find(p => p.name === productName);
     if (!product || product.type.toLowerCase() !== "tube") return null;
-    // определяем модель из названия
 const productNameNormalized = normalizeName(product.name);
 
 let modelKey = null;
@@ -404,8 +388,7 @@ if (!modelKey) {
 }
 
     const length = getLengthFromName(product.name);
-    if (!length) return null; 
-    //варианты туб 
+    if (!length) return null;  
     const possible = [];
 
     for (const key in product.tubeRules) {
@@ -421,8 +404,6 @@ if (!modelKey) {
     }
 
     if (possible.length === 0) return null;
-
-    // Сортируем: сначала Ø10, потом Ø20, потом по длине
     possible.sort((a, b) => {
         if (a.diameter !== b.diameter) return a.diameter - b.diameter;
         return a.length - b.length;
@@ -440,7 +421,6 @@ let packagingWeight = 0;
         const product = products.find(p => p.name === item.name);
         if (!product) return;
 
-        // Рекламная продукция — коробки
         if (product.type === "box") {
             const boxes = Math.ceil(item.qty / 3);
             boxesCount += boxes;
@@ -448,7 +428,6 @@ let packagingWeight = 0;
             return;
         }
 
-        // Тубы
        const tube = selectTube(product.name);
 
 if (!tube) {
@@ -471,6 +450,7 @@ if (!tube) {
     }
    }
    });
+
 
 
 
