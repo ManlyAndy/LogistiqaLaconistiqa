@@ -1,8 +1,8 @@
-ar modelRules = {
-    "micro 11": { allowedDiameters: [10, 20] },
-    "micro l": { allowedDiameters: [10, 20] },
-    "скрытый strong": { allowedDiameters: [20] }
-};
+//var modelRules = {
+   // "micro 11": { allowedDiameters: [10, 20] },
+   // "micro l": { allowedDiameters: [10, 20] },
+   // "скрытый strong": { allowedDiameters: [20] }
+//};
 window.calculatePackagingWeight = function (packagingResult) {
     let weight = 0;
     document.getElementById("close").addEventListener ("click", () => {
@@ -390,12 +390,12 @@ const productNameNormalized = normalizeName(product.name);
 
 let modelKey = null;
 
-for (const key in modelRules) {
-    if (productNameNormalized.includes(normalizeName(key))) {
-        modelKey = key;
-        break;
-    }
-}
+//for (const key in modelRules) {
+   // if (productNameNormalized.includes(normalizeName(key))) {
+       // modelKey = key;
+       // break;
+   // }
+//}
 
 if (!modelKey) {
     console.warn("Модель не распознана:", product.name);
@@ -470,3 +470,4 @@ if (!tube) {
     }
    }
    });
+
