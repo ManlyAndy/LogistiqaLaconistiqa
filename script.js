@@ -1,3 +1,4 @@
+console.log("script new?");
 var modelRules = {
     "micro 11": { allowedDiameters: [10, 20] },
     "micro l": { allowedDiameters: [10, 20] },
@@ -470,5 +471,6 @@ if (!tube) {
     }
    }
    });
+
 
 
