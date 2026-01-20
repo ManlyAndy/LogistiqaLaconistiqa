@@ -1,5 +1,4 @@
-console.log("script version 1");
-var modelRules = {
+ar modelRules = {
     "micro 11": { allowedDiameters: [10, 20] },
     "micro l": { allowedDiameters: [10, 20] },
     "скрытый strong": { allowedDiameters: [20] }
@@ -149,7 +148,7 @@ const products = [
 },
 
     { name: "Реклама Манхеттан",
-      weight: 0.5,
+         weight: 0.5,
     type: "box",
  
 },
@@ -239,7 +238,9 @@ document.addEventListener("input", function (e) {
     });
 });
 document.getElementById("addRow").addEventListener("click", addRow);
+// ===== ЗАГРУЗКА EXCEL =====
 document.getElementById("excelInput").addEventListener("change", handleExcelUpload);
+
 function handleExcelUpload(event) {
     const file = event.target.files[0];
     if (!file) return;
@@ -252,24 +253,43 @@ function handleExcelUpload(event) {
 
         const sheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[sheetName];
-
         const rows = XLSX.utils.sheet_to_json(worksheet);
 
-        products = rows.map(row => ({
-            name: String(row["наименование"]).trim(),
-            weight: Number(row["вес"]),
-            type: row["тип упаковки"].toLowerCase().includes("короб")
-                ? "box"
-                : "tube",
-            maxItems: Number(row["максимум"])
-        }));
+        const newProducts = [];
 
-        console.log("Загружено из Excel:", products);
-        alert("Номенклатура успешно загружена");
+        rows.forEach(row => {
+            // 1. игнорируем серые / пустые строки
+            if (!row["Наименование"] || !row["Weight of one piece"]) return;
+
+            const typeRaw = String(row["Type of packaging"] || "").toLowerCase();
+            const type = typeRaw.includes("box") ? "box" : "tube";
+
+            const capacity = {};
+
+            if (row['Diameter "10"']) {
+                capacity[10] = Number(row['Diameter "10"']);
+            }
+            if (row['Diameter "20"']) {
+                capacity[20] = Number(row['Diameter "20"']);
+            }
+
+            newProducts.push({
+                name: String(row["Наименование"]).trim(),
+                type,
+                weight: Number(row["Weight of one piece"]),
+                capacity
+            });
+        });
+
+        products = newProducts;
+
+        console.log("Номенклатура загружена из Excel:", products);
+        alert("Excel успешно загружен");
     };
 
     reader.readAsArrayBuffer(file);
 }
+// ===== КОНЕЦ EXCEL =====
 
 // ===== ИТОГО =====
 const resultText = document.getElementById("resultText");
@@ -277,8 +297,7 @@ const resultText = document.getElementById("resultText");
 
 
     const orderItems = [];
-
-    document.querySelectorAll(".item").forEach(item => {
+   document.querySelectorAll(".item").forEach(item => {
         const name = item.querySelector('input[type="text"]').value;
         const qty = Number(item.querySelector('input[type="number"]').value);
         if (name && qty) {
@@ -385,8 +404,6 @@ if (!modelKey) {
 
     const length = getLengthFromName(product.name);
     if (!length) return null; 
-// Временный лог
-console.log("Определена модель",modelKey, "для", product.name);
     //варианты туб 
     const possible = [];
 
@@ -453,16 +470,3 @@ if (!tube) {
     }
    }
    });
-
-
-
-
-   // в 15:56 обновился js
-
-
-
-
-
-
-
-
