@@ -1,4 +1,8 @@
-console.log("script new?");
+var modelRules = {
+    "micro 11": { allowedDiameters: [10, 20] },
+    "micro l": { allowedDiameters: [10, 20] },
+    "скрытый strong": { allowedDiameters: [20] }
+};
 window.calculatePackagingWeight = function (packagingResult) {
     let weight = 0;
     document.getElementById("close").addEventListener ("click", () => {
@@ -28,7 +32,7 @@ window.calculatePackagingWeight = function (packagingResult) {
     return weight;
 };
 const BOX_WEIGHT = 0.5; 
-const products = [
+let products = [
     { name: "Micro-L угловой Шампань анодированный (2.5)",
       weight: 0.8,
     type: "tube",
@@ -120,8 +124,7 @@ const products = [
     { name: "Реклама S",
       weight: 0.3,
     type: "box",
- 
- 
+
 },
     { name: "Реклама M",
       weight: 0.4,
@@ -141,7 +144,7 @@ const products = [
 },
 
     { name: "Реклама Манхеттан",
-         weight: 0.5,
+      weight: 0.5,
     type: "box",
  
 },
@@ -186,14 +189,15 @@ const tubes = [
     }
 ];
 
-const addButton = document.getElementById("add");
+const addButton = document.getElementById("addRow");
 const itemsDiv = document.getElementById("items");
+
 addButton.addEventListener("click", () => {
     const div = document.createElement("div");
     div.className = "item";
 
     div.innerHTML = `
-        <div class="autocomplete">
+            <div class="autocomplete">
             <input type="text" placeholder="Название товара">
             <div class="list"></div>
         </div>
@@ -240,7 +244,7 @@ function handleExcelUpload(event) {
     reader.onload = function (e) {
         const data = new Uint8Array(e.target.result);
         const workbook = XLSX.read(data, { type: "array" });
-        
+
         const sheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[sheetName];
         const rows = XLSX.utils.sheet_to_json(worksheet);
@@ -281,9 +285,12 @@ function handleExcelUpload(event) {
 const resultText = document.getElementById("resultText");
    document.getElementById("total").addEventListener("click", () => {
 
+    const orderItems = collectOrderItems();
+    const result = calculatePackaging(orderItems);
+    showResult(result);
+   });
 
-    const orderItems = [];
-   document.querySelectorAll(".item").forEach(item => {
+    document.querySelectorAll(".item").forEach(item => {
         const name = item.querySelector('input[type="text"]').value;
         const qty = Number(item.querySelector('input[type="number"]').value);
         if (name && qty) {
@@ -366,24 +373,9 @@ function getLengthFromName(name) {
 function selectTube(productName) {
     const product = products.find(p => p.name === productName);
     if (!product || product.type.toLowerCase() !== "tube") return null;
-const productNameNormalized = normalizeName(product.name);
-
-let modelKey = null;
-
-for (const key in modelRules) {
-    if (productNameNormalized.includes(normalizeName(key))) {
-        modelKey = key;
-        break;
-    }
-}
-
-if (!modelKey) {
-    console.warn("Модель не распознана:", product.name);
-    return null;
-}
 
     const length = getLengthFromName(product.name);
-    if (!length) return null;  
+    if (!length) return null; 
     const possible = [];
 
     for (const key in product.tubeRules) {
@@ -416,6 +408,7 @@ let packagingWeight = 0;
         const product = products.find(p => p.name === item.name);
         if (!product) return;
 
+      
         if (product.type === "box") {
             const boxes = Math.ceil(item.qty / 3);
             boxesCount += boxes;
@@ -442,12 +435,7 @@ if (!tube) {
         totalPlaces,
         tubesResult,
         boxesCount,
-    }
+    packagingWeight
+   
+    };
    }
-   });
-
-
-
-
-
-
