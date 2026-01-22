@@ -266,9 +266,9 @@ function handleExcelUpload(event) {
             }
 
             newProducts.push({
-                name: String(row["Наименование"]).trim(),
+                name: String(row["Name"]).trim(),
                 type,
-                weight: Number(row["Weight of one piece"]),
+                weight: Number(row["Weight"]),
                 capacity
             });
         });
@@ -412,5 +412,6 @@ if (!tube) {
    
     };
    }
+
 
 
