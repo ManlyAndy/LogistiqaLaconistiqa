@@ -121,7 +121,7 @@ let products = [
     "20-2.5": 100
  }
 },
-     {name: "Micro 11 mini Чёрный анод (2.0)",
+    { name: "Micro 11 mini Чёрный анод (2.0)",
     weight: 0.101,
     type: "tube",
     tubeRules: {
