@@ -111,7 +111,7 @@ let products = [
  tubeRules: {
     "10-2.5": 25,
     "20-2.5": 100
- },
+ }
 },
     { name: "Micro-L угловой Без покрытия (2.5)",
       weight: 0.344,
@@ -121,6 +121,13 @@ let products = [
     "20-2.5": 100
  }
 },
+     {name: "Micro 11 mini Чёрный анод (2.0)",
+    weight: 0.101,
+    type: "tube",
+    tubeRules: {
+        "10-2.5": 40,
+        "20-2.5": 150
+    },
     { name: "Реклама S",
       weight: 0.3,
     type: "box",
