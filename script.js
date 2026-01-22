@@ -37,8 +37,8 @@ let products = [
       weight: 0.364,
     type: "tube",
  tubeRules: {
-    "10-2.5": 15,
-    "20-2.5": 50
+    "10-2.5": 25,
+    "20-2.5": 100
  }
 },
     { name: "Micro-L угловой Светлый Шампань (2.5)",
@@ -121,42 +121,36 @@ let products = [
     "20-2.5": 100
  }
 },
-    { name: "Micro 11 mini Чёрный анод (2.0)",
+    {name: "Micro 11 mini Чёрный анод (2.0)",
     weight: 0.101,
     type: "tube",
     tubeRules: {
         "10-2.5": 40,
         "20-2.5": 150
     },
+},
     { name: "Реклама S",
       weight: 0.3,
     type: "box",
-
 },
     { name: "Реклама M",
       weight: 0.4,
     type: "box",
- 
 },
-
     { name: "Реклама L",
       weight: 0.5,
     type: "box",
-
 },
     { name: "Реклама Бостон",
       weight: 0.5,
     type: "box",
-
 },
-
     { name: "Реклама Манхеттан",
       weight: 0.5,
     type: "box",
- 
 },
 
-];
+    ];
 const tubes = [
     {
         diameter: 10,
@@ -204,7 +198,7 @@ addButton.addEventListener("click", () => {
     div.className = "item";
 
     div.innerHTML = `
-            <div class="autocomplete">
+        <div class="autocomplete">
             <input type="text" placeholder="Название товара">
             <div class="list"></div>
         </div>
@@ -418,4 +412,4 @@ if (!tube) {
     packagingWeight
    
     };
-   }
+   }                                               
