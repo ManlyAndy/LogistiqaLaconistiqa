@@ -251,17 +251,17 @@ function handleExcelUpload(event) {
         const newProducts = [];
 
         rows.forEach(row => {
-            if (!row["Наименование"] || !row["Weight of one piece"]) return;
+            if (!row["Name"] || !row["Weight"]) return;
 
             const typeRaw = String(row["Type of packaging"] || "").toLowerCase();
             const type = typeRaw.includes("box") ? "box" : "tube";
 
             const capacity = {};
 
-            if (row['Diameter "10"']) {
+            if (row['Diameter 10']) {
                 capacity[10] = Number(row['Diameter "10"']);
             }
-            if (row['Diameter "20"']) {
+            if (row['Diameter 20']) {
                 capacity[20] = Number(row['Diameter "20"']);
             }
 
@@ -412,4 +412,5 @@ if (!tube) {
    
     };
    }
+
 
