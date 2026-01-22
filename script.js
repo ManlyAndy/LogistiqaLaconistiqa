@@ -232,7 +232,6 @@ document.addEventListener("input", function (e) {
         }
     });
 });
-document.getElementById("addRow").addEventListener("click", addRow);
 document.getElementById("excelInput").addEventListener("change", handleExcelUpload);
 
 function handleExcelUpload(event) {
@@ -283,73 +282,47 @@ function handleExcelUpload(event) {
     reader.readAsArrayBuffer(file);
 }
 const resultText = document.getElementById("resultText");
-   document.getElementById("total").addEventListener("click", () => {
+document.getElementById("total").addEventListener("click", () => {
 
-    const orderItems = collectOrderItems();
-    const result = calculatePackaging(orderItems);
-    showResult(result);
-   });
+    const orderItems = [];
 
     document.querySelectorAll(".item").forEach(item => {
-        const name = item.querySelector('input[type="text"]').value;
-        const qty = Number(item.querySelector('input[type="number"]').value);
-        if (name && qty) {
+        const nameInput = item.querySelector('input[type="text"]');
+        const qtyInput = item.querySelector('input[type="number"]');
+
+        if (!nameInput || !qtyInput) return;
+
+        const name = nameInput.value.trim();
+        const qty = Number(qtyInput.value);
+
+        if (name && qty > 0) {
             orderItems.push({ name, qty });
         }
     });
-let productsWeight = 0;
-orderItems.forEach(item => {
-    const product = products.find(p => p.name === item.name);
-    if (product) {
-        productsWeight += product.weight * item.qty;
-    }
+
+    let productsWeight = 0;
+    orderItems.forEach(item => {
+        const product = products.find(p => p.name === item.name);
+        if (product) {
+            productsWeight += product.weight * item.qty;
+        }
+    });
+
+    const result = calculatePackaging(orderItems);
+
+    const packagingWeight = calculatePackagingWeight(result);
+    const totalWeight = productsWeight + packagingWeight;
+
+    resultText.innerHTML = `
+        <p><strong>Мест всего:</strong> ${result.totalPlaces}</p>
+        <p><strong>Вес товара:</strong> ${productsWeight.toFixed(2)} кг</p>
+        <p><strong>Вес упаковки:</strong> ${packagingWeight.toFixed(2)} кг</p>
+        <hr>
+        <p><strong>ИТОГО:</strong> ${totalWeight.toFixed(2)} кг</p>
+    `;
+
+    document.getElementById("modal").classList.remove("hidden");
 });
-const result = calculatePackaging(orderItems)
-let tubesPlaces = 0;
-
-if (result.tubesResult) {
-    Object.values(result.tubesResult).forEach(count => {
-        tubesPlaces += count;
-    });
-}
-let output = "<strong>Упаковка:</strong><br>";
-
-if (result.tubesResult && Object.keys(result.tubesResult).length > 0) {
-    Object.values(result.tubesResult).forEach(tube => {
-        output += `• Туба Ø${tube.diameter} см / ${tube.length} м — ${tube.count} шт<br>`;
-    });
-} 
-else {
-    output += "• Туб нет<br>";
-}
-
-if (result.boxesCount > 0) {
-    output += `• Коробка — ${result.boxesCount} шт<br>`;
-}
-
-output += "<br>";
-output += "<strong>Места:</strong><br>";
-output += `• Тубы — ${tubesPlaces}<br>`;
-output += `• Коробки — ${result.boxesCount}<br>`;
-output += `<strong>Всего мест:</strong> ${result.totalPlaces}<br>`;
-const safeTotalWeight = Number(result.totalWeight || 0);
-
-output += `<strong>Общий вес:</strong> ${safeTotalWeight.toFixed(2)} кг`;
-
-const packagingWeight = calculatePackagingWeight(result);
-const totalWeight = productsWeight + packagingWeight;
-
-const modal = document.getElementById("modal");
-
-resultText.innerHTML = `
-    <p><strong>Мест всего:</strong> ${result.totalPlaces}</p>
-    <p><strong>Вес товара:</strong> ${productsWeight.toFixed(2)} кг</p>
-    <p><strong>Вес упаковки:</strong> ${packagingWeight.toFixed(2)} кг</p>
-    <hr>
-    <p><strong>ИТОГО:</strong> ${totalWeight.toFixed(2)} кг</p>
-`;
-modal.classList.remove("hidden");
-
 function getLengthFromName(name) {
     let match = name.match(/\(([\d.,]+)\s*м\)/i);
 
