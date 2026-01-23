@@ -197,7 +197,7 @@ addButton.addEventListener("click", () => {
     const div = document.createElement("div");
     div.className = "item";
 
- div.innerHTML = `
+    div.innerHTML = `
         <div class="autocomplete">
             <input type="text" placeholder="Название товара">
             <div class="list"></div>
@@ -435,3 +435,21 @@ function createStar() {
 
 // каждые 200 мс появляется новая звезда
 setInterval(createStar, 200);
+function createFallingStar() {
+    const star = document.createElement("div");
+    star.className = "star";
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = "-10px";
+    star.style.width = "2px";
+    star.style.height = "2px";
+
+    star.style.animation = "fall 1.2s linear forwards";
+    starsContainer.appendChild(star);
+
+    setTimeout(() => star.remove(), 1200);
+}
+
+setInterval(() => {
+    if (Math.random() < 0.15) createFallingStar();
+}, 3000);
