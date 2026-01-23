@@ -412,4 +412,26 @@ if (!tube) {
     packagingWeight
    
     };
-   }                                               
+   }
+const starsContainer = document.getElementById("stars");
+
+function createStar() {
+    const star = document.createElement("div");
+    star.className = "star";
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+
+    const size = Math.random() * 2 + 1;
+    star.style.width = size + "px";
+    star.style.height = size + "px";
+
+    starsContainer.appendChild(star);
+
+    setTimeout(() => {
+        star.remove();
+    }, 4000);
+}
+
+// каждые 200 мс появляется новая звезда
+setInterval(createStar, 200);
