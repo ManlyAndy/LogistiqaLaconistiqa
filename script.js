@@ -444,7 +444,7 @@ function createFallingStar() {
     star.style.width = "2px";
     star.style.height = "2px";
 
-    star.style.animation = "fall 4s linear forwards";
+    star.style.animation = "fall 3s linear forwards";
     starsContainer.appendChild(star);
 
     setTimeout(() => star.remove(), 1200);
@@ -461,3 +461,4 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
