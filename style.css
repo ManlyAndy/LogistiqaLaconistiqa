@@ -23,7 +23,6 @@ body {
     overflow-x: hidden;
 }
 
-
 /* ===== КОНТЕЙНЕР ===== */
 .container {
     width: 420px;
@@ -69,8 +68,8 @@ input {
 }
 
 input[type="number"] {
-    max-width: 80px;
     text-align: center;
+    width: 70px;
 }
 
 input:focus {
@@ -164,4 +163,33 @@ button#total {
     text-align: center;
     font-size: 15px;
 }
+#stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
 
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle 4s ease-in-out forwards;
+}
+
+@keyframes twinkle {
+    0%   { opacity: 0; }
+    30%  { opacity: 0.8; }
+    70%  { opacity: 0.8; }
+    100% { opacity: 0; }
+}
+.container {
+    position: relative;
+    z-index: 1;
+}
+.container {
+    margin-left: 80px;
+}
