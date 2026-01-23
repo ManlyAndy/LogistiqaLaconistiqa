@@ -434,7 +434,7 @@ function createStar() {
 }
 
 // каждые 200 мс появляется новая звезда
-setInterval(createStar, 500);
+setInterval(createStar, 40);
 function createFallingStar() {
     const star = document.createElement("div");
     star.className = "star";
@@ -453,3 +453,11 @@ function createFallingStar() {
 setInterval(() => {
     if (Math.random() < 0.55) createFallingStar();
 }, 3000);
+function updateTime() {
+    const now = new Date();
+    document.getElementById("time").textContent =
+        now.toLocaleTimeString("ru-RU");
+}
+
+updateTime();
+setInterval(updateTime, 1000);
