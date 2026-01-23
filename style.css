@@ -29,7 +29,13 @@ body {
     max-width: 92%;
     text-align: center;
 }
-
+.container {
+    position: relative;
+    z-index: 1;
+}
+.container {
+    margin-left: 80px;
+}
 /* ===== ЗАГОЛОВОК ===== */
 h1 {
     margin-bottom: 32px;
@@ -185,11 +191,4 @@ button#total {
     30%  { opacity: 0.8; }
     70%  { opacity: 0.8; }
     100% { opacity: 0; }
-}
-.container {
-    position: relative;
-    z-index: 1;
-}
-.container {
-    margin-left: 80px;
 }
