@@ -150,7 +150,7 @@ let products = [
     type: "box",
 },
 
-    ];
+];
 const tubes = [
     {
         diameter: 10,
@@ -197,7 +197,7 @@ addButton.addEventListener("click", () => {
     const div = document.createElement("div");
     div.className = "item";
 
-    div.innerHTML = `
+ div.innerHTML = `
         <div class="autocomplete">
             <input type="text" placeholder="Название товара">
             <div class="list"></div>
@@ -413,7 +413,7 @@ if (!tube) {
    
     };
    }
-const starsContainer = document.getElementById("stars");
+   const starsContainer = document.getElementById("stars");
 
 function createStar() {
     const star = document.createElement("div");
