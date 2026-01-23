@@ -83,6 +83,32 @@ input:focus {
     box-shadow: 0 0 12px rgba(77,163,255,0.35);
     outline: none;
 }
+/* Выпадающий список подсказок */
+.suggestions,
+.autocomplete-list {
+    position: absolute;
+    background: rgba(15, 40, 80, 0.95);
+    border: 1px solid rgba(77,163,255,0.4);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    z-index: 10;
+    overflow: hidden;
+}
+
+/* Элемент подсказки */
+.suggestions div,
+.autocomplete-item {
+    padding: 10px 14px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+/* Наведение */
+.suggestions div:hover,
+.autocomplete-item:hover {
+    background: rgba(77,163,255,0.25);
+}
 
 /* ===== КНОПКИ ===== */
 button {
@@ -175,7 +201,22 @@ button#total {
     pointer-events: none;
     z-index: 0;
 }
-
+/* Статичные звёзды */
+#stars::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(1px 1px at 5% 10%, white 80%, transparent),
+        radial-gradient(1px 1px at 15% 80%, white 80%, transparent),
+        radial-gradient(1px 1px at 25% 30%, white 80%, transparent),
+        radial-gradient(1px 1px at 40% 60%, white 80%, transparent),
+        radial-gradient(1px 1px at 55% 20%, white 80%, transparent),
+        radial-gradient(1px 1px at 70% 75%, white 80%, transparent),
+        radial-gradient(1px 1px at 85% 35%, white 80%, transparent),
+        radial-gradient(1px 1px at 95% 60%, white 80%, transparent);
+    opacity: 0.6;
+}
 .star {
     position: absolute;
     width: 2px;
@@ -192,4 +233,16 @@ button#total {
     70%  { opacity: 0.8; }
     100% { opacity: 0; }
 }
-
+input [type="file"] {
+    display: none !important;
+}
+@keyframes fall {
+    from {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    to {
+        transform: translate(200px, 300px);
+        opacity: 0;
+    }
+}
