@@ -233,7 +233,7 @@ document.addEventListener("input", function (e) {
         }
     });
 });
-        products = newProducts;
+      //  products = newProducts;
 
 
 
@@ -417,3 +417,4 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
