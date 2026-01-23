@@ -38,8 +38,15 @@ body {
 }
 /* ===== ЗАГОЛОВОК ===== */
 h1 {
-    margin-bottom: 32px;
-    letter-spacing: 0.06em;
+    margin-top: 40px;
+    margin-bottom: 28px;
+    padding: 14px 22px;
+    display: inline-block;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(15, 40, 80, 0.35);
+    backdrop-filter: blur(8px);
+    letter-spacing: 0.08em;
     font-weight: 600;
 }
 
@@ -253,4 +260,18 @@ label input[type="file"],
 #fileInput,
 #excelFile {
     display: none !important;
+}
+#addRow {
+    margin-top: 6px;
+    margin-bottom: 18px;
+    width: 100%
+}
+.suggestions div,
+.autocomplete-item {
+    background: rgba(20, 50, 90, 0.95);
+}
+
+.suggestions div:hover,
+.autocomplete-item:hover {
+    background: rgba(77,163,255,0.35);
 }
