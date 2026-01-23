@@ -233,55 +233,11 @@ document.addEventListener("input", function (e) {
         }
     });
 });
-document.getElementById("excelInput").addEventListener("change", handleExcelUpload);
-
-function handleExcelUpload(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-
-    reader.onload = function (e) {
-        const data = new Uint8Array(e.target.result);
-        const workbook = XLSX.read(data, { type: "array" });
-
-        const sheetName = workbook.SheetNames[0];
-        const worksheet = workbook.Sheets[sheetName];
-        const rows = XLSX.utils.sheet_to_json(worksheet);
-
-        const newProducts = [];
-
-        rows.forEach(row => {
-            if (!row["Name"] || !row["Weight"]) return;
-
-            const typeRaw = String(row["Type of packaging"] || "").toLowerCase();
-            const type = typeRaw.includes("box") ? "box" : "tube";
-
-            const capacity = {};
-
-            if (row['Diameter 10']) {
-                capacity[10] = Number(row['Diameter "10"']);
-            }
-            if (row['Diameter 20']) {
-                capacity[20] = Number(row['Diameter "20"']);
-            }
-
-            newProducts.push({
-                name: String(row["Name"]).trim(),
-                type,
-                weight: Number(row["Weight"]),
-                capacity
-            });
-        });
-
         products = newProducts;
 
-        console.log("Номенклатура загружена из Excel:", products);
-        alert("Excel успешно загружен");
-    };
+
 
     reader.readAsArrayBuffer(file);
-}
 const resultText = document.getElementById("resultText");
 document.getElementById("total").addEventListener("click", () => {
 
