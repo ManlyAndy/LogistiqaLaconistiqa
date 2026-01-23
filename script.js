@@ -1,45 +1,45 @@
 var modelRules = {
-    "micro 11": { allowedDiameters: [10, 20] },
-    "micro l": { allowedDiameters: [10, 20] },
-    "скрытый strong": { allowedDiameters: [20] }
-};
-window.calculatePackagingWeight = function (packagingResult) {
-    let weight = 0;
-    document.getElementById("close").addEventListener ("click", () => {
-    document.getElementById("modal").classList.add("hidden");
-});
+        "micro 11": { allowedDiameters: [10, 20] },
+        "micro l": { allowedDiameters: [10, 20] },
+        "скрытый strong": { allowedDiameters: [20] }
+    };
+    window.calculatePackagingWeight = function (packagingResult) {
+        let weight = 0;
+        document.getElementById("close").addEventListener ("click", () => {
+        document.getElementById("modal").classList.add("hidden");
+    });
 
-    for (const key in packagingResult.tubesResult) {
-        const count = packagingResult.tubesResult[key];
+        for (const key in packagingResult.tubesResult) {
+            const count = packagingResult.tubesResult[key];
 
-        const match = key.match(/Ø(\d+)\s\/\s([\d.]+)\sм/);
-        if (!match) continue;
+            const match = key.match(/Ø(\d+)\s\/\s([\d.]+)\sм/);
+            if (!match) continue;
 
-        const diameter = Number(match[1]);
-        const length = Number(match[2]);
+            const diameter = Number(match[1]);
+            const length = Number(match[2]);
 
-        const tube = tubes.find(
-            t => t.diameter === diameter && t.maxLength === length
-        );
+            const tube = tubes.find(
+                t => t.diameter === diameter && t.maxLength === length
+            );
 
-        if (tube) {
-            weight += tube.weight * count;
+            if (tube) {
+                weight += tube.weight * count;
+            }
         }
+
+        weight += packagingResult.boxesCount * BOX_WEIGHT;
+
+        return weight;
+    };
+    const BOX_WEIGHT = 0.5; 
+    let products = [
+        { name: "Micro-L угловой Шампань (2.5)",
+        weight: 0.364,
+        type: "tube",
+    tubeRules: {
+        "10-2.5": 25,
+        "20-2.5": 100
     }
-
-    weight += packagingResult.boxesCount * BOX_WEIGHT;
-
-    return weight;
-};
-const BOX_WEIGHT = 0.5; 
-let products = [
-    { name: "Micro-L угловой Шампань (2.5)",
-      weight: 0.364,
-    type: "tube",
- tubeRules: {
-    "10-2.5": 25,
-    "20-2.5": 100
- }
 },
     { name: "Micro-L угловой Светлый Шампань (2.5)",
       weight: 0.364,
@@ -434,7 +434,7 @@ function createStar() {
 }
 
 // каждые 200 мс появляется новая звезда
-setInterval(createStar, 300);
+setInterval(createStar, 500);
 function createFallingStar() {
     const star = document.createElement("div");
     star.className = "star";
@@ -444,13 +444,12 @@ function createFallingStar() {
     star.style.width = "2px";
     star.style.height = "2px";
 
-    star.style.animation = "fall 2s linear forwards";
+    star.style.animation = "fall 4s linear forwards";
     starsContainer.appendChild(star);
 
     setTimeout(() => star.remove(), 1200);
 }
 
 setInterval(() => {
-    if (Math.random() < 0.15) createFallingStar();
+    if (Math.random() < 0.55) createFallingStar();
 }, 3000);
-
