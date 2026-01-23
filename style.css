@@ -1,76 +1,186 @@
+/* ===== БАЗА ===== */
+:root {
+    --accent: #4da3ff;
+    --accent-soft: rgba(77,163,255,0.35);
+    --bg-dark: #050d1c;
+    --bg-mid: #0b1f3a;
+    --glass: rgba(15, 40, 80, 0.45);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: #a5b3b3;
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, var(--bg-mid), var(--bg-dark));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
 }
 
+/* ===== ЗВЁЗДЫ ===== */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(1px 1px at 10% 20%, white 80%, transparent 100%),
+        radial-gradient(1px 1px at 30% 80%, white 80%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 70% 40%, white 80%, transparent 100%),
+        radial-gradient(1px 1px at 90% 10%, white 80%, transparent 100%),
+        radial-gradient(1px 1px at 50% 60%, white 80%, transparent 100%);
+    opacity: 0.7;
+    animation: starsTwinkle 6s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes starsTwinkle {
+    from { opacity: 0.4; }
+    to   { opacity: 0.9; }
+}
+
+/* ===== КОНТЕЙНЕР ===== */
 .container {
-    background: rgb(55, 54, 54);
-    width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    border-radius: 8px;
+    width: 420px;
+    max-width: 92%;
+    text-align: center;
 }
 
+/* ===== ЗАГОЛОВОК ===== */
+h1 {
+    margin-bottom: 32px;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+}
+
+/* ===== СТРОКИ ТОВАРОВ ===== */
 .item {
     display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+    gap: 12px;
+    margin-bottom: 14px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: rowFadeIn 0.4s ease forwards;
 }
 
+@keyframes rowFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== ИНПУТЫ ===== */
 input {
-    padding: 6px;
-    width: 100%;
+    flex: 1;
+    background: rgba(10, 30, 60, 0.6);
+    border: 1.5px solid var(--accent-soft);
+    color: #fff;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 15px;
+    backdrop-filter: blur(6px);
+    transition: all 0.25s ease;
 }
 
+input[type="number"] {
+    max-width: 80px;
+    text-align: center;
+}
+
+input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 12px rgba(77,163,255,0.35);
+    outline: none;
+}
+
+/* ===== КНОПКИ ===== */
 button {
-    padding: 8px 12px;
+    margin-top: 18px;
+    background: rgba(10, 30, 60, 0.6);
+    border: 1.5px solid var(--accent-soft);
+    color: #fff;
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 15px;
     cursor: pointer;
+    backdrop-filter: blur(6px);
+    transition: all 0.25s ease;
 }
 
-/* автоподсказка */
-.autocomplete {
-    position: relative;
-    width: 100%;
+button:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 14px rgba(77,163,255,0.4);
+    transform: translateY(-1px);
 }
 
-.list {
-    position: absolute;
-    background: rgb(249, 243, 243);
-    border: 1px solid #ffffff;
-    width: 100%;
-    max-height: 120px;
-    overflow-y: auto;
-    z-index: 100;
+button#total {
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
-.list div {
-    padding: 5px;
-    cursor: pointer;
-}
-
-.list div:hover {
-    background: #9a9797;
-}
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
 .modal {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.5);
+    inset: 0;
+    background: rgba(0,0,0,0.55);
     display: flex;
-    justify-content: center;
     align-items: center;
-    z-index: 1000;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.modal:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .modal-content {
-    background: white;
-    padding: 20px;
-    width: 320px;
-    border-radius: 8px;
+    background: var(--glass);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 18px;
+    padding: 26px 30px;
+    min-width: 280px;
+    backdrop-filter: blur(14px);
+    transform: scale(0.95);
+    transition: transform 0.35s ease;
 }
 
-.hidden {
-    display: none;
+.modal:not(.hidden) .modal-content {
+    transform: scale(1);
+}
+
+/* ===== ТЕКСТ В ИТОГО ===== */
+#resultText p {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+#resultText hr {
+    margin: 16px 0;
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ===== БЛОК ВРЕМЕНИ ===== */
+.time-box {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    padding: 14px 20px;
+    border-radius: 14px;
+    background: rgba(15, 40, 80, 0.45);
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    text-align: center;
+    font-size: 15px;
 }
