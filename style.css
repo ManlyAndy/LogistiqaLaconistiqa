@@ -52,10 +52,11 @@ h1 {
 h1::after {
     content: "🚚";
     position: absolute;
+    transform: scaleX (-1);
     top: -14px;
     left: -10px;
     font-size: 18px;
-    animation: drive 8s linear infinite;
+    animation: drive 14s linear infinite;
     pointer-events: none;
 }
 
@@ -323,3 +324,4 @@ label input[type="file"],
 .autocomplete-item {
     cursor: pointer;
 }
+
