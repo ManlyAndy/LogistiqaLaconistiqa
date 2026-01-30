@@ -52,20 +52,68 @@ h1 {
 h1::after {
     content: "🚚";
     position: absolute;
-    top: -14px;
-    left: -40px;
-    font-size: 18px;
+    top: -16px;
+    left: -16px;
+    font-size: 16px;
     pointer-events: none;
     transform: scaleX(-1);
-    animation: drive 6s linear infinite;
+    animation: driveAround 16s linear infinite;
+}
+h1:hover::after {
+    animation-play-state: paused;
 }
 
-@keyframes drive {
-    from {
-        left: -40px;
+@keyframes driveAround {
+    /* верх — слева направо */
+    0% {
+        top: -16px;
+        left: -16px;
+        transform: rotate(0deg) scaleX(-1);
     }
-    to {
-        left: calc(100% + 40px);
+
+    25% {
+        top: -16px;
+        left: calc(100% - 16px);
+        transform: rotate(0deg) scaleX(-1);
+    }
+
+    /* правая сторона — сверху вниз */
+    26% {
+        top: -16px;
+        left: calc(100% - 16px);
+        transform: rotate(90deg);
+    }
+
+    50% {
+        top: calc(100% - 16px);
+        left: calc(100% - 16px);
+        transform: rotate(90deg);
+    }
+
+    /* низ — справа налево */
+    51% {
+        top: calc(100% - 16px);
+        left: calc(100% - 16px);
+        transform: rotate(180deg) scaleX(-1);
+    }
+
+    75% {
+        top: calc(100% - 16px);
+        left: -16px;
+        transform: rotate(180deg) scaleX(-1);
+    }
+
+    /* левая сторона — снизу вверх */
+    76% {
+        top: calc(100% - 16px);
+        left: -16px;
+        transform: rotate(-90deg);
+    }
+
+    100% {
+        top: -16px;
+        left: -16px;
+        transform: rotate(-90deg);
     }
 }
 
