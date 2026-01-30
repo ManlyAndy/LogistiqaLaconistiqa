@@ -271,7 +271,7 @@ document.getElementById("total").addEventListener("click", () => {
         <p><strong>ИТОГО:</strong> ${totalWeight.toFixed(2)} кг</p>
     `;
 
-    document.getElementById("modal").classList.remove("hidden");
+    document.getElementById("resultModal").classList.remove("hidden");
 });
 function getLengthFromName(name) {
     let match = name.match(/\(([\d.,]+)\s*м\)/i);
@@ -410,3 +410,4 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
