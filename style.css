@@ -52,7 +52,7 @@ h1 {
 h1::after {
     content: "🚚";
     position: absolute;
-    transform: scaleX (-1);
+    transform: scaleX(-1);
     top: -14px;
     left: -10px;
     font-size: 18px;
@@ -324,4 +324,3 @@ label input[type="file"],
 .autocomplete-item {
     cursor: pointer;
 }
-
