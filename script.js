@@ -5,9 +5,6 @@ var modelRules = {
     };
     window.calculatePackagingWeight = function (packagingResult) {
         let weight = 0;
-        document.getElementById("close").addEventListener ("click", () => {
-        document.getElementById("modal").classList.add("hidden");
-    });
 
         for (const key in packagingResult.tubesResult) {
             const count = packagingResult.tubesResult[key];
@@ -233,11 +230,7 @@ document.addEventListener("input", function (e) {
         }
     });
 });
-      //  products = newProducts;
 
-
-
-    reader.readAsArrayBuffer(file);
 const resultText = document.getElementById("resultText");
 document.getElementById("total").addEventListener("click", () => {
 
@@ -417,4 +410,3 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
-
