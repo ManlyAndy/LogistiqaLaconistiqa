@@ -49,6 +49,24 @@ h1 {
     letter-spacing: 0.08em;
     font-weight: 600;
 }
+h1::after {
+    content: "🚚";
+    position: absolute;
+    top: -14px;
+    left: -10px;
+    font-size: 18px;
+    animation: drive 8s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes drive {
+    from {
+        left: -10px;
+    }
+    to {
+        left: calc(100% - 10px);
+    }
+}
 
 /* ===== СТРОКИ ТОВАРОВ ===== */
 .item {
@@ -300,4 +318,8 @@ label input[type="file"],
 }
 .hidden {
     display: none;
+}
+.suggestions div,
+.autocomplete-item {
+    cursor: pointer;
 }
