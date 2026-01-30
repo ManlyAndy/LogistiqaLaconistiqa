@@ -52,20 +52,20 @@ h1 {
 h1::after {
     content: "🚚";
     position: absolute;
-    transform: translateX(-120%) scaleX(-1);
     top: -14px;
-    left: 0;
-    font-size: 20px;
-    animation: drive 14s linear infinite;
+    left: -40px;
+    font-size: 18px;
     pointer-events: none;
+    transform: scaleX(-1);
+    animation: drive 6s linear infinite;
 }
 
 @keyframes drive {
     from {
-        transform: translateX(-120%) scaleX(-1);
+        left: -40px;
     }
     to {
-        transform: translateX(120%) scaleX(-1);
+        left: calc(100% + 40px);
     }
 }
 
@@ -323,4 +323,8 @@ label input[type="file"],
 .suggestions div,
 .autocomplete-item {
     cursor: pointer;
+}
+#suggestions,
+#suggestions * {
+    cursor: pointer !important;
 }
