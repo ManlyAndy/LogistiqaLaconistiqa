@@ -52,20 +52,20 @@ h1 {
 h1::after {
     content: "🚚";
     position: absolute;
-    transform: scaleX(-1);
+    transform: translateX(-120%) scaleX(-1);
     top: -14px;
-    left: -10px;
-    font-size: 18px;
+    left: 0;
+    font-size: 20px;
     animation: drive 14s linear infinite;
     pointer-events: none;
 }
 
 @keyframes drive {
     from {
-        left: -10px;
+        transform: translateX(-120%) scaleX(-1);
     }
     to {
-        left: calc(100% - 10px);
+        transform: translateX(120%) scaleX(-1);
     }
 }
 
