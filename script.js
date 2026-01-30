@@ -273,6 +273,14 @@ document.getElementById("total").addEventListener("click", () => {
 
     document.getElementById("resultModal").classList.remove("hidden");
 });
+const closeBtn = document.getElementById("close");
+const resultModal = document.getElementById("resultModal");
+
+if (closeBtn && resultModal) {
+    closeBtn.addEventListener("click", () => {
+        resultModal.classList.add("hidden");
+    });
+}
 function getLengthFromName(name) {
     let match = name.match(/\(([\d.,]+)\s*м\)/i);
 
@@ -410,4 +418,5 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
 
