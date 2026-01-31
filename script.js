@@ -438,13 +438,13 @@ setInterval(() => {
 function updateTime() {
     const now = new Date();
 
-    const moscow = now.toLocaleTimeString("ru-RU", {
+    const moscowTime = now.toLocaleTimeString("ru-RU", {
         timeZone: "Europe/Moscow",
         hour: "2-digit",
         minute: "2-digit"
     });
 
-    const vladivostok = now.toLocaleTimeString("ru-RU", {
+    const vladivostokTime = now.toLocaleTimeString("ru-RU", {
         timeZone: "Asia/Vladivostok",
         hour: "2-digit",
         minute: "2-digit"
