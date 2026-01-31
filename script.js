@@ -263,13 +263,24 @@ document.getElementById("total").addEventListener("click", () => {
     const packagingWeight = calculatePackagingWeight(result);
     const totalWeight = productsWeight + packagingWeight;
 
-    resultText.innerHTML = `
-        <p><strong>Мест всего:</strong> ${result.totalPlaces}</p>
-        <p><strong>Вес товара:</strong> ${productsWeight.toFixed(2)} кг</p>
-        <p><strong>Вес упаковки:</strong> ${packagingWeight.toFixed(2)} кг</p>
-        <hr>
-        <p><strong>ИТОГО:</strong> ${totalWeight.toFixed(2)} кг</p>
-    `;
+   let variantsHtml = "";
+
+for (const diameter in result.tubeVariantsResult) {
+    variantsHtml += `<p>Ø${diameter} — ${result.tubeVariantsResult[diameter]} мест</p>`;
+}
+
+resultText.innerHTML = `
+    <p><strong>Мест всего (выбранный вариант):</strong> ${result.totalPlaces}</p>
+
+    ${variantsHtml
+        ? `<hr><p><strong>Возможные варианты упаковки:</strong></p>${variantsHtml}`
+        : ""}
+
+    <hr>
+    <p><strong>Вес товара:</strong> ${productsWeight.toFixed(2)} кг</p>
+    <p><strong>Вес упаковки:</strong> ${packagingWeight.toFixed(2)} кг</p>
+    <p><strong>ИТОГО:</strong> ${totalWeight.toFixed(2)} кг</p>
+`;
 
     document.getElementById("resultModal").classList.remove("hidden");
 });
@@ -334,6 +345,7 @@ function calculatePackaging(orderItems) {
     let tubesResult = {};
     let boxesCount = 0;
 let packagingWeight = 0;
+let tubeVariantsResult = {};
 
     orderItems.forEach(item => {
         const product = products.find(p => p.name === item.name);
@@ -360,14 +372,26 @@ if (!tube) {
     const key = `Ø${tube.diameter} / ${tube.length} м`;
     tubesResult[key] = (tubesResult[key] || 0) + tubesNeeded;
 }
+// --- варианты туб по всем диаметрам ---
+for (const ruleKey in product.tubeRules) {
+    const [diameter, tubeLength] = ruleKey.split("-").map(Number);
+
+    if (tubeLength < getLengthFromName(product.name)) continue;
+
+    const maxItems = product.tubeRules[ruleKey];
+    const places = Math.ceil(item.qty / maxItems);
+
+    tubeVariantsResult[diameter] =
+        (tubeVariantsResult[diameter] || 0) + places;
+}
     });
 
     return {
         totalPlaces,
         tubesResult,
         boxesCount,
-    packagingWeight
-   
+    packagingWeight,
+    tubeVariantsResult
     };
    }
    const starsContainer = document.getElementById("stars");
