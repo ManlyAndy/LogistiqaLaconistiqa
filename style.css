@@ -63,7 +63,7 @@ h1::after {
     offset-distance: 0%;
     offset-rotate: auto;
     animation: driveAround 14s linear infinite;
-};
+}
 
 h1:hover::after {
     animation-play-state: paused;
@@ -363,5 +363,6 @@ label input[type="file"],
 .suggestions div:hover,
 .autocomplete-item:hover {
     background-color: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
+    border-left: 3px solid rgba(255, 255, 255, 0.6);
+    padding-left: 7px;
 }
