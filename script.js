@@ -451,10 +451,10 @@ function updateTime() {
     });
 
     document.getElementById("moscowTime").textContent =
-        `Москва — ${moscow}`;
+        `Москва — ${moscowTime}`;
 
     document.getElementById("vladivostokTime").textContent =
-        `Владивосток — ${vladivostok}`;
+        `Владивосток — ${vladivostokTime}`;
 }
 
 updateTime();
