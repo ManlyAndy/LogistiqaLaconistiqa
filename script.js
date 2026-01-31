@@ -434,10 +434,27 @@ function createFallingStar() {
 setInterval(() => {
     if (Math.random() < 0.55) createFallingStar();
 }, 3000);
+
 function updateTime() {
     const now = new Date();
-    document.getElementById("time").textContent =
-        now.toLocaleTimeString("ru-RU");
+
+    const moscow = now.toLocaleTimeString("ru-RU", {
+        timeZone: "Europe/Moscow",
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+
+    const vladivostok = now.toLocaleTimeString("ru-RU", {
+        timeZone: "Asia/Vladivostok",
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+
+    document.getElementById("moscowTime").textContent =
+        `Москва — ${moscow}`;
+
+    document.getElementById("vladivostokTime").textContent =
+        `Владивосток — ${vladivostok}`;
 }
 
 updateTime();
