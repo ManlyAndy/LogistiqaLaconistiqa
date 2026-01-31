@@ -337,3 +337,18 @@ label input[type="file"],
 #suggestions * {
     cursor: pointer !important;
 }
+/* --- ФИКС КУРСОРА В ВЫПАДАЮЩЕМ СПИСКЕ --- */
+
+/* перебиваем caret-инпута */
+.suggestions,
+.suggestions * ,
+.autocomplete-list,
+.autocomplete-list * {
+    cursor: default !important;
+}
+
+/* на hover — явная стрелка */
+.suggestions:hover,
+.autocomplete-list:hover {
+    cursor: pointer !important;
+}
