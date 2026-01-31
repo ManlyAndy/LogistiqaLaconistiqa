@@ -352,3 +352,16 @@ label input[type="file"],
 .autocomplete-list:hover {
     cursor: pointer !important;
 }
+/* ===== Подсветка строки в автоподборе ===== */
+
+.suggestions div,
+.autocomplete-item {
+    padding: 8px 10px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.suggestions div:hover,
+.autocomplete-item:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
