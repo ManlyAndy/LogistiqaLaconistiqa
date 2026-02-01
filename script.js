@@ -1,4 +1,4 @@
- var modelRules = {
+var modelRules = {
         "micro 11": { allowedDiameters: [10, 20] },
         "micro l": { allowedDiameters: [10, 20] },
         "скрытый strong": { allowedDiameters: [20] }
@@ -62,7 +62,7 @@
     "20-2.5": 100
  }
 },
-    { name: "Micro-L угловой Черный анод (2.5)",
+    { name: "Micro-L угловой Чёрный анод (2.5)",
       weight: 0.364,
     type: "tube",
  tubeRules: {
@@ -70,7 +70,7 @@
     "20-2.5": 100
  }
 },
-    { name: "Micro-L угловой Серебро (2.5)",
+    { name: "Micro-L угловой Серебристый (2.5)",
       weight: 0.364,
     type: "tube",
  tubeRules: {
@@ -140,7 +140,7 @@
     tubeRules: {
         "10-2.5": 40,
         "20-2.5": 150
-    },
+    }
 },
  {name: "Micro 11 mini Светлый шампань (2.0)",
     weight: 0.101,
@@ -190,7 +190,7 @@
         "20-2.5": 150
     }
     },
-     {name: "Micro 11 mini Чёрный Муар (2.0)",
+     {name: "Micro 11 mini Чёрный муар (2.0)",
     weight: 0.161,
     type: "tube",
     tubeRules: {
@@ -215,7 +215,7 @@
         "20-2.5": 150
     }
     },
-     {name: "Micro 15 mini Чёрный Муар (2.5)",
+     {name: "Micro 15 mini Чёрный муар (2.5)",
     weight: 0.174,
     type: "tube",
     tubeRules: {
@@ -303,7 +303,7 @@
         "20-2.5": 150
     }
     },
-    {name: "Micro 19 mini Серебро анод (2.5)",
+    {name: "Micro 19 mini Серебристый анод (2.5)",
     weight: 0.168,
     type: "tube",
     tubeRules: {
@@ -367,7 +367,7 @@
         "20-2.5": 150
     }
     },
-     {name: "Micro-L угловой Чёрный МУАР (2.7)",
+     {name: "Micro-L угловой Чёрный муар (2.7)",
     weight: 0.421,
     type: "tube",
     tubeRules: {
@@ -415,7 +415,7 @@
         "20-2.5": 100
     }
     },
-     {name: "Micro-L MAX угловой Серебристый анод (2.5)",
+     {name: "Micro-L MAX угловой Серебристый (2.5)",
     weight: 0.407,
     type: "tube",
     tubeRules: {
@@ -479,7 +479,7 @@
         "20-2.5": 100
     }
     },
-     {name: "потолочный GARDINA Чёрный МУАР (3.0)",
+     {name: "потолочный GARDINA Чёрный муар (3.0)",
     weight: 1.060,
     type: "tube",
     tubeRules: {
@@ -489,7 +489,7 @@
         "20-3.0": 35
     }
     },
-     {name: "потолочный GARDINA Белый МУАР (3.0)",
+     {name: "потолочный GARDINA Белый муар (3.0)",
     weight: 1.060,
     type: "tube",
     tubeRules: {
@@ -549,7 +549,7 @@
         "20-3.0": 35
     }
     },
-     {name: "потолочный GIPS REGULAR Черный МУАР (3.0)",
+     {name: "потолочный GIPS REGULAR Чёрный муар (3.0)",
     weight: 1.068,
     type: "tube",
     tubeRules: {
@@ -849,7 +849,7 @@
         "20-3.0": 70
     }
     },
-     {name: "REVERSE 2.0 Чёрный МУАР (3.0)",
+     {name: "REVERSE 2.0 Чёрный муар (3.0)",
     weight: 0.500,
     type: "tube",
     tubeRules: {
@@ -869,7 +869,7 @@
         "20-3.0": 70
     }
     },
-     {name: "REVERSE 2.0 Белый МУАР (3.0)",
+     {name: "REVERSE 2.0 Белый муар (3.0)",
     weight: 0.500,
     type: "tube",
     tubeRules: {
@@ -1019,7 +1019,7 @@
         "20-3.0": 100
     }
     },
-     {name: "рейка Light Черный анод. (3.0)",
+     {name: "рейка Light Чёрный анод. (3.0)",
     weight: 0.800,
     type: "tube",
     tubeRules: {
@@ -1079,7 +1079,7 @@
         "20-3.0": 100
     }
     },
-     {name: "рейка micro 3М Чёрный МУАР (3.0)",
+     {name: "рейка micro 3m Чёрный муар (3.0)",
     weight: 1.100,
     type: "tube",
     tubeRules: {
@@ -1089,7 +1089,7 @@
         "20-3.0": 20
     }
     },
-     {name: "рейка micro 3М Белый МУАР (3.0)",
+     {name: "рейка micro 3m Белый муар (3.0)",
     weight: 1.100,
     type: "tube",
     tubeRules: {
@@ -1099,7 +1099,7 @@
         "20-3.0": 20
     }
     },
-     {name: "рейка micro 3М Серебристый (3.0)",
+     {name: "рейка micro 3m Серебристый (3.0)",
     weight: 1.000,
     type: "tube",
     tubeRules: {
@@ -1109,7 +1109,7 @@
         "20-3.0": 20
     }
     },
-     {name: "рейка micro 3М Без покрытия (3.0)",
+     {name: "рейка micro 3m Без покрытия (3.0)",
     weight: 1.000,
     type: "tube",
     tubeRules: {
@@ -1279,7 +1279,7 @@
         "20-3.0": 50
     }
     },
-       {name: "Multilevel MAX Серебро (3.0)",
+       {name: "Multilevel MAX Серебристый (3.0)",
     weight: 1.010,
     type: "tube",
     tubeRules: {
@@ -1359,7 +1359,7 @@
         "20-3.0": 70
     }
     },
-       {name: "Novel mini Чёрный МУАР (3.0)",
+       {name: "Novel mini Чёрный муар (3.0)",
     weight: 0.418,
     type: "tube",
     tubeRules: {
