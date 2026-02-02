@@ -1610,14 +1610,18 @@ let shown = 0;
 
 const resultText = document.getElementById("resultText");
 document.getElementById("total").addEventListener("click", () => {
+const rows = document.querySelectorAll(".item");
 
+if (!rows.length) {
+    alert("Добавьте хотя бы один товар");
+    return;
+}
     const orderItems = [];
 
     document.querySelectorAll(".item").forEach(item => {
         const nameInput = item.querySelector('input[type="text"]');
         const qtyInput = item.querySelector('input[type="number"]');
 
-        if (!nameInput || !qtyInput) return;
 
         const name = nameInput.value.trim();
         const qty = Number(qtyInput.value);
@@ -1855,3 +1859,4 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
