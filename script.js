@@ -1622,6 +1622,18 @@ document.getElementById("total").addEventListener("click", () => {
             orderItems.push({ name, qty });
         }
     });
+        const resetBtn = document.getElementById("reset");
+
+if (resetBtn) {
+    resetBtn.addEventListener("click", () => {
+        // удалить все строки товаров
+        document.getElementById("items").innerHTML = "";
+
+        // закрыть модалку, если открыта
+        const modal = document.getElementById("resultModal");
+        if (modal) modal.classList.add("hidden");
+    });
+}
 
     let productsWeight = 0;
     orderItems.forEach(item => {
@@ -1752,7 +1764,11 @@ for (const ruleKey in product.tubeRules) {
     if (tubeLength < getLengthFromName(product.name)) continue;
 
     const maxItems = product.tubeRules[ruleKey];
-    const places = Math.ceil(item.qty / maxItems);
+    if (!maxItems || maxItems <= 0) {
+    return; // или continue — в зависимости от цикла
+}
+
+const places = Math.ceil(qty / maxItems);
 
     tubeVariantsResult[diameter] =
         (tubeVariantsResult[diameter] || 0) + places;
@@ -1832,3 +1848,4 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
