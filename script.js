@@ -1768,7 +1768,11 @@ for (const ruleKey in product.tubeRules) {
     return; // или continue — в зависимости от цикла
 }
 
-const places = Math.ceil(qty / maxItems);
+if (!maxItems || maxItems <= 0) {
+    return; // или continue — в зависимости от цикла
+}
+
+const places = Math.ceil(qty / maxItems);;
 
     tubeVariantsResult[diameter] =
         (tubeVariantsResult[diameter] || 0) + places;
@@ -1848,4 +1852,5 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
 
