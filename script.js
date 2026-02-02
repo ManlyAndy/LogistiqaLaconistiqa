@@ -1610,46 +1610,73 @@ let shown = 0;
 
 const resultText = document.getElementById("resultText");
 document.getElementById("total").addEventListener("click", () => {
-const rows = document.querySelectorAll(".item");
+    const rows = document.querySelectorAll(".item");
+    if (!rows.length) {
+        alert("Добавьте хотя бы один товар");
+        return;
+    }
 
-if (!rows.length) {
-    alert("Добавьте хотя бы один товар");
-    return;
-}
     const orderItems = [];
-
-    document.querySelectorAll(".item").forEach(item => {
+    // document.querySelectorAll(".item").forEach(item => { // Старая строка
+    rows.forEach(item => { // Можно так, или использовать querySelectorAll снова
         const nameInput = item.querySelector('input[type="text"]');
         const qtyInput = item.querySelector('input[type="number"]');
 
-
         const name = nameInput.value.trim();
-        const qty = Number(qtyInput.value);
+        const qty = Number(qtyInput.value); // Преобразуем значение в число
 
-        if (name && item.qty > 0) {
-            orderItems.push({ name, qty });
+        // Проверяем, что имя не пустое И количество - это допустимое положительное число
+        if (name && !isNaN(qty) && qty > 0) {
+            orderItems.push({ name, qty }); // Добавляем объект с именем и количеством
         }
     });
-    const resetBtn = document.getElementById("reset");
 
-if (resetBtn) {
-    resetBtn.addEventListener("click", () => {
-        // удалить все строки товаров
-        document.getElementById("items").innerHTML = "";
+    // Проверяем, были ли добавлены корректные товары
+    if (orderItems.length === 0) {
+        alert("Пожалуйста, введите корректные данные для товаров (имя и количество > 0).");
+        return;
+    }
 
-        // закрыть модалку, если открыта
-        const modal = document.getElementById("resultModal");
-        if (modal) modal.classList.add("hidden");
-    });
-}
-
+    // --- Расчет веса ---
     let productsWeight = 0;
-    orderItems.forEach(item => {
+    orderItems.forEach(item => { // Теперь item - это объект { name, qty } из orderItems
         const product = products.find(p => p.name === item.name);
         if (product) {
-            productsWeight += product.weight * item.qty;
+            // Умножаем вес одного товара на его количество
+            productsWeight += product.weight * item.qty; // <-- Вот где происходит суммирование
+        } else {
+             // Логично предположить, что если товар не найден, его не должно быть в заказе
+             // Но оставлю предупреждение на всякий случай
+             console.warn(`Товар "${item.name}" не найден в базе данных.`);
         }
     });
+
+    // --- Остальные вычисления ---
+    const result = calculatePackaging(orderItems);
+    const packagingWeight = calculatePackagingWeight(result);
+    const totalWeight = productsWeight + packagingWeight; // Теперь сумма должна быть корректной
+
+    // --- Формирование HTML для вывода ---
+    let variantsHtml = "";
+    for (const diameter in result.tubeVariantsResult) {
+        if (result.tubeVariantsResult.hasOwnProperty(diameter)) {
+            variantsHtml += <p>Ø${diameter} — ${result.tubeVariantsResult[diameter]} мест</p>;
+        }
+    }
+
+    resultText.innerHTML = `
+        Мест всего (выбранный вариант): ${result.totalPlaces}
+        ${variantsHtml
+            ? ` <hr> <p> <strong>Возможные варианты упаковки: </strong> </p>${variantsHtml}`
+            : ""}
+        <hr>
+        <p> <strong>Вес товара: </strong> ${productsWeight.toFixed(2)} кг </p>
+        <p> <strong>Вес упаковки: </strong> ${packagingWeight.toFixed(2)} кг </p>
+        <p> <strong>ИТОГО: </strong> ${totalWeight.toFixed(2)} кг </p>
+    `;
+
+    document.getElementById("resultModal").classList.remove("hidden");
+});
 
     const result = calculatePackaging(orderItems);
 
@@ -1676,7 +1703,6 @@ resultText.innerHTML = `
 `;
 
     document.getElementById("resultModal").classList.remove("hidden");
-});
 const closeBtn = document.getElementById("close");
 const resultModal = document.getElementById("resultModal");
 
