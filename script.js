@@ -1565,8 +1565,7 @@ const itemsDiv = document.getElementById("items");
 
 addButton.addEventListener("click", () => {
     const div = document.createElement("div");
-    div.className = "autocomplete-item";
-    div.textContent = product.name;
+    div.className = "item";
 
     div.innerHTML = `
         <div class="autocomplete">
@@ -1770,7 +1769,7 @@ for (const ruleKey in product.tubeRules) {
 
     const maxItems = product.tubeRules[ruleKey];
     if (!maxItems || maxItems <= 0) {
-    return; // или continue — в зависимости от цикла
+    continue; // или continue — в зависимости от цикла
 }
 
 if (!maxItems || maxItems <= 0) {
