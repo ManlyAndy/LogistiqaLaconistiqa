@@ -1626,7 +1626,7 @@ if (!rows.length) {
         const name = nameInput.value.trim();
         const qty = Number(qtyInput.value);
 
-        if (name && qty > 0) {
+        if (name && item.qty > 0) {
             orderItems.push({ name, qty });
         }
     });
@@ -1751,7 +1751,6 @@ let tubeVariantsResult = {};
             totalPlaces += boxes;
             return;
         }
-
        const tube = selectTube(product.name);
 
 if (!tube) {
@@ -1780,7 +1779,7 @@ if (!maxItems || maxItems <= 0) {
     return; // или continue — в зависимости от цикла
 }
 
-const places = Math.ceil(qty / maxItems);
+const places = Math.ceil(item.qty / maxItems);
     tubeVariantsResult[diameter] =
         (tubeVariantsResult[diameter] || 0) + places;
 }
@@ -1859,4 +1858,3 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
-
