@@ -1614,7 +1614,7 @@ document.getElementById("total").addEventListener("click", () => {
     if (!rows.length) {
         alert("Добавьте хотя бы один товар");
         return;
-    }
+    };
 
     const orderItems = [];
     // document.querySelectorAll(".item").forEach(item => { // Старая строка
@@ -1644,10 +1644,6 @@ document.getElementById("total").addEventListener("click", () => {
         if (product) {
             // Умножаем вес одного товара на его количество
             productsWeight += product.weight * item.qty; // <-- Вот где происходит суммирование
-        } else {
-             // Логично предположить, что если товар не найден, его не должно быть в заказе
-             // Но оставлю предупреждение на всякий случай
-             console.warn(`Товар "${item.name}" не найден в базе данных.`);
         }
     });
 
@@ -1660,7 +1656,7 @@ document.getElementById("total").addEventListener("click", () => {
     let variantsHtml = "";
     for (const diameter in result.tubeVariantsResult) {
         if (result.tubeVariantsResult.hasOwnProperty(diameter)) {
-            variantsHtml += <p>Ø${diameter} — ${result.tubeVariantsResult[diameter]} мест</p>;
+            variantsHtml += `<p>Ø${diameter} — ${result.tubeVariantsResult[diameter]} мест</p>`;
         }
     }
 
