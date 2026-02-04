@@ -20,7 +20,7 @@ var modelRules = {
             );
 
             if (tube) {
-                weight += tube.weight * count;
+                weight += getTubeWeight(diameter) * count;
             }
         }
 
@@ -1812,12 +1812,12 @@ for (const length in tubeGroups) {
 if (!tube) {
     console.warn("Туба не подобрана для:", product.name);
 } else {
-    const tubesNeeded = Math.ceil(item.qty / tube.maxItems);
+    const tubesNeeded = Math.ceil(item.qty / maxItems);
 
-    totalPlaces += tubesNeeded;
-    packagingWeight += tubesNeeded * tube.weight;
+    totalPlaces += tubesNeeded;    
+packagingWeight += tubesNeeded * getTubeWeight(diameter);
 
-    const key = `Ø${tube.diameter} / ${tube.length} м`;
+    const key = `Ø${diameter} / ${length} м`;
     tubesResult[key] = (tubesResult[key] || 0) + tubesNeeded;
 }
 // --- варианты туб по всем диаметрам ---
@@ -1914,4 +1914,3 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
-
