@@ -1649,7 +1649,7 @@ document.getElementById("total").addEventListener("click", () => {
     let variantsHtml = "";
 
     for (const diameter in result.tubeVariantsResult) {
-        variantsHtml += <p>Ø${diameter} — ${result.tubeVariantsResult[diameter]} мест</p>;
+        variantsHtml += `<p>Ø${diameter} — ${result.tubeVariantsResult[diameter]} мест</p>`;
     }
 
     const resultText = document.getElementById("resultText");
@@ -1914,3 +1914,4 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
