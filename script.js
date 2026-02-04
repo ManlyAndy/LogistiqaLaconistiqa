@@ -1646,32 +1646,6 @@ document.getElementById("total").addEventListener("click", () => {
             productsWeight += product.weight * item.qty; // <-- Вот где происходит суммирование
         }
     });
-
-    // --- Остальные вычисления ---
-    const result = calculatePackaging(orderItems);
-    const packagingWeight = calculatePackagingWeight(result);
-    const totalWeight = productsWeight + packagingWeight; // Теперь сумма должна быть корректной
-
-    // --- Формирование HTML для вывода ---
-    let variantsHtml = "";
-    for (const diameter in result.tubeVariantsResult) {
-        if (result.tubeVariantsResult.hasOwnProperty(diameter)) {
-            variantsHtml += `<p>Ø${diameter} — ${result.tubeVariantsResult[diameter]} мест</p>`;
-        }
-    }
-
-    resultText.innerHTML = `
-        Мест всего (выбранный вариант): ${result.totalPlaces}
-        ${variantsHtml
-            ? ` <hr> <p> <strong>Возможные варианты упаковки: </strong> </p>${variantsHtml}`
-            : ""}
-        <hr>
-        <p> <strong>Вес товара: </strong> ${productsWeight.toFixed(2)} кг </p>
-        <p> <strong>Вес упаковки: </strong> ${packagingWeight.toFixed(2)} кг </p>
-        <p> <strong>ИТОГО: </strong> ${totalWeight.toFixed(2)} кг </p>
-    `;
-
-    document.getElementById("resultModal").classList.remove("hidden");
 });
 
     const result = calculatePackaging(orderItems);
@@ -1698,21 +1672,22 @@ resultText.innerHTML = `
     <p><strong>ИТОГО:</strong> ${totalWeight.toFixed(2)} кг</p>
 `;
 
-    document.getElementById("resultModal").classList.remove("hidden");
+document.getElementById("resultModal").classList.remove("hidden");
 const closeBtn = document.getElementById("close");
 const resultModal = document.getElementById("resultModal");
 
 if (closeBtn && resultModal) {
-    document.getElementById("reset").addEventListener("click", () => {
-
-    // 1. Очищаем все строки товаров
-    const items = document.getElementById("items");
-    if (items) items.innerHTML = "";
-
-    // 2. Закрываем модальное окно результата
-    const resultModal = document.getElementById("resultModal");
-    if (resultModal) resultModal.classList.add("hidden");
-});
+    closeBtn.addEventListener("click", () => {
+        resultModal.classList.add("hidden");
+    });
+}
+const resetBtn = document.getElementById("reset");
+if (resetBtn) {
+    resetBtn.addEventListener("click", () => {
+        const items = document.getElementById("items");
+        if (items) items.innerHTML = "";
+        resultModal.classList.add("hidden");
+    });
 }
 function getLengthFromName(name) {
     let match = name.match(/\(([\d.,]+)\s*м\)/i);
