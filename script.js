@@ -1609,67 +1609,63 @@ let shown = 0;
 });
 
 const resultText = document.getElementById("resultText");
+
 document.getElementById("total").addEventListener("click", () => {
+
     const rows = document.querySelectorAll(".item");
-const orderItems = [];
-
-rows.forEach(row => {
-    const nameInput = row.querySelector('input[type="text"]');
-    const qtyInput = row.querySelector('input[type="number"]');
-
-    if (!nameInput || !qtyInput) return;
-
-    const name = nameInput.value.trim();
-    const qty = Number(qtyInput.value);
-
-    if (!name || qty <= 0) return;
-
-    orderItems.push({ name, qty });
-});
-
-const result = calculatePackaging(orderItems);
-
-    // Проверяем, были ли добавлены корректные товары
-    if (orderItems.length === 0) {
-        alert("Пожалуйста, введите корректные данные для товаров (имя и количество > 0).");
+    if (!rows.length) {
+        alert("Добавьте хотя бы один товар");
         return;
     }
 
-    // --- Расчет веса ---
-    let productsWeight = 0;
-    orderItems.forEach(item => { // Теперь item - это объект { name, qty } из orderItems
-        const product = products.find(p => p.name === item.name);
-        if (product) {
-            // Умножаем вес одного товара на его количество
-            productsWeight += product.weight * item.qty; // <-- Вот где происходит суммирование
-        }
-    });
-});
+    const orderItems = [];
 
+    rows.forEach(row => {
+        const nameInput = row.querySelector('input[type="text"]');
+        const qtyInput = row.querySelector('input[type="number"]');
+
+        if (!nameInput || !qtyInput) return;
+
+        const name = nameInput.value.trim();
+        const qty = Number(qtyInput.value);
+
+        if (!name || qty <= 0) return;
+
+        orderItems.push({ name, qty });
+    });
+
+    if (!orderItems.length) {
+        alert("Заполните корректно хотя бы одну строку");
+        return;
+    }
+
+    // === РАСЧЁТ ===
+    const result = calculatePackaging(orderItems);
 
     const packagingWeight = calculatePackagingWeight(result);
-    const totalWeight = productsWeight + packagingWeight;
+    const totalWeight = result.productsWeight + packagingWeight;
 
-   let variantsHtml = "";
+    // === ВЫВОД ===
+    let variantsHtml = "";
 
-for (const diameter in result.tubeVariantsResult) {
-    variantsHtml += `<p>Ø${diameter} — ${result.tubeVariantsResult[diameter]} мест</p>`;
-}
+    for (const diameter in result.tubeVariantsResult) {
+        variantsHtml += <p>Ø${diameter} — ${result.tubeVariantsResult[diameter]} мест</p>;
+    }
 
-resultText.innerHTML = `
-    <p><strong>Мест всего (выбранный вариант):</strong> ${result.totalPlaces}</p>
+    const resultText = document.getElementById("resultText");
 
-    ${variantsHtml
-        ? `<hr><p><strong>Возможные варианты упаковки:</strong></p>${variantsHtml}`
-        : ""}
+    resultText.innerHTML = `
+        <p><strong>Мест всего (выбранный вариант):</strong> ${result.totalPlaces}</p>
+        ${variantsHtml ? `<hr><p><strong>Возможные варианты упаковки:</strong></p>${variantsHtml}` : ""}
+        <hr>
+        <p><strong>Вес товара:</strong> ${result.productsWeight.toFixed(2)} кг</p>
+        <p><strong>Вес упаковки:</strong> ${packagingWeight.toFixed(2)} кг</p>
+        <p><strong>ИТОГО:</strong> ${totalWeight.toFixed(2)} кг</p>
+    `;
 
-    <hr>
-    <p><strong>Вес товара:</strong> ${productsWeight.toFixed(2)} кг</p>
-    <p><strong>Вес упаковки:</strong> ${packagingWeight.toFixed(2)} кг</p>
-    <p><strong>ИТОГО:</strong> ${totalWeight.toFixed(2)} кг</p>
-`;
+    document.getElementById("resultModal").classList.remove("hidden");
+});
 
-document.getElementById("resultModal").classList.remove("hidden");
 const closeBtn = document.getElementById("close");
 const resultModal = document.getElementById("resultModal");
 
