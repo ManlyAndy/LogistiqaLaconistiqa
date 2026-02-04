@@ -1611,25 +1611,23 @@ let shown = 0;
 const resultText = document.getElementById("resultText");
 document.getElementById("total").addEventListener("click", () => {
     const rows = document.querySelectorAll(".item");
-    if (!rows.length) {
-        alert("Добавьте хотя бы один товар");
-        return;
-    };
+const orderItems = [];
 
-    const orderItems = [];
-    // document.querySelectorAll(".item").forEach(item => { // Старая строка
-    rows.forEach(item => { // Можно так, или использовать querySelectorAll снова
-        const nameInput = item.querySelector('input[type="text"]');
-        const qtyInput = item.querySelector('input[type="number"]');
+rows.forEach(row => {
+    const nameInput = row.querySelector('input[type="text"]');
+    const qtyInput = row.querySelector('input[type="number"]');
 
-        const name = nameInput.value.trim();
-        const qty = Number(qtyInput.value); // Преобразуем значение в число
+    if (!nameInput || !qtyInput) return;
 
-        // Проверяем, что имя не пустое И количество - это допустимое положительное число
-        if (name && !isNaN(qty) && qty > 0) {
-            orderItems.push({ name, qty }); // Добавляем объект с именем и количеством
-        }
-    });
+    const name = nameInput.value.trim();
+    const qty = Number(qtyInput.value);
+
+    if (!name || qty <= 0) return;
+
+    orderItems.push({ name, qty });
+});
+
+const result = calculatePackaging(orderItems);
 
     // Проверяем, были ли добавлены корректные товары
     if (orderItems.length === 0) {
@@ -1648,7 +1646,6 @@ document.getElementById("total").addEventListener("click", () => {
     });
 });
 
-    const result = calculatePackaging(orderItems);
 
     const packagingWeight = calculatePackagingWeight(result);
     const totalWeight = productsWeight + packagingWeight;
