@@ -1703,9 +1703,16 @@ const closeBtn = document.getElementById("close");
 const resultModal = document.getElementById("resultModal");
 
 if (closeBtn && resultModal) {
-    closeBtn.addEventListener("click", () => {
-        resultModal.classList.add("hidden");
-    });
+    document.getElementById("reset").addEventListener("click", () => {
+
+    // 1. Очищаем все строки товаров
+    const items = document.getElementById("items");
+    if (items) items.innerHTML = "";
+
+    // 2. Закрываем модальное окно результата
+    const resultModal = document.getElementById("resultModal");
+    if (resultModal) resultModal.classList.add("hidden");
+});
 }
 function getLengthFromName(name) {
     let match = name.match(/\(([\d.,]+)\s*м\)/i);
@@ -1762,18 +1769,77 @@ function calculatePackaging(orderItems) {
 let packagingWeight = 0;
 let tubeVariantsResult = {};
 
+const tubeGroups = {};
+
     orderItems.forEach(item => {
         const product = products.find(p => p.name === item.name);
         if (!product) return;
 
       
         if (product.type === "box") {
-            const boxes = Math.ceil(item.qty / 3);
-            boxesCount += boxes;
-            totalPlaces += boxes;
-            return;
+    const boxes = Math.ceil(item.qty / 3);
+    boxesCount += boxes;
+    totalPlaces += boxes;
+    return;
+}
+
+const length = getLengthFromName(product.name);
+if (!length) return;
+
+// группируем по длине
+if (!tubeGroups[length]) {
+    tubeGroups[length] = [];
+}
+
+tubeGroups[length].push({
+    product,
+    qty: item.qty
+});
+
+// === РАСЧЁТ ТУБ С МУЛЬТИСБОРКОЙ ===
+for (const length in tubeGroups) {
+    const items = tubeGroups[length];
+
+    // считаем суммарно по диаметрам
+    const diameterTotals = {};
+
+    items.forEach(({ product, qty }) => {
+        for (const ruleKey in product.tubeRules) {
+            const [diameter, tubeLength] = ruleKey.split("-").map(Number);
+            if (tubeLength < length) continue;
+
+            const maxItems = product.tubeRules[ruleKey];
+            if (!maxItems || maxItems <= 0) continue;
+
+            if (!diameterTotals[diameter]) {
+                diameterTotals[diameter] = { qty: 0, maxItems };
+            }
+
+            diameterTotals[diameter].qty += qty;
         }
-       const tube = selectTube(product.name);
+    });
+
+    for (const diameter in diameterTotals) {
+        const { qty, maxItems } = diameterTotals[diameter];
+        const places = Math.ceil(qty / maxItems);
+
+        tubeVariantsResult[diameter] =
+            (tubeVariantsResult[diameter] || 0) + places;
+    }
+
+    // выбираем минимальный вариант
+    const bestDiameter = Object.keys(diameterTotals)
+        .map(d => ({
+            diameter: Number(d),
+            places: Math.ceil(diameterTotals[d].qty / diameterTotals[d].maxItems)
+        }))
+        .sort((a, b) => a.places - b.places)[0];
+
+    totalPlaces += bestDiameter.places;
+
+    const key = `Ø${bestDiameter.diameter} / ${length} м`;
+    tubesResult[key] = (tubesResult[key] || 0) + bestDiameter.places;
+}
 
 if (!tube) {
     console.warn("Туба не подобрана для:", product.name);
