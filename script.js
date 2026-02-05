@@ -1679,7 +1679,7 @@ if (resetBtn) {
     resetBtn.addEventListener("click", () => {
         const items = document.getElementById("items");
         if (items) items.innerHTML = "";
-        resultModal.classList.add("hidden");
+       if (resultModal) resultModal.classList.add("hidden")
     });
 }
 function getLengthFromName(name) {
@@ -1734,7 +1734,6 @@ function calculatePackaging(orderItems) {
     let totalPlaces = 0;
     let tubesResult = {};
     let boxesCount = 0;
-let packagingWeight = 0;
 let tubeVariantsResult = {};
 
 const tubeGroups = {};
@@ -1763,7 +1762,7 @@ tubeGroups[length].push({
     product,
     qty: item.qty
 });
-
+});
 // === РАСЧЁТ ТУБ С МУЛЬТИСБОРКОЙ ===
 for (const length in tubeGroups) {
     const items = tubeGroups[length];
@@ -1789,7 +1788,7 @@ for (const length in tubeGroups) {
 
     for (const diameter in diameterTotals) {
         const { qty, maxItems } = diameterTotals[diameter];
-        const places = Math.ceil(qty / maxItems);
+        const places = maxItems > 0 ? Math.ceil(qty / maxItems) : 0;
 
         tubeVariantsResult[diameter] =
             (tubeVariantsResult[diameter] || 0) + places;
@@ -1808,39 +1807,6 @@ for (const length in tubeGroups) {
     const key = `Ø${bestDiameter.diameter} / ${length} м`;
     tubesResult[key] = (tubesResult[key] || 0) + bestDiameter.places;
 }
-
-if (!tube) {
-    console.warn("Туба не подобрана для:", product.name);
-} else {
-    const tubesNeeded = Math.ceil(item.qty / maxItems);
-
-    totalPlaces += tubesNeeded;    
-packagingWeight += tubesNeeded * getTubeWeight(diameter);
-
-    const key = `Ø${diameter} / ${length} м`;
-    tubesResult[key] = (tubesResult[key] || 0) + tubesNeeded;
-}
-// --- варианты туб по всем диаметрам ---
-for (const ruleKey in product.tubeRules) {
-    const [diameter, tubeLength] = ruleKey.split("-").map(Number);
-
-    if (tubeLength < getLengthFromName(product.name)) continue;
-
-    const maxItems = product.tubeRules[ruleKey];
-    if (!maxItems || maxItems <= 0) {
-    continue; // или continue — в зависимости от цикла
-}
-
-if (!maxItems || maxItems <= 0) {
-    return; // или continue — в зависимости от цикла
-}
-
-const places = Math.ceil(item.qty / maxItems);
-    tubeVariantsResult[diameter] =
-        (tubeVariantsResult[diameter] || 0) + places;
-}
-    });
-
     return {
         totalPlaces,
         tubesResult,
