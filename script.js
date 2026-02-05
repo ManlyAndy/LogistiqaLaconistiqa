@@ -1643,7 +1643,7 @@ document.getElementById("total").addEventListener("click", () => {
     const result = calculatePackaging(orderItems);
 
     const packagingWeight = calculatePackagingWeight(result);
-    const totalWeight = productsWeight + packagingWeight;
+    const totalWeight = packagingWeight;
 
     // === ВЫВОД ===
     let variantsHtml = "";
@@ -1879,3 +1879,4 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
