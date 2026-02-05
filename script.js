@@ -20,7 +20,7 @@ var modelRules = {
             );
 
             if (tube) {
-                weight += getTubeWeight(diameter) * count;
+                weight += tube.weight * count;
             }
         }
 
@@ -1879,3 +1879,4 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
