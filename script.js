@@ -1811,7 +1811,6 @@ for (const length in tubeGroups) {
         totalPlaces,
         tubesResult,
         boxesCount,
-    packagingWeight,
     tubeVariantsResult
     };
    }
@@ -1880,3 +1879,4 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
