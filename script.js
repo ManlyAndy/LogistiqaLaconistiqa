@@ -1643,7 +1643,7 @@ document.getElementById("total").addEventListener("click", () => {
     const result = calculatePackaging(orderItems);
 
     const packagingWeight = calculatePackagingWeight(result);
-    const totalWeight = result.productsWeight + packagingWeight;
+    const totalWeight = productsWeight + packagingWeight;
 
     // === ВЫВОД ===
     let variantsHtml = "";
@@ -1658,7 +1658,7 @@ document.getElementById("total").addEventListener("click", () => {
         <p><strong>Мест всего (выбранный вариант):</strong> ${result.totalPlaces}</p>
         ${variantsHtml ? `<hr><p><strong>Возможные варианты упаковки:</strong></p>${variantsHtml}` : ""}
         <hr>
-        <p><strong>Вес товара:</strong> ${result.productsWeight.toFixed(2)} кг</p>
+        <p><strong>Вес товара:</strong> ${productsWeight.toFixed(2)} кг</p>
         <p><strong>Вес упаковки:</strong> ${packagingWeight.toFixed(2)} кг</p>
         <p><strong>ИТОГО:</strong> ${totalWeight.toFixed(2)} кг</p>
     `;
@@ -1879,4 +1879,3 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
-
