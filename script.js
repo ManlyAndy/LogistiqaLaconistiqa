@@ -1789,8 +1789,7 @@ for (const length in tubeGroups) {
         const { qty, maxItems } = diameterTotals[diameter];
         const places = maxItems > 0 ? Math.ceil(qty / maxItems) : 0;
 
-        tubeVariantsResult[diameter] =
-            (tubeVariantsResult[diameter] || 0) + places;
+        tubeVariantsResult[diameter] = places;
     }
 
     // выбираем минимальный вариант
@@ -1878,4 +1877,5 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
 
