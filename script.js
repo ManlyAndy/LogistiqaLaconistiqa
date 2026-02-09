@@ -1735,76 +1735,8 @@ function calculatePackaging(orderItems) {
     let boxesCount = 0;
 let tubeVariantsResult = {};
 
-const tubeGroups = {};
+tubesResult = calculateTubesSmart(orderItems);
 
-    orderItems.forEach(item => {
-        const product = products.find(p => p.name === item.name);
-        if (!product) return;
-
-      
-        if (product.type === "box") {
-    const boxes = Math.ceil(item.qty / 3);
-    boxesCount += boxes;
-    totalPlaces += boxes;
-    return;
-}
-
-const length = getLengthFromName(product.name);
-if (!length) return;
-
-// группируем по длине
-if (!tubeGroups[length]) {
-    tubeGroups[length] = [];
-}
-
-tubeGroups[length].push({
-    product,
-    qty: item.qty
-});
-});
-// === РАСЧЁТ ТУБ С МУЛЬТИСБОРКОЙ ===
-for (const length in tubeGroups) {
-    const items = tubeGroups[length];
-
-    // считаем суммарно по диаметрам
-    const diameterTotals = {};
-
-    items.forEach(({ product, qty }) => {
-        for (const ruleKey in product.tubeRules) {
-            const [diameter, tubeLength] = ruleKey.split("-").map(Number);
-            if (tubeLength < length) continue;
-
-            const maxItems = product.tubeRules[ruleKey];
-            if (!maxItems || maxItems <= 0) continue;
-
-            if (!diameterTotals[diameter]) {
-                diameterTotals[diameter] = { qty: 0, maxItems };
-            }
-
-            diameterTotals[diameter].qty += qty;
-        }
-    });
-
-    for (const diameter in diameterTotals) {
-        const { qty, maxItems } = diameterTotals[diameter];
-        const places = maxItems > 0 ? Math.ceil(qty / maxItems) : 0;
-
-        tubeVariantsResult[diameter] = places;
-    }
-
-    // выбираем минимальный вариант
-    const bestDiameter = Object.keys(diameterTotals)
-        .map(d => ({
-            diameter: Number(d),
-            places: Math.ceil(diameterTotals[d].qty / diameterTotals[d].maxItems)
-        }))
-        .sort((a, b) => a.places - b.places)[0];
-
-    totalPlaces += bestDiameter.places;
-
-    const key = `Ø${bestDiameter.diameter} / ${length} м`;
-    tubesResult[key] = (tubesResult[key] || 0) + bestDiameter.places;
-}
     return {
         totalPlaces,
         tubesResult,
@@ -1812,6 +1744,38 @@ for (const length in tubeGroups) {
     tubeVariantsResult
     };
    }
+
+
+function calculateTubesSmart(orderItems) {
+    const result = {};
+    const diameters = [20, 10];
+
+    diameters.forEach(diameter => {
+        const items = orderItems.filter(item =>
+            item.allowedDiameters.includes(diameter)
+        );
+
+        if (items.length === 0) return;
+
+        const totalQty = items.reduce((sum, item) => sum + item.qty, 0);
+        const maxPerTube = Math.max(
+            ...items.map(item => item.maxByDiameter[diameter])
+        );
+
+        const maxLength = Math.max(
+            ...items.map(item => item.length)
+        );
+
+        const tubesCount = Math.ceil(totalQty / maxPerTube);
+        if (tubesCount <= 0) return;
+
+        const key = `Ø${diameter} / ${maxLength} м`;
+        result[key] = tubesCount;
+    });
+
+    return result;
+}
+
    const starsContainer = document.getElementById("stars");
 
 function createStar() {
@@ -1877,5 +1841,3 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
-
-
