@@ -1754,7 +1754,6 @@ function calculateTubesSmart(orderItems) {
         const items = orderItems.filter(item =>
     item.maxByDiameter && item.maxByDiameter[diameter]
 );
-
         if (items.length === 0) return;
 
         const totalQty = items.reduce((sum, item) => sum + item.qty, 0);
@@ -1841,5 +1840,3 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
-
-
