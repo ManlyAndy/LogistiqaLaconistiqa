@@ -1774,7 +1774,7 @@ function calculateTubesSmart(orderItems) {
     });
 
     return result;
-}
+};
 
    const starsContainer = document.getElementById("stars");
 
@@ -1841,4 +1841,5 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
 
