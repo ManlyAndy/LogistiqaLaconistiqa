@@ -1730,20 +1730,24 @@ function selectTube(productName) {
     return possible[0];
 }
 function calculatePackaging(orderItems) {
-    let totalPlaces = 0;
-    let tubesResult = {};
-    let boxesCount = 0;
-let tubeVariantsResult = {};
 
-tubesResult = calculateTubesSmart(orderItems);
+    const tubeCalc = calculateTubesSmart(orderItems);
+
+    const totalPlaces = tubeCalc.totalPlaces;
+    const tubesResult = tubeCalc.tubesResult;
+    const tubeVariantsResult = tubeCalc.tubeVariantsResult;
+    const packagingWeight = tubeCalc.packagingWeight;
+
+    const boxesCount = 0;
 
     return {
         totalPlaces,
         tubesResult,
-        boxesCount,
-    tubeVariantsResult
+        tubeVariantsResult,
+        packagingWeight,
+        boxesCount
     };
-   }
+}
 
 
 function calculateTubesSmart(orderItems) {
