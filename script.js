@@ -1738,7 +1738,7 @@ function calculatePackaging(orderItems) {
     const tubeVariantsResult = tubeCalc.tubeVariantsResult;
     const packagingWeight = tubeCalc.packagingWeight;
 
-    const boxesCount = 0;
+    let boxesCount = 0;
 
     return {
         totalPlaces,
@@ -1844,3 +1844,4 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
