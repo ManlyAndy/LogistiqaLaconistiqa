@@ -1654,8 +1654,6 @@ document.getElementById("total").addEventListener("click", () => {
 
     const resultText = document.getElementById("resultText");
 
-     const totalWeight = result.productsWeight + result.packagingWeight;
-
 document.getElementById("resultContent").innerHTML = `
     <p><strong>Вес товара:</strong> ${result.productsWeight.toFixed(2)} кг</p>
     <p><strong>Вес упаковки:</strong> ${result.packagingWeight.toFixed(2)} кг</p>
@@ -1854,6 +1852,7 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
 
 
 
