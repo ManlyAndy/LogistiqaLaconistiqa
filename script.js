@@ -1635,14 +1635,13 @@ document.getElementById("total").addEventListener("click", () => {
     });
 
     if (!orderItems.length) {
-        alert("Заполните корректно хотя бы одну строку");
+        alert("Заполните хотя бы одну строку");
         return;
     }
 
     // === РАСЧЁТ ===
     const result = calculatePackaging(orderItems);
 
-    const packagingWeight = calculatePackagingWeight(result);
     const totalWeight = packagingWeight;
 
     // === ВЫВОД ===
@@ -1852,6 +1851,7 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
 
 
 
