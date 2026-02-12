@@ -1618,7 +1618,7 @@ document.getElementById("total").addEventListener("click", () => {
         return;
     }
 
-    const orderItems = [];
+    let orderItems = [];
 
     rows.forEach(row => {
         const nameInput = row.querySelector('input[type="text"]');
@@ -1634,6 +1634,7 @@ document.getElementById("total").addEventListener("click", () => {
         orderItems.push({ name, qty });
     });
 
+    orderItems = collectOrderItems();
     if (!orderItems.length) {
         alert("Заполните хотя бы одну строку");
         return;
@@ -1642,7 +1643,7 @@ document.getElementById("total").addEventListener("click", () => {
     // === РАСЧЁТ ===
     const result = calculatePackaging(orderItems);
 
-    const totalWeight = packagingWeight;
+    const totalWeight = result.productsWeight + result.packagingWeight;
 
     // === ВЫВОД ===
     let variantsHtml = "";
@@ -1851,8 +1852,3 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
-
-
-
-
-
