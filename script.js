@@ -1739,13 +1739,22 @@ function calculatePackaging(orderItems) {
     const packagingWeight = tubeCalc.packagingWeight;
 
     let boxesCount = 0;
+        
+let productsWeight = 0;
 
+orderItems.forEach(item => {
+    const product = products.find(p => p.name === item.name);
+    if (product && product.weight) {
+        productsWeight += product.weight * item.qty;
+    }
+});
     return {
         totalPlaces,
         tubesResult,
         tubeVariantsResult,
         packagingWeight,
-        boxesCount
+        boxesCount,
+        productsWeight
     };
 }
 
@@ -1844,4 +1853,5 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
 
