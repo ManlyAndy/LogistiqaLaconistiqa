@@ -1654,13 +1654,14 @@ document.getElementById("total").addEventListener("click", () => {
 
     const resultText = document.getElementById("resultText");
 
-    resultText.innerHTML = `
-        <p><strong>Мест всего (выбранный вариант):</strong> ${result.totalPlaces}</p>
-        ${variantsHtml ? `<hr><p><strong>Возможные варианты упаковки:</strong></p>${variantsHtml}` : ""}
-        <hr>
-        <p><strong>Вес упаковки:</strong> ${packagingWeight.toFixed(2)} кг</p>
-        <p><strong>ИТОГО:</strong> ${totalWeight.toFixed(2)} кг</p>
-    `;
+     const totalWeight = result.productsWeight + result.packagingWeight;
+
+document.getElementById("resultContent").innerHTML = `
+    <p><strong>Вес товара:</strong> ${result.productsWeight.toFixed(2)} кг</p>
+    <p><strong>Вес упаковки:</strong> ${result.packagingWeight.toFixed(2)} кг</p>
+    <p><strong>Итого вес:</strong> ${totalWeight.toFixed(2)} кг</p>
+    <p><strong>Кол-во мест:</strong> ${result.totalPlaces}</p>
+`;
 
     document.getElementById("resultModal").classList.remove("hidden");
 });
@@ -1853,5 +1854,6 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
 
 
