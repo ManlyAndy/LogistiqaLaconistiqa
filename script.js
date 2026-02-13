@@ -1634,7 +1634,6 @@ document.getElementById("total").addEventListener("click", () => {
         orderItems.push({ name, qty });
     });
 
-    orderItems = collectOrderItems();
     if (!orderItems.length) {
         alert("Заполните хотя бы одну строку");
         return;
@@ -1852,3 +1851,4 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
