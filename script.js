@@ -1618,7 +1618,7 @@ document.getElementById("total").addEventListener("click", () => {
         return;
     }
 
-    let orderItems = [];
+    const orderItems = [];
 
     rows.forEach(row => {
         const nameInput = row.querySelector('input[type="text"]');
@@ -1635,14 +1635,15 @@ document.getElementById("total").addEventListener("click", () => {
     });
 
     if (!orderItems.length) {
-        alert("Заполните хотя бы одну строку");
+        alert("Заполните корректно хотя бы одну строку");
         return;
     }
 
     // === РАСЧЁТ ===
     const result = calculatePackaging(orderItems);
 
-    const totalWeight = result.productsWeight + result.packagingWeight;
+    const packagingWeight = calculatePackagingWeight(result);
+    const totalWeight = packagingWeight;
 
     // === ВЫВОД ===
     let variantsHtml = "";
@@ -1653,12 +1654,13 @@ document.getElementById("total").addEventListener("click", () => {
 
     const resultText = document.getElementById("resultText");
 
-document.getElementById("resultContent").innerHTML = `
-    <p><strong>Вес товара:</strong> ${result.productsWeight.toFixed(2)} кг</p>
-    <p><strong>Вес упаковки:</strong> ${result.packagingWeight.toFixed(2)} кг</p>
-    <p><strong>Итого вес:</strong> ${totalWeight.toFixed(2)} кг</p>
-    <p><strong>Кол-во мест:</strong> ${result.totalPlaces}</p>
-`;
+    resultText.innerHTML = `
+        <p><strong>Мест всего (выбранный вариант):</strong> ${result.totalPlaces}</p>
+        ${variantsHtml ? `<hr><p><strong>Возможные варианты упаковки:</strong></p>${variantsHtml}` : ""}
+        <hr>
+        <p><strong>Вес упаковки:</strong> ${packagingWeight.toFixed(2)} кг</p>
+        <p><strong>ИТОГО:</strong> ${totalWeight.toFixed(2)} кг</p>
+    `;
 
     document.getElementById("resultModal").classList.remove("hidden");
 });
@@ -1728,64 +1730,89 @@ function selectTube(productName) {
     return possible[0];
 }
 function calculatePackaging(orderItems) {
-
-    const tubeCalc = calculateTubesSmart(orderItems);
-
-    const totalPlaces = tubeCalc.totalPlaces;
-    const tubesResult = tubeCalc.tubesResult;
-    const tubeVariantsResult = tubeCalc.tubeVariantsResult;
-    const packagingWeight = tubeCalc.packagingWeight;
-
+    let totalPlaces = 0;
+    let tubesResult = {};
     let boxesCount = 0;
-        
-let productsWeight = 0;
+let tubeVariantsResult = {};
 
-orderItems.forEach(item => {
-    const product = products.find(p => p.name === item.name);
-    if (product && product.weight) {
-        productsWeight += product.weight * item.qty;
-    }
+const tubeGroups = {};
+
+    orderItems.forEach(item => {
+        const product = products.find(p => p.name === item.name);
+        if (!product) return;
+
+      
+        if (product.type === "box") {
+    const boxes = Math.ceil(item.qty / 3);
+    boxesCount += boxes;
+    totalPlaces += boxes;
+    return;
+}
+
+const length = getLengthFromName(product.name);
+if (!length) return;
+
+// группируем по длине
+if (!tubeGroups[length]) {
+    tubeGroups[length] = [];
+}
+
+tubeGroups[length].push({
+    product,
+    qty: item.qty
 });
+});
+// === РАСЧЁТ ТУБ С МУЛЬТИСБОРКОЙ ===
+for (const length in tubeGroups) {
+    const items = tubeGroups[length];
+
+    // считаем суммарно по диаметрам
+    const diameterTotals = {};
+
+    items.forEach(({ product, qty }) => {
+        for (const ruleKey in product.tubeRules) {
+            const [diameter, tubeLength] = ruleKey.split("-").map(Number);
+            if (tubeLength < length) continue;
+
+            const maxItems = product.tubeRules[ruleKey];
+            if (!maxItems || maxItems <= 0) continue;
+
+            if (!diameterTotals[diameter]) {
+                diameterTotals[diameter] = { qty: 0, maxItems };
+            }
+
+            diameterTotals[diameter].qty += qty;
+        }
+    });
+
+    for (const diameter in diameterTotals) {
+        const { qty, maxItems } = diameterTotals[diameter];
+        const places = maxItems > 0 ? Math.ceil(qty / maxItems) : 0;
+
+        tubeVariantsResult[diameter] =
+            (tubeVariantsResult[diameter] || 0) + places;
+    }
+
+    // выбираем минимальный вариант
+    const bestDiameter = Object.keys(diameterTotals)
+        .map(d => ({
+            diameter: Number(d),
+            places: Math.ceil(diameterTotals[d].qty / diameterTotals[d].maxItems)
+        }))
+        .sort((a, b) => a.places - b.places)[0];
+
+    totalPlaces += bestDiameter.places;
+
+    const key = `Ø${bestDiameter.diameter} / ${length} м`;
+    tubesResult[key] = (tubesResult[key] || 0) + bestDiameter.places;
+}
     return {
         totalPlaces,
         tubesResult,
-        tubeVariantsResult,
-        packagingWeight,
         boxesCount,
-        productsWeight
+    tubeVariantsResult
     };
-}
-
-
-function calculateTubesSmart(orderItems) {
-    const result = {};
-    const diameters = [20, 10];
-
-    diameters.forEach(diameter => {
-        const items = orderItems.filter(item =>
-    item.maxByDiameter && item.maxByDiameter[diameter]
-);
-        if (items.length === 0) return;
-
-        const totalQty = items.reduce((sum, item) => sum + item.qty, 0);
-        const maxPerTube = Math.max(
-            ...items.map(item => item.maxByDiameter[diameter])
-        );
-
-        const maxLength = Math.max(
-            ...items.map(item => item.length)
-        );
-
-        const tubesCount = Math.ceil(totalQty / maxPerTube);
-        if (tubesCount <= 0) return;
-
-        const key = `Ø${diameter} / ${maxLength} м`;
-        result[key] = tubesCount;
-    });
-
-    return result;
-};
-
+   }
    const starsContainer = document.getElementById("stars");
 
 function createStar() {
