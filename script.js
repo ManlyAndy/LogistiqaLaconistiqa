@@ -1619,7 +1619,6 @@ document.getElementById("total").addEventListener("click", () => {
     }
 
     const orderItems = [];
-
     rows.forEach(row => {
         const nameInput = row.querySelector('input[type="text"]');
         const qtyInput = row.querySelector('input[type="number"]');
