@@ -1,4 +1,4 @@
-var modelRules = {
+    var modelRules = {
         "micro 11": { allowedDiameters: [10, 20] },
         "micro l": { allowedDiameters: [10, 20] },
         "скрытый strong": { allowedDiameters: [20] }
@@ -739,7 +739,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "LIGHT 41 Чёрный анод (3.0)",
+     {name: "LIGHT 41 чёрный анод (3.0)",
     weight: 0.690,
     type: "tube",
     tubeRules: {
@@ -1046,7 +1046,7 @@ var modelRules = {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 12,
-        "20-3.0": 100
+        "20-3.0": 70
     }
     },
      {name: "рейка LIGHT mini Светлое золото (3.0)",
@@ -1056,7 +1056,7 @@ var modelRules = {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 12,
-        "20-3.0": 100
+        "20-3.0": 70
     }
     },
      {name: "защёлка LIGHT mini Чёрный анод. (3.0)",
@@ -1086,7 +1086,7 @@ var modelRules = {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 0,
-        "20-3.0": 20
+        "20-3.0": 25
     }
     },
      {name: "рейка micro 3m Белый муар (3.0)",
@@ -1096,7 +1096,7 @@ var modelRules = {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 0,
-        "20-3.0": 20
+        "20-3.0": 25
     }
     },
      {name: "рейка micro 3m Серебристый (3.0)",
@@ -1106,7 +1106,7 @@ var modelRules = {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 0,
-        "20-3.0": 20
+        "20-3.0": 25
     }
     },
      {name: "рейка micro 3m Без покрытия (3.0)",
@@ -1116,7 +1116,7 @@ var modelRules = {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 0,
-        "20-3.0": 20
+        "20-3.0": 25
     }
     },
      {name: "Multilevel CLASSIC Чёрный анод (3.0)",
@@ -1643,7 +1643,8 @@ document.getElementById("total").addEventListener("click", () => {
     const result = calculatePackaging(orderItems);
 
     const packagingWeight = calculatePackagingWeight(result);
-    const totalWeight = packagingWeight;
+    const productsWeight = result.productsWeight;
+    const totalWeight = packagingWeight + productsWeight;
 
     // === ВЫВОД ===
     let variantsHtml = "";
@@ -1658,6 +1659,7 @@ document.getElementById("total").addEventListener("click", () => {
         <p><strong>Мест всего (выбранный вариант):</strong> ${result.totalPlaces}</p>
         ${variantsHtml ? `<hr><p><strong>Возможные варианты упаковки:</strong></p>${variantsHtml}` : ""}
         <hr>
+        <p><strong>Вес товара:</strong> ${productsWeight.toFixed(2)} кг</p>
         <p><strong>Вес упаковки:</strong> ${packagingWeight.toFixed(2)} кг</p>
         <p><strong>ИТОГО:</strong> ${totalWeight.toFixed(2)} кг</p>
     `;
@@ -1733,6 +1735,7 @@ function calculatePackaging(orderItems) {
     let totalPlaces = 0;
     let tubesResult = {};
     let boxesCount = 0;
+    let productsWeight = 0;
 let tubeVariantsResult = {};
 
 const tubeGroups = {};
@@ -1741,13 +1744,14 @@ const tubeGroups = {};
         const product = products.find(p => p.name === item.name);
         if (!product) return;
 
-      
+        productsWeight += (product.weight || 0) * item.qty;
+
         if (product.type === "box") {
     const boxes = Math.ceil(item.qty / 3);
     boxesCount += boxes;
     totalPlaces += boxes;
     return;
-}
+};
 
 const length = getLengthFromName(product.name);
 if (!length) return;
@@ -1785,9 +1789,9 @@ for (const length in tubeGroups) {
         }
     });
 
-    for (const diameter in diameterTotals) {
-        const { qty, maxItems } = diameterTotals[diameter];
-        const places = maxItems > 0 ? Math.ceil(qty / maxItems) : 0;
+      for (const diameter in diameterTotals) {
+    const { qty, capacity } = diameterTotals[diameter];
+    const places = capacity > 0 ? Math.ceil(qty / capacity) : 0;
 
         tubeVariantsResult[diameter] =
             (tubeVariantsResult[diameter] || 0) + places;
@@ -1810,10 +1814,12 @@ for (const length in tubeGroups) {
         totalPlaces,
         tubesResult,
         boxesCount,
-    tubeVariantsResult
+        tubeVariantsResult,
+        productsWeight
     };
-   }
-   const starsContainer = document.getElementById("stars");
+}
+
+const starsContainer = document.getElementById("stars");
 
 function createStar() {
     const star = document.createElement("div");
