@@ -1,4 +1,4 @@
-  var modelRules = {
+ var modelRules = {
         "micro 11": { allowedDiameters: [10, 20] },
         "micro l": { allowedDiameters: [10, 20] },
         "скрытый strong": { allowedDiameters: [20] }
@@ -1649,8 +1649,10 @@ document.getElementById("total").addEventListener("click", () => {
     // === ВЫВОД ===
     let variantsHtml = "";
 
-    for (const diameter in result.tubeVariantsResult) {
-        variantsHtml += `<p>Ø${diameter} — ${result.tubeVariantsResult[diameter]} мест</p>`;
+    if (result.tubeCombos && result.tubeCombos.length) {
+        variantsHtml = result.tubeCombos
+            .map(label => `<p>${label}</p>`)
+            .join("");
     }
 
     const resultText = document.getElementById("resultText");
@@ -1736,7 +1738,7 @@ function calculatePackaging(orderItems) {
     let tubesResult = {};
     let boxesCount = 0;
     let productsWeight = 0;
-let tubeVariantsResult = {};
+const groupOptionsList = [];
 
 const tubeGroups = {};
 
@@ -1789,13 +1791,11 @@ for (const length in tubeGroups) {
         }
     });
 
-      for (const diameter in diameterTotals) {
-    const { qty, maxItems } = diameterTotals[diameter];
-    const places = maxItems > 0 ? Math.ceil(qty / maxItems) : 0;
-
-        tubeVariantsResult[diameter] =
-            (tubeVariantsResult[diameter] || 0) + places;
-    }
+    const groupOptions = Object.keys(diameterTotals).map(d => ({
+        diameter: Number(d),
+        places: Math.ceil(diameterTotals[d].qty / diameterTotals[d].maxItems)
+    }));
+    groupOptionsList.push(groupOptions);
 
     // выбираем минимальный вариант
     const bestDiameter = Object.keys(diameterTotals)
@@ -1810,11 +1810,49 @@ for (const length in tubeGroups) {
     const key = `Ø${bestDiameter.diameter} / ${length} м`;
     tubesResult[key] = (tubesResult[key] || 0) + bestDiameter.places;
 }
+
+    // === СТРОИМ РЕАЛЬНЫЕ КОМБИНАЦИИ ПО ВСЕМУ ЗАКАЗУ ===
+    // (одна опция диаметра из каждой группы длины, без смешивания несовместимых)
+    const combos = groupOptionsList.reduce((acc, options) => {
+        const res = [];
+        acc.forEach(partial => {
+            options.forEach(opt => {
+                res.push([...partial, opt]);
+            });
+        });
+        return res;
+    }, [[]]);
+
+    const seenCombos = new Set();
+    const tubeCombos = [];
+
+    combos.forEach(combo => {
+        const byDiameter = {};
+        combo.forEach(opt => {
+            byDiameter[opt.diameter] = (byDiameter[opt.diameter] || 0) + opt.places;
+        });
+
+        const entries = Object.keys(byDiameter)
+            .map(Number)
+            .sort((a, b) => a - b)
+            .map(d => ({ diameter: d, places: byDiameter[d] }));
+
+        const comboKey = entries.map(e => `${e.diameter}:${e.places}`).join(",");
+        if (seenCombos.has(comboKey)) return;
+        seenCombos.add(comboKey);
+
+        const label = entries
+            .map(e => `Ø${e.diameter} — ${e.places} ${e.places === 1 ? "туба" : "туб"}`)
+            .join(" + ");
+
+        tubeCombos.push(label);
+    });
+
     return {
         totalPlaces,
         tubesResult,
         boxesCount,
-        tubeVariantsResult,
+        tubeCombos,
         productsWeight
     };
 }
