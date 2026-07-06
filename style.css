@@ -171,9 +171,7 @@ button#total {
     text-transform: uppercase;
 }
 
-/* ===== МОДАЛЬНОЕ ОКНО ===== */
-.modal {
-    /* ===== МОДАЛЬНОЕ ОКНО ИТОГО ===== */
+/* ===== МОДАЛЬНОЕ ОКНО ИТОГО ===== */
 .modal {
     position: fixed;
     inset: 0;
@@ -194,37 +192,30 @@ button#total {
 }
 
 .modal-content {
-    background: rgba(15, 40, 80, 0.85);
+    background: var(--glass);
+    border: 1px solid rgba(255,255,255,0.2);
     border-radius: 18px;
     padding: 28px 32px;
-    min-width: 300px;
+    width: 420px;
     max-width: 90%;
-    border: 1px solid rgba(255,255,255,0.2);
-    backdrop-filter: blur(12px);
+    max-height: 80vh;
+    overflow-y: auto;
+    text-align: left;
+    backdrop-filter: blur(14px);
     pointer-events: auto;
     position: relative;
     z-index: 1;
-}
-}
-
-.modal:not(.hidden) {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.modal-content {
-    background: var(--glass);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 18px;
-    padding: 26px 30px;
-    min-width: 280px;
-    backdrop-filter: blur(14px);
     transform: scale(0.95);
     transition: transform 0.35s ease;
 }
 
 .modal:not(.hidden) .modal-content {
     transform: scale(1);
+}
+
+.modal-content h3 {
+    color: #fff;
+    margin-top: 0;
 }
 
 /* ===== ТЕКСТ В ИТОГО ===== */
