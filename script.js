@@ -480,7 +480,7 @@ var modelRules = {
     }
     },
      {name: "потолочный GARDINA Чёрный муар (3.0)",
-    weight: 1.060,
+    weight: 1.130,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -490,7 +490,7 @@ var modelRules = {
     }
     },
      {name: "потолочный GARDINA Белый муар (3.0)",
-    weight: 1.060,
+    weight: 1.130,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -640,7 +640,7 @@ var modelRules = {
     }
     },
      {name: "Скрытый REGULAR Чёрный матовый (3.0)",
-    weight: 1.080,
+    weight: 1.107,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -650,7 +650,7 @@ var modelRules = {
     }
     },
      {name: "Скрытый REGULAR Чёрный муар (3.0)",
-    weight: 1.090,
+    weight: 1.107,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -980,7 +980,7 @@ var modelRules = {
     }
     },
      {name: "рейка DUAL mini Чёрный анод. (3.0)",
-    weight: 0.190,
+    weight: 0.200,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -990,7 +990,7 @@ var modelRules = {
     }
     },
      {name: "рейка DUAL mini Светлое золото (3.0)",
-    weight: 0.190,
+    weight: 0.200,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1000,7 +1000,7 @@ var modelRules = {
     }
     },
      {name: "Защелка DUAL mini Чёрный анод. (3.0)",
-    weight: 0.130,
+    weight: 0.200,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1010,7 +1010,7 @@ var modelRules = {
     }
     },
      {name: "Защелка DUAL mini Светлое золото (3.0)",
-    weight: 0.130,
+    weight: 0.200,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1060,7 +1060,7 @@ var modelRules = {
     }
     },
      {name: "защёлка LIGHT mini Чёрный анод. (3.0)",
-    weight: 0.210,
+    weight: 0.350,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1070,7 +1070,7 @@ var modelRules = {
     }
     },
      {name: "защёлка LIGHT mini Светлое золото (3.0)",
-    weight: 0.210,
+    weight: 0.350,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1080,7 +1080,7 @@ var modelRules = {
     }
     },
      {name: "рейка micro 3m Чёрный муар (3.0)",
-    weight: 1.100,
+    weight: 1.581,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1090,7 +1090,7 @@ var modelRules = {
     }
     },
      {name: "рейка micro 3m Белый муар (3.0)",
-    weight: 1.100,
+    weight: 1.581,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1100,7 +1100,7 @@ var modelRules = {
     }
     },
      {name: "рейка micro 3m Серебристый (3.0)",
-    weight: 1.000,
+    weight: 1.581,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1110,7 +1110,7 @@ var modelRules = {
     }
     },
      {name: "рейка micro 3m Без покрытия (3.0)",
-    weight: 1.000,
+    weight: 1.468,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1120,7 +1120,7 @@ var modelRules = {
     }
     },
      {name: "Multilevel CLASSIC Чёрный анод (3.0)",
-    weight: 0.680,
+    weight: 0.869,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1130,7 +1130,7 @@ var modelRules = {
     }
     },
      {name: "Multilevel CLASSIC Серебристый (3.0)",
-    weight: 0.680,
+    weight: 0.869,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1140,7 +1140,7 @@ var modelRules = {
     }
     },
      {name: "Multilevel CLASSIC Чёрный матовый (3.0)",
-    weight: 0.680,
+    weight: 0.969,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1150,7 +1150,7 @@ var modelRules = {
     }
     },
      {name: "Multilevel CLASSIC Светлое золото (3.0)",
-    weight: 0.680,
+    weight: 0.869,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1160,7 +1160,7 @@ var modelRules = {
     }
     },
      {name: "Multilevel CLASSIC Без покрытия (3.0)",
-    weight: 0.680,
+    weight: 0.850,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1170,7 +1170,7 @@ var modelRules = {
     }
     },
      {name: "Multilevel CLASSIC Белый матовый (3.0)",
-    weight: 0.680,
+    weight: 0.869,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1180,7 +1180,7 @@ var modelRules = {
     }
     },
      {name: "Multilevel CLASSIC Чёрный муар (3.0)",
-    weight: 0.680,
+    weight: 0.869,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1190,7 +1190,7 @@ var modelRules = {
     }
     },
      {name: "Multilevel CLASSIC Белый муар (3.0)",
-    weight: 0.680,
+    weight: 0.869,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
