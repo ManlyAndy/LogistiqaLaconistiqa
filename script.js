@@ -1,4 +1,4 @@
- var modelRules = {
+var modelRules = {
         "micro 11": { allowedDiameters: [10, 20] },
         "micro l": { allowedDiameters: [10, 20] },
         "скрытый strong": { allowedDiameters: [20] }
@@ -1599,6 +1599,8 @@ document.addEventListener("input", function (e) {
         if (matchesAll && shown < 5) {
             const div = document.createElement("div");
             div.textContent = product.name;
+            div.classList.add("suggestion-item");
+            div.style.cursor = "pointer";
 
             div.onclick = () => {
                 input.value = product.name;
