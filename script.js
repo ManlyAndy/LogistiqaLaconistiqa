@@ -1583,7 +1583,7 @@ document.addEventListener("input", function (e) {
 
     const input = e.target;
     const list = input.nextElementSibling;
-    const value = input.value.toLowerCase().trim();
+    const value = input.value.toLowerCase().replace(/ё/g, "е").trim();
 
     list.innerHTML = "";
 
@@ -1593,7 +1593,7 @@ document.addEventListener("input", function (e) {
 
     let shown = 0;
     products.forEach(product => {
-        const name = product.name.toLowerCase();
+        const name = product.name.toLowerCase().replace(/ё/g, "е");
         const matchesAll = words.every(word => name.includes(word));
 
         if (matchesAll && shown < 5) {
