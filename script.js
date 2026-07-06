@@ -1583,17 +1583,20 @@ document.addEventListener("input", function (e) {
 
     const input = e.target;
     const list = input.nextElementSibling;
-    const value = input.value.toLowerCase();
+    const value = input.value.toLowerCase().trim();
 
     list.innerHTML = "";
 
     if (!value) return;
-let shown = 0;
+
+    const words = value.split(/\s+/).filter(Boolean);
+
+    let shown = 0;
     products.forEach(product => {
-        if (
-    product.name.toLowerCase().includes(value) &&
-    shown < 5
-)  {
+        const name = product.name.toLowerCase();
+        const matchesAll = words.every(word => name.includes(word));
+
+        if (matchesAll && shown < 5) {
             const div = document.createElement("div");
             div.textContent = product.name;
 
