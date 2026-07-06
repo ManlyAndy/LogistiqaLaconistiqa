@@ -1200,7 +1200,7 @@ var modelRules = {
     }
     },
      {name: "Multilevel CLASSIC NEW Белый матовый (3.0)",
-    weight: 0.690,
+    weight: 1.050,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1210,7 +1210,7 @@ var modelRules = {
     }
     },
       {name: "Multilevel CLASSIC NEW Белый муар (3.0)",
-    weight: 0.690,
+    weight: 1.050,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1220,7 +1220,7 @@ var modelRules = {
     }
     },
       {name: "Multilevel CLASSIC NEW Чёрный анод (3.0)",
-    weight: 0.690,
+    weight: 0.950,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1230,7 +1230,7 @@ var modelRules = {
     }
     },
       {name: "Multilevel CLASSIC NEW Серебристый (3.0)",
-    weight: 0.690,
+    weight: 0.950,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1240,7 +1240,7 @@ var modelRules = {
     }
     },
       {name: "Multilevel CLASSIC NEW Чёрный муар (3.0)",
-    weight: 0.690,
+    weight: 1.050,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1250,7 +1250,7 @@ var modelRules = {
     }
     },
       {name: "Multilevel CLASSIC NEW Чёрный матовый (3.0)",
-    weight: 0.690,
+    weight: 1.050,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1260,7 +1260,7 @@ var modelRules = {
     }
     },
       {name: "Multilevel CLASSIC NEW Без покрытия (3.0)",
-    weight: 0.690,
+    weight: 0.950,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1270,7 +1270,7 @@ var modelRules = {
     }
     },
       {name: "Multilevel CLASSIC NEW Светлое золото (3.0)",
-    weight: 0.690,
+    weight: 0.950,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1290,7 +1290,7 @@ var modelRules = {
     }
     },
        {name: "Multilevel MAX Белый матовый (3.0)",
-    weight: 1.050,
+    weight: 2.430,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1300,7 +1300,7 @@ var modelRules = {
     }
     },
        {name: "Multilevel MAX Чёрный анод (3.0)",
-    weight: 1.010,
+    weight: 2.330,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1310,7 +1310,7 @@ var modelRules = {
     }
     },
        {name: "Multilevel DUAL Чёрный анод (3.0)",
-    weight: 1.010,
+    weight: 1.120,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1320,7 +1320,7 @@ var modelRules = {
     }
     },
        {name: "Multilevel DUAL Чёрный муар (3.0)",
-    weight: 1.050,
+    weight: 1.350,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1330,7 +1330,7 @@ var modelRules = {
     }
     },
        {name: "Multilevel DUAL Светлое золото (3.0)",
-    weight: 1.010,
+    weight: 1.120,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1340,7 +1340,7 @@ var modelRules = {
     }
     },
        {name: "Multilevel DUAL Без покрытия (3.0)",
-    weight: 1.010,
+    weight: 1.120,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1350,13 +1350,23 @@ var modelRules = {
     }
     },
        {name: "Multilevel STRUK Без покрытия (3.0)",
-    weight: 0.560,
+    weight: 1.160,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 8,
         "20-3.0": 70
+    }
+},
+          {name: "Multilevel STRUK Чёрный анод (3.0)",
+    weight: 1.160,
+    type: "tube",
+    tubeRules: {
+        "10-2.5": 0,
+        "20-2.5": 0,
+        "10-3.0": 8,
+        "20-3.0": 70 
     }
     },
        {name: "Novel mini Чёрный муар (3.0)",
