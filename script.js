@@ -1,4 +1,4 @@
-    var modelRules = {
+  var modelRules = {
         "micro 11": { allowedDiameters: [10, 20] },
         "micro l": { allowedDiameters: [10, 20] },
         "скрытый strong": { allowedDiameters: [20] }
@@ -1619,6 +1619,7 @@ document.getElementById("total").addEventListener("click", () => {
     }
 
     const orderItems = [];
+
     rows.forEach(row => {
         const nameInput = row.querySelector('input[type="text"]');
         const qtyInput = row.querySelector('input[type="number"]');
@@ -1789,8 +1790,8 @@ for (const length in tubeGroups) {
     });
 
       for (const diameter in diameterTotals) {
-    const { qty, capacity } = diameterTotals[diameter];
-    const places = capacity > 0 ? Math.ceil(qty / capacity) : 0;
+    const { qty, maxItems } = diameterTotals[diameter];
+    const places = maxItems > 0 ? Math.ceil(qty / maxItems) : 0;
 
         tubeVariantsResult[diameter] =
             (tubeVariantsResult[diameter] || 0) + places;
