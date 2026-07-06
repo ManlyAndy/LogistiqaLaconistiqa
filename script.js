@@ -1657,7 +1657,7 @@ document.getElementById("total").addEventListener("click", () => {
     if (result.tubeCombos && result.tubeCombos.length) {
         variantsHtml = result.tubeCombos
             .map(label => `<p>${label}</p>`)
-            .join("");
+            .join('<p>или</p>');
     }
 
     const resultText = document.getElementById("resultText");
