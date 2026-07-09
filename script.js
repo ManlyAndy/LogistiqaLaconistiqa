@@ -1652,7 +1652,16 @@ document.getElementById("total").addEventListener("click", () => {
 
     if (result.tubeCombos && result.tubeCombos.length) {
         variantsHtml = result.tubeCombos
-            .map(label => `<p>${label}</p>`)
+            .map(combo => {
+                let lines = "";
+                if (combo.diameterPart) {
+                    lines += `<p>${combo.diameterPart}</p>`;
+                }
+                lines += `<p>Вес товара: ${combo.productsWeight.toFixed(2)} кг</p>`;
+                lines += `<p>Вес упаковки: ${combo.packagingWeight.toFixed(2)} кг</p>`;
+                lines += `<p>Общий вес: ${combo.totalWeight.toFixed(2)} кг</p>`;
+                return lines;
+            })
             .join('<p>или</p>');
     }
 
@@ -1864,11 +1873,12 @@ for (const length in tubeGroups) {
 
         const totalWeightForCombo = packagingWeightForCombo + productsWeight;
 
-        const label = diameterPart
-            ? `${diameterPart}; Вес упаковки: ${packagingWeightForCombo.toFixed(2)} кг, Вес товара: ${productsWeight.toFixed(2)} кг, Общий вес: ${totalWeightForCombo.toFixed(2)} кг`
-            : `Вес упаковки: ${packagingWeightForCombo.toFixed(2)} кг, Вес товара: ${productsWeight.toFixed(2)} кг, Общий вес: ${totalWeightForCombo.toFixed(2)} кг`;
-
-        tubeCombos.push(label);
+        tubeCombos.push({
+            diameterPart,
+            packagingWeight: packagingWeightForCombo,
+            productsWeight,
+            totalWeight: totalWeightForCombo
+        });
     });
 
     return {
