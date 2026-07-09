@@ -480,7 +480,7 @@ var modelRules = {
     }
     },
      {name: "потолочный GARDINA Чёрный муар (3.0)",
-    weight: 1.130,
+    weight: 1.060,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -490,7 +490,7 @@ var modelRules = {
     }
     },
      {name: "потолочный GARDINA Белый муар (3.0)",
-    weight: 1.130,
+    weight: 1.060,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -640,7 +640,7 @@ var modelRules = {
     }
     },
      {name: "Скрытый REGULAR Чёрный матовый (3.0)",
-    weight: 1.107,
+    weight: 1.080,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -650,7 +650,7 @@ var modelRules = {
     }
     },
      {name: "Скрытый REGULAR Чёрный муар (3.0)",
-    weight: 1.107,
+    weight: 1.090,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -980,7 +980,7 @@ var modelRules = {
     }
     },
      {name: "рейка DUAL mini Чёрный анод. (3.0)",
-    weight: 0.200,
+    weight: 0.190,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -990,7 +990,7 @@ var modelRules = {
     }
     },
      {name: "рейка DUAL mini Светлое золото (3.0)",
-    weight: 0.200,
+    weight: 0.190,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1000,7 +1000,7 @@ var modelRules = {
     }
     },
      {name: "Защелка DUAL mini Чёрный анод. (3.0)",
-    weight: 0.200,
+    weight: 0.130,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1010,7 +1010,7 @@ var modelRules = {
     }
     },
      {name: "Защелка DUAL mini Светлое золото (3.0)",
-    weight: 0.200,
+    weight: 0.130,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1060,7 +1060,7 @@ var modelRules = {
     }
     },
      {name: "защёлка LIGHT mini Чёрный анод. (3.0)",
-    weight: 0.350,
+    weight: 0.210,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1070,7 +1070,7 @@ var modelRules = {
     }
     },
      {name: "защёлка LIGHT mini Светлое золото (3.0)",
-    weight: 0.350,
+    weight: 0.210,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1080,7 +1080,7 @@ var modelRules = {
     }
     },
      {name: "рейка micro 3m Чёрный муар (3.0)",
-    weight: 1.581,
+    weight: 1.100,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1090,7 +1090,7 @@ var modelRules = {
     }
     },
      {name: "рейка micro 3m Белый муар (3.0)",
-    weight: 1.581,
+    weight: 1.100,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1100,7 +1100,7 @@ var modelRules = {
     }
     },
      {name: "рейка micro 3m Серебристый (3.0)",
-    weight: 1.581,
+    weight: 1.000,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1110,7 +1110,7 @@ var modelRules = {
     }
     },
      {name: "рейка micro 3m Без покрытия (3.0)",
-    weight: 1.468,
+    weight: 1.000,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1120,7 +1120,7 @@ var modelRules = {
     }
     },
      {name: "Multilevel CLASSIC Чёрный анод (3.0)",
-    weight: 0.869,
+    weight: 0.680,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1130,7 +1130,7 @@ var modelRules = {
     }
     },
      {name: "Multilevel CLASSIC Серебристый (3.0)",
-    weight: 0.869,
+    weight: 0.680,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1140,7 +1140,7 @@ var modelRules = {
     }
     },
      {name: "Multilevel CLASSIC Чёрный матовый (3.0)",
-    weight: 0.969,
+    weight: 0.680,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1150,7 +1150,7 @@ var modelRules = {
     }
     },
      {name: "Multilevel CLASSIC Светлое золото (3.0)",
-    weight: 0.869,
+    weight: 0.680,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1160,7 +1160,7 @@ var modelRules = {
     }
     },
      {name: "Multilevel CLASSIC Без покрытия (3.0)",
-    weight: 0.850,
+    weight: 0.680,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1170,7 +1170,7 @@ var modelRules = {
     }
     },
      {name: "Multilevel CLASSIC Белый матовый (3.0)",
-    weight: 0.869,
+    weight: 0.680,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1180,7 +1180,7 @@ var modelRules = {
     }
     },
      {name: "Multilevel CLASSIC Чёрный муар (3.0)",
-    weight: 0.869,
+    weight: 0.680,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1190,7 +1190,7 @@ var modelRules = {
     }
     },
      {name: "Multilevel CLASSIC Белый муар (3.0)",
-    weight: 0.869,
+    weight: 0.680,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1200,7 +1200,7 @@ var modelRules = {
     }
     },
      {name: "Multilevel CLASSIC NEW Белый матовый (3.0)",
-    weight: 1.050,
+    weight: 0.690,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1210,7 +1210,7 @@ var modelRules = {
     }
     },
       {name: "Multilevel CLASSIC NEW Белый муар (3.0)",
-    weight: 1.050,
+    weight: 0.690,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1220,7 +1220,7 @@ var modelRules = {
     }
     },
       {name: "Multilevel CLASSIC NEW Чёрный анод (3.0)",
-    weight: 0.950,
+    weight: 0.690,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1230,7 +1230,7 @@ var modelRules = {
     }
     },
       {name: "Multilevel CLASSIC NEW Серебристый (3.0)",
-    weight: 0.950,
+    weight: 0.690,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1240,7 +1240,7 @@ var modelRules = {
     }
     },
       {name: "Multilevel CLASSIC NEW Чёрный муар (3.0)",
-    weight: 1.050,
+    weight: 0.690,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1250,7 +1250,7 @@ var modelRules = {
     }
     },
       {name: "Multilevel CLASSIC NEW Чёрный матовый (3.0)",
-    weight: 1.050,
+    weight: 0.690,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1260,7 +1260,7 @@ var modelRules = {
     }
     },
       {name: "Multilevel CLASSIC NEW Без покрытия (3.0)",
-    weight: 0.950,
+    weight: 0.690,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1270,7 +1270,7 @@ var modelRules = {
     }
     },
       {name: "Multilevel CLASSIC NEW Светлое золото (3.0)",
-    weight: 0.950,
+    weight: 0.690,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1290,7 +1290,7 @@ var modelRules = {
     }
     },
        {name: "Multilevel MAX Белый матовый (3.0)",
-    weight: 2.430,
+    weight: 1.050,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1300,7 +1300,7 @@ var modelRules = {
     }
     },
        {name: "Multilevel MAX Чёрный анод (3.0)",
-    weight: 2.330,
+    weight: 1.010,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1310,7 +1310,7 @@ var modelRules = {
     }
     },
        {name: "Multilevel DUAL Чёрный анод (3.0)",
-    weight: 1.120,
+    weight: 1.010,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1320,7 +1320,7 @@ var modelRules = {
     }
     },
        {name: "Multilevel DUAL Чёрный муар (3.0)",
-    weight: 1.350,
+    weight: 1.050,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1330,7 +1330,7 @@ var modelRules = {
     }
     },
        {name: "Multilevel DUAL Светлое золото (3.0)",
-    weight: 1.120,
+    weight: 1.010,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1340,7 +1340,7 @@ var modelRules = {
     }
     },
        {name: "Multilevel DUAL Без покрытия (3.0)",
-    weight: 1.120,
+    weight: 1.010,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1350,23 +1350,13 @@ var modelRules = {
     }
     },
        {name: "Multilevel STRUK Без покрытия (3.0)",
-    weight: 1.160,
+    weight: 0.560,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 8,
         "20-3.0": 70
-    }
-},
-          {name: "Multilevel STRUK Чёрный анод (3.0)",
-    weight: 1.160,
-    type: "tube",
-    tubeRules: {
-        "10-2.5": 0,
-        "20-2.5": 0,
-        "10-3.0": 8,
-        "20-3.0": 70 
     }
     },
        {name: "Novel mini Чёрный муар (3.0)",
@@ -1673,8 +1663,7 @@ document.getElementById("total").addEventListener("click", () => {
     const resultText = document.getElementById("resultText");
 
     resultText.innerHTML = `
-        <p><strong>Мест всего (выбранный вариант):</strong> ${result.totalPlaces}</p>
-        ${variantsHtml ? `<hr><p><strong>Возможные варианты упаковки:</strong></p>${variantsHtml}` : ""}
+        ${variantsHtml ? `<p><strong>Возможные варианты упаковки:</strong></p>${variantsHtml}` : ""}
         <hr>
         <p><strong>Вес товара:</strong> ${productsWeight.toFixed(2)} кг</p>
         <p><strong>Вес упаковки:</strong> ${packagingWeight.toFixed(2)} кг</p>
@@ -1748,6 +1737,15 @@ function selectTube(productName) {
 
     return possible[0];
 }
+function pluralTubes(n) {
+    const mod100 = Math.abs(n) % 100;
+    const mod10 = mod100 % 10;
+    if (mod100 > 10 && mod100 < 20) return "туб";
+    if (mod10 === 1) return "туба";
+    if (mod10 >= 2 && mod10 <= 4) return "тубы";
+    return "туб";
+}
+ 
 function calculatePackaging(orderItems) {
     let totalPlaces = 0;
     let tubesResult = {};
@@ -1808,6 +1806,7 @@ for (const length in tubeGroups) {
 
     const groupOptions = Object.keys(diameterTotals).map(d => ({
         diameter: Number(d),
+        length: Number(length),
         places: Math.ceil(diameterTotals[d].qty / diameterTotals[d].maxItems)
     }));
     groupOptionsList.push(groupOptions);
@@ -1843,9 +1842,20 @@ for (const length in tubeGroups) {
 
     combos.forEach(combo => {
         const byDiameter = {};
+        let packagingWeightForCombo = 0;
+
         combo.forEach(opt => {
             byDiameter[opt.diameter] = (byDiameter[opt.diameter] || 0) + opt.places;
+
+            const tube = tubes.find(
+                t => t.diameter === opt.diameter && t.maxLength === opt.length
+            );
+            if (tube) {
+                packagingWeightForCombo += tube.weight * opt.places;
+            }
         });
+
+        packagingWeightForCombo += boxesCount * BOX_WEIGHT;
 
         const entries = Object.keys(byDiameter)
             .map(Number)
@@ -1856,9 +1866,11 @@ for (const length in tubeGroups) {
         if (seenCombos.has(comboKey)) return;
         seenCombos.add(comboKey);
 
-        const label = entries
-            .map(e => `Ø${e.diameter} — ${e.places} ${e.places === 1 ? "туба" : "туб"}`)
+        const diameterPart = entries
+            .map(e => `Ø${e.diameter} — ${e.places} ${pluralTubes(e.places)}`)
             .join(" + ");
+
+        const label = `${diameterPart}; Вес упаковки: ${packagingWeightForCombo.toFixed(2)} кг, Вес товара: ${productsWeight.toFixed(2)} кг`;
 
         tubeCombos.push(label);
     });
