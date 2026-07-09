@@ -1,4 +1,4 @@
-var modelRules = {
+ var modelRules = {
         "micro 11": { allowedDiameters: [10, 20] },
         "micro l": { allowedDiameters: [10, 20] },
         "скрытый strong": { allowedDiameters: [20] }
@@ -1647,10 +1647,6 @@ document.getElementById("total").addEventListener("click", () => {
     // === РАСЧЁТ ===
     const result = calculatePackaging(orderItems);
 
-    const packagingWeight = calculatePackagingWeight(result);
-    const productsWeight = result.productsWeight;
-    const totalWeight = packagingWeight + productsWeight;
-
     // === ВЫВОД ===
     let variantsHtml = "";
 
@@ -1664,10 +1660,6 @@ document.getElementById("total").addEventListener("click", () => {
 
     resultText.innerHTML = `
         ${variantsHtml ? `<p><strong>Возможные варианты упаковки:</strong></p>${variantsHtml}` : ""}
-        <hr>
-        <p><strong>Вес товара:</strong> ${productsWeight.toFixed(2)} кг</p>
-        <p><strong>Вес упаковки:</strong> ${packagingWeight.toFixed(2)} кг</p>
-        <p><strong>ИТОГО:</strong> ${totalWeight.toFixed(2)} кг</p>
     `;
 
     document.getElementById("resultModal").classList.remove("hidden");
@@ -1870,7 +1862,11 @@ for (const length in tubeGroups) {
             .map(e => `Ø${e.diameter} — ${e.places} ${pluralTubes(e.places)}`)
             .join(" + ");
 
-        const label = `${diameterPart}; Вес упаковки: ${packagingWeightForCombo.toFixed(2)} кг, Вес товара: ${productsWeight.toFixed(2)} кг`;
+        const totalWeightForCombo = packagingWeightForCombo + productsWeight;
+
+        const label = diameterPart
+            ? `${diameterPart}; Вес упаковки: ${packagingWeightForCombo.toFixed(2)} кг, Вес товара: ${productsWeight.toFixed(2)} кг, Общий вес: ${totalWeightForCombo.toFixed(2)} кг`
+            : `Вес упаковки: ${packagingWeightForCombo.toFixed(2)} кг, Вес товара: ${productsWeight.toFixed(2)} кг, Общий вес: ${totalWeightForCombo.toFixed(2)} кг`;
 
         tubeCombos.push(label);
     });
