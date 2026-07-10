@@ -1704,7 +1704,7 @@ addButton.addEventListener("click", () => {
             <input type="text" placeholder="Название товара">
             <div class="list"></div>
         </div>
-        <input type="number" placeholder="Кол-во" min="1">
+        <input type="number" placeholder="шт" min="1">
         <button type="button" class="removeRow" title="Удалить строку">×</button>
     `;
 
