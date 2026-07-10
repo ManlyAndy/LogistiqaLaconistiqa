@@ -636,7 +636,7 @@ var modelRules = {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 0,
-        "20-3.0": 35
+        "20-3.0": 30
     }
     },
      {name: "Скрытый REGULAR Чёрный матовый (3.0)",
@@ -646,7 +646,7 @@ var modelRules = {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 0,
-        "20-3.0": 35
+        "20-3.0": 30
     }
     },
      {name: "Скрытый REGULAR Чёрный муар (3.0)",
@@ -656,27 +656,27 @@ var modelRules = {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 0,
-        "20-3.0": 35
+        "20-3.0": 30
     }
     },
      {name: "Скрытый Strong Без покрытия (3.0)",
-    weight: 1.200,
+    weight: 1.090,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 0,
-        "20-3.0": 35
+        "20-3.0": 30
     }
     },
      {name: "Скрытый Strong Чёрный муар (3.0)",
-    weight: 1.270,
+    weight: 1.290,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 0,
-        "20-3.0": 35
+        "20-3.0": 30
     }
     },
     {name: "Скрытый Strong Чёрный матовый (3.0)",
@@ -686,7 +686,7 @@ var modelRules = {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 0,
-        "20-3.0": 35
+        "20-3.0": 30
     }
     },
      {name: "LIGHT DOORS БЕЗ ПОКРЫТИЯ (3.0)",
@@ -799,7 +799,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "Теневой REVERSE 36 Чёрный анод (3.0)",
+     {name: "REVERSE 36 Чёрный анод (3.0)",
     weight: 0.454,
     type: "tube",
     tubeRules: {
@@ -809,7 +809,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "Теневой REVERSE 36 Чёрный муар (3.0)",
+     {name: "REVERSE 36 Чёрный муар (3.0)",
     weight: 0.500,
     type: "tube",
     tubeRules: {
@@ -819,7 +819,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "Теневой REVERSE 36 Белый муар (3.0)",
+     {name: "REVERSE 36 Белый муар (3.0)",
     weight: 0.500,
     type: "tube",
     tubeRules: {
@@ -829,7 +829,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "Теневой REVERSE 36 Светлое золото (3.0)",
+     {name: "REVERSE 36 Светлое золото (3.0)",
     weight: 0.454,
     type: "tube",
     tubeRules: {
@@ -839,7 +839,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "Теневой REVERSE 36 Без покрытия (3.0)",
+     {name: "REVERSE 36 Без покрытия (3.0)",
     weight: 0.454,
     type: "tube",
     tubeRules: {
@@ -1350,17 +1350,7 @@ var modelRules = {
     }
     },
        {name: "Multilevel STRUK Без покрытия (3.0)",
-    weight: 1.100,
-    type: "tube",
-    tubeRules: {
-        "10-2.5": 0,
-        "20-2.5": 0,
-        "10-3.0": 8,
-        "20-3.0": 70
-    }
-    },
-       {name: "Multilevel STRUK Черный муар (3.0)",
-    weight: 1.200,
+    weight: 0.560,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1417,106 +1407,6 @@ var modelRules = {
         "20-2.5": 0,
         "10-3.0": 40,
         "20-3.0": 100
-    }
-    },
-       {name: "Novel Regular Серебристый (3.0)",
-    weight: 0.550,
-    type: "tube",
-    tubeRules: {
-        "10-2.5": 0,
-        "20-2.5": 0,
-        "10-3.0": 15,
-        "20-3.0": 70
-    }
-    },
-       {name: "Novel Regular Без покрытия (3.0)",
-    weight: 0.550,
-    type: "tube",
-    tubeRules: {
-        "10-2.5": 0,
-        "20-2.5": 0,
-        "10-3.0": 15,
-        "20-3.0": 70
-    }
-    },
-       {name: "Novel Regular Белый матовый (3.0)",
-    weight: 0.600,
-    type: "tube",
-    tubeRules: {
-        "10-2.5": 0,
-        "20-2.5": 0,
-        "10-3.0": 15,
-        "20-3.0": 70
-        }
-    },
-       {name: "Novel Regular Светлое золото (3.0)",
-    weight: 0.550,
-    type: "tube",
-    tubeRules: {
-        "10-2.5": 0,
-        "20-2.5": 0,
-        "10-3.0": 15,
-        "20-3.0": 70
-    }
-    },
-       {name: "Novel Regular Черный муар (3.0)",
-    weight: 0.600,
-    type: "tube",
-    tubeRules: {
-        "10-2.5": 0,
-        "20-2.5": 0,
-        "10-3.0": 15,
-        "20-3.0": 70
-    }
-    },
-       {name: "Novel Max Без покрытия (3.0)",
-    weight: 1.000,
-    type: "tube",
-    tubeRules: {
-        "10-2.5": 0,
-        "20-2.5": 0,
-        "10-3.0": 0,
-        "20-3.0": 36
-    }
-    },
-       {name: "Novel Max Белый матовый (3.0)",
-    weight: 1.050,
-    type: "tube",
-    tubeRules: {
-        "10-2.5": 0,
-        "20-2.5": 0,
-        "10-3.0": 0,
-        "20-3.0": 36
-    }
-    },
-       {name: "Novel Max Светлое золото (3.0)",
-    weight: 1.000,
-    type: "tube",
-    tubeRules: {
-        "10-2.5": 0,
-        "20-2.5": 0,
-        "10-3.0": 0,
-        "20-3.0": 36
-    }
-    },
-       {name: "Novel Max Черный муар (3.0)",
-    weight: 1.050,
-    type: "tube",
-    tubeRules: {
-        "10-2.5": 0,
-        "20-2.5": 0,
-        "10-3.0": 0,
-        "20-3.0": 36
-    }
-    },
-       {name: "Novel Max Серебристый (3.0)",
-    weight: 1.000,
-    type: "tube",
-    tubeRules: {
-        "10-2.5": 0,
-        "20-2.5": 0,
-        "10-3.0": 0,
-        "20-3.0": 36
     }
     },
        {name: "Рассеиватель белый матовый 3 м. (3.0)",
@@ -1683,9 +1573,18 @@ addButton.addEventListener("click", () => {
             <div class="list"></div>
         </div>
         <input type="number" placeholder="Кол-во" min="1">
+        <button type="button" class="removeRow" title="Удалить строку">×</button>
     `;
 
     itemsDiv.appendChild(div);
+});
+
+// Удаление конкретной строки по клику на крестик
+document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("removeRow")) {
+        const row = e.target.closest(".item");
+        if (row) row.remove();
+    }
 });
 
 document.addEventListener("input", function (e) {
@@ -1896,10 +1795,14 @@ tubeGroups[length].push({
 for (const length in tubeGroups) {
     const items = tubeGroups[length];
 
-    // считаем суммарно по диаметрам
-    const diameterTotals = {};
+    // делим товары на "жёсткие" (подходит только один диаметр)
+    // и "гибкие" (подходит несколько диаметров)
+    const forcedTotals = {};   // diameter -> { qty, maxItems }
+    const flexibleTotals = {}; // diameter -> { qty, maxItems }
 
     items.forEach(({ product, qty }) => {
+        const validDiameters = [];
+
         for (const ruleKey in product.tubeRules) {
             const [diameter, tubeLength] = ruleKey.split("-").map(Number);
             if (tubeLength < length) continue;
@@ -1907,37 +1810,72 @@ for (const length in tubeGroups) {
             const maxItems = product.tubeRules[ruleKey];
             if (!maxItems || maxItems <= 0) continue;
 
-            if (!diameterTotals[diameter]) {
-                diameterTotals[diameter] = { qty: 0, maxItems };
-            }
+            validDiameters.push({ diameter, maxItems });
+        }
 
-            diameterTotals[diameter].qty += qty;
+        if (validDiameters.length === 0) return;
+
+        if (validDiameters.length === 1) {
+            // жёстко привязан к одному диаметру — участвует в любом варианте
+            const { diameter, maxItems } = validDiameters[0];
+            if (!forcedTotals[diameter]) forcedTotals[diameter] = { qty: 0, maxItems };
+            forcedTotals[diameter].qty += qty;
+        } else {
+            // гибкий — может ехать в любой из этих диаметров
+            validDiameters.forEach(({ diameter, maxItems }) => {
+                if (!flexibleTotals[diameter]) flexibleTotals[diameter] = { qty: 0, maxItems };
+                flexibleTotals[diameter].qty += qty;
+            });
         }
     });
 
-    const groupOptions = Object.keys(diameterTotals).map(d => ({
-        diameter: Number(d),
-        length: Number(length),
-        places: Math.ceil(diameterTotals[d].qty / diameterTotals[d].maxItems)
-    }));
+    const forcedPlaces = {}; // diameter -> places
+    for (const d in forcedTotals) {
+        forcedPlaces[d] = Math.ceil(forcedTotals[d].qty / forcedTotals[d].maxItems);
+    }
+
+    const flexibleDiameters = Object.keys(flexibleTotals);
+    const flexibleOptions = flexibleDiameters.length
+        ? flexibleDiameters.map(d => ({
+              diameter: Number(d),
+              places: Math.ceil(flexibleTotals[d].qty / flexibleTotals[d].maxItems)
+          }))
+        : [null];
+
+    // каждый вариант = жёсткие места (всегда) + один из гибких вариантов
+    const groupOptions = flexibleOptions.map(flexOpt => {
+        const merged = {};
+        for (const d in forcedPlaces) merged[d] = forcedPlaces[d];
+        if (flexOpt) {
+            merged[flexOpt.diameter] = (merged[flexOpt.diameter] || 0) + flexOpt.places;
+        }
+        return Object.keys(merged).map(d => ({
+            diameter: Number(d),
+            length: Number(length),
+            places: merged[d]
+        }));
+    });
+
     groupOptionsList.push(groupOptions);
 
-    // выбираем минимальный вариант
-    const bestDiameter = Object.keys(diameterTotals)
-        .map(d => ({
-            diameter: Number(d),
-            places: Math.ceil(diameterTotals[d].qty / diameterTotals[d].maxItems)
+    // выбираем минимальный по суммарному числу мест вариант
+    const bestOption = groupOptions
+        .map(opt => ({
+            opt,
+            totalForOption: opt.reduce((sum, e) => sum + e.places, 0)
         }))
-        .sort((a, b) => a.places - b.places)[0];
+        .sort((a, b) => a.totalForOption - b.totalForOption)[0].opt;
 
-    totalPlaces += bestDiameter.places;
-
-    const key = `Ø${bestDiameter.diameter} / ${length} м`;
-    tubesResult[key] = (tubesResult[key] || 0) + bestDiameter.places;
+    bestOption.forEach(e => {
+        totalPlaces += e.places;
+        const key = `Ø${e.diameter} / ${length} м`;
+        tubesResult[key] = (tubesResult[key] || 0) + e.places;
+    });
 }
 
     // === СТРОИМ РЕАЛЬНЫЕ КОМБИНАЦИИ ПО ВСЕМУ ЗАКАЗУ ===
-    // (одна опция диаметра из каждой группы длины, без смешивания несовместимых)
+    // (один вариант из каждой группы длины, каждый вариант уже включает
+    // и жёстко привязанные, и выбранные гибкие диаметры для этой длины)
     const combos = groupOptionsList.reduce((acc, options) => {
         const res = [];
         acc.forEach(partial => {
@@ -1952,10 +1890,11 @@ for (const length in tubeGroups) {
     const tubeCombos = [];
 
     combos.forEach(combo => {
+        const flatEntries = combo.flat();
         const byDiameter = {};
         let packagingWeightForCombo = 0;
 
-        combo.forEach(opt => {
+        flatEntries.forEach(opt => {
             byDiameter[opt.diameter] = (byDiameter[opt.diameter] || 0) + opt.places;
 
             const tube = tubes.find(
@@ -1982,6 +1921,7 @@ for (const length in tubeGroups) {
             .join(" + ");
 
         const totalWeightForCombo = packagingWeightForCombo + productsWeight;
+
 
         tubeCombos.push({
             diameterPart,
