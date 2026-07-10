@@ -636,7 +636,7 @@ var modelRules = {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 0,
-        "20-3.0": 30
+        "20-3.0": 35
     }
     },
      {name: "Скрытый REGULAR Чёрный матовый (3.0)",
@@ -646,7 +646,7 @@ var modelRules = {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 0,
-        "20-3.0": 30
+        "20-3.0": 35
     }
     },
      {name: "Скрытый REGULAR Чёрный муар (3.0)",
@@ -656,7 +656,7 @@ var modelRules = {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 0,
-        "20-3.0": 30
+        "20-3.0": 35
     }
     },
      {name: "Скрытый Strong Без покрытия (3.0)",
@@ -666,7 +666,7 @@ var modelRules = {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 0,
-        "20-3.0": 30
+        "20-3.0": 35
     }
     },
      {name: "Скрытый Strong Чёрный муар (3.0)",
@@ -676,7 +676,7 @@ var modelRules = {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 0,
-        "20-3.0": 30
+        "20-3.0": 35
     }
     },
     {name: "Скрытый Strong Чёрный матовый (3.0)",
@@ -686,10 +686,10 @@ var modelRules = {
         "10-2.5": 0,
         "20-2.5": 0,
         "10-3.0": 0,
-        "20-3.0": 30
+        "20-3.0": 35
     }
     },
-     {name: "LIGHT DOORS БЕЗ ПОКРЫТИЯ (3.0)",
+     {name: "Теневой LIGHT DOORS БЕЗ ПОКРЫТИЯ (3.0)",
     weight: 0.610,
     type: "tube",
     tubeRules: {
@@ -699,7 +699,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "LIGHT DOORS Чёрный анод (3.0)",
+     {name: "Теневой LIGHT DOORS Чёрный анод (3.0)",
     weight: 0.610,
     type: "tube",
     tubeRules: {
@@ -709,7 +709,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "LIGHT DOORS Чёрный муар (3.0)",
+     {name: "Теневой LIGHT DOORS Чёрный муар (3.0)",
     weight: 0.690,
     type: "tube",
     tubeRules: {
@@ -719,7 +719,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "LIGHT DOORS Светлое золото (3.0)",
+     {name: "Теневой LIGHT DOORS Светлое золото (3.0)",
     weight: 0.610,
     type: "tube",
     tubeRules: {
@@ -729,7 +729,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "LIGHT 41 БЕЗ ПОКРЫТИЯ (3.0)",
+     {name: "Теневой LIGHT 41 БЕЗ ПОКРЫТИЯ (3.0)",
     weight: 0.690,
     type: "tube",
     tubeRules: {
@@ -739,7 +739,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "LIGHT 41 чёрный анод (3.0)",
+     {name: "Теневой LIGHT 41 чёрный анод (3.0)",
     weight: 0.690,
     type: "tube",
     tubeRules: {
@@ -749,7 +749,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "LIGHT 41 Чёрный муар (3.0)",
+     {name: "Теневой LIGHT 41 Чёрный муар (3.0)",
     weight: 0.770,
     type: "tube",
     tubeRules: {
@@ -759,7 +759,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "LIGHT 41 Светлое золото (3.0)",
+     {name: "Теневой LIGHT 41 Светлое золото (3.0)",
     weight: 0.690,
     type: "tube",
     tubeRules: {
@@ -769,7 +769,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "REGULAR 45 БЕЗ ПОКРЫТИЯ (3.0)",
+     {name: "Теневой REGULAR 45 БЕЗ ПОКРЫТИЯ (3.0)",
     weight: 0.518,
     type: "tube",
     tubeRules: {
@@ -779,7 +779,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "REGULAR 45 Чёрный анод (3.0)",
+     {name: "Теневой REGULAR 45 Чёрный анод (3.0)",
     weight: 0.518,
     type: "tube",
     tubeRules: {
@@ -789,7 +789,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "REGULAR 45 Чёрный муар (3.0)",
+     {name: "Теневой REGULAR 45 Чёрный муар (3.0)",
     weight: 0.568,
     type: "tube",
     tubeRules: {
@@ -799,7 +799,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "REVERSE 36 Чёрный анод (3.0)",
+     {name: "Теневой REVERSE 36 Чёрный анод (3.0)",
     weight: 0.454,
     type: "tube",
     tubeRules: {
@@ -809,7 +809,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "REVERSE 36 Чёрный муар (3.0)",
+     {name: "Теневой REVERSE 36 Чёрный муар (3.0)",
     weight: 0.500,
     type: "tube",
     tubeRules: {
@@ -819,7 +819,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "REVERSE 36 Белый муар (3.0)",
+     {name: "Теневой REVERSE 36 Белый муар (3.0)",
     weight: 0.500,
     type: "tube",
     tubeRules: {
@@ -829,7 +829,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "REVERSE 36 Светлое золото (3.0)",
+     {name: "Теневой REVERSE 36 Светлое золото (3.0)",
     weight: 0.454,
     type: "tube",
     tubeRules: {
@@ -839,7 +839,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "REVERSE 36 Без покрытия (3.0)",
+     {name: "Теневой REVERSE 36 Без покрытия (3.0)",
     weight: 0.454,
     type: "tube",
     tubeRules: {
@@ -849,7 +849,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "REVERSE 2.0 Чёрный муар (3.0)",
+     {name: "Теневой REVERSE 2.0 Чёрный муар (3.0)",
     weight: 0.500,
     type: "tube",
     tubeRules: {
@@ -859,7 +859,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "REVERSE 2.0 Чёрный анод (3.0)",
+     {name: "Теневой REVERSE 2.0 Чёрный анод (3.0)",
     weight: 0.454,
     type: "tube",
     tubeRules: {
@@ -869,7 +869,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "REVERSE 2.0 Белый муар (3.0)",
+     {name: "Теневой REVERSE 2.0 Белый муар (3.0)",
     weight: 0.500,
     type: "tube",
     tubeRules: {
@@ -879,7 +879,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "REVERSE 2.0 Светлое золото (3.0)",
+     {name: "Теневой REVERSE 2.0 Светлое золото (3.0)",
     weight: 0.454,
     type: "tube",
     tubeRules: {
@@ -889,7 +889,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-     {name: "REVERSE 2.0 Без покрытия (3.0)",
+     {name: "Теневой REVERSE 2.0 Без покрытия (3.0)",
     weight: 0.454,
     type: "tube",
     tubeRules: {
@@ -1339,7 +1339,7 @@ var modelRules = {
         "20-3.0": 50
     }
     },
-       {name: "Multilevel DUAL Без покрытия (3.0)",
+       {name: "Multilevel DUAL без покрытия (3.0)",
     weight: 1.010,
     type: "tube",
     tubeRules: {
@@ -1349,8 +1349,28 @@ var modelRules = {
         "20-3.0": 50
     }
     },
-       {name: "Multilevel STRUK Без покрытия (3.0)",
-    weight: 0.560,
+       {name: "Multilevel STRUK без покрытия (3.0)",
+    weight: 1.140,
+    type: "tube",
+    tubeRules: {
+        "10-2.5": 0,
+        "20-2.5": 0,
+        "10-3.0": 8,
+        "20-3.0": 70
+    }
+        },
+       {name: "Multilevel STRUK черный муар (3.0)",
+    weight: 1.200,
+    type: "tube",
+    tubeRules: {
+        "10-2.5": 0,
+        "20-2.5": 0,
+        "10-3.0": 8,
+        "20-3.0": 70
+    }
+        },
+       {name: "Multilevel STRUK черный анод (3.0)",
+    weight: 1.140,
     type: "tube",
     tubeRules: {
         "10-2.5": 0,
@@ -1359,7 +1379,7 @@ var modelRules = {
         "20-3.0": 70
     }
     },
-       {name: "Novel mini Чёрный муар (3.0)",
+       {name: "Novel mini черный муар (3.0)",
     weight: 0.418,
     type: "tube",
     tubeRules: {
@@ -1369,7 +1389,7 @@ var modelRules = {
         "20-3.0": 100
     }
     },
-       {name: "Novel mini Белый матовый (3.0)",
+       {name: "Novel mini белый матовый (3.0)",
     weight: 0.418,
     type: "tube",
     tubeRules: {
@@ -1379,7 +1399,7 @@ var modelRules = {
         "20-3.0": 100
     }
     },
-       {name: "Novel mini Светлое золото (3.0)",
+       {name: "Novel mini светлое золото (3.0)",
     weight: 0.368,
     type: "tube",
     tubeRules: {
@@ -1389,7 +1409,7 @@ var modelRules = {
         "20-3.0": 100
     }
     },
-       {name: "Novel mini Без покрытия (3.0)",
+       {name: "Novel mini без покрытия (3.0)",
     weight: 0.368,
     type: "tube",
     tubeRules: {
@@ -1399,7 +1419,7 @@ var modelRules = {
         "20-3.0": 100
     }
     },
-       {name: "Novel mini Серебристый (3.0)",
+       {name: "Novel mini серебристый (3.0)",
     weight: 0.368,
     type: "tube",
     tubeRules: {
@@ -1407,6 +1427,106 @@ var modelRules = {
         "20-2.5": 0,
         "10-3.0": 40,
         "20-3.0": 100
+    }
+         },
+       {name: "Novel Regular серебристый (3.0)",
+    weight: 0.550,
+    type: "tube",
+    tubeRules: {
+        "10-2.5": 0,
+        "20-2.5": 0,
+        "10-3.0": 15,
+        "20-3.0": 70
+    }
+         },
+       {name: "Novel Regular черный муар (3.0)",
+    weight: 0.600,
+    type: "tube",
+    tubeRules: {
+        "10-2.5": 0,
+        "20-2.5": 0,
+        "10-3.0": 15,
+        "20-3.0": 70
+    }
+         },
+       {name: "Novel Regular светлое золото (3.0)",
+    weight: 0.550,
+    type: "tube",
+    tubeRules: {
+        "10-2.5": 0,
+        "20-2.5": 0,
+        "10-3.0": 15,
+        "20-3.0": 70
+    }
+         },
+       {name: "Novel Regular белый матовый (3.0)",
+    weight: 0.600,
+    type: "tube",
+    tubeRules: {
+        "10-2.5": 0,
+        "20-2.5": 0,
+        "10-3.0": 15,
+        "20-3.0": 70
+    }
+         },
+       {name: "Novel Regular без покрытия (3.0)",
+    weight: 0.550,
+    type: "tube",
+    tubeRules: {
+        "10-2.5": 0,
+        "20-2.5": 0,
+        "10-3.0": 15,
+        "20-3.0": 70
+    }
+         },
+       {name: "Novel Max серебристый (3.0)",
+    weight: 1.000,
+    type: "tube",
+    tubeRules: {
+        "10-2.5": 0,
+        "20-2.5": 0,
+        "10-3.0": 0,
+        "20-3.0": 36
+    }
+         },
+       {name: "Novel Max черный муар (3.0)",
+    weight: 1.050,
+    type: "tube",
+    tubeRules: {
+        "10-2.5": 0,
+        "20-2.5": 0,
+        "10-3.0": 0,
+        "20-3.0": 36
+    }
+         },
+       {name: "Novel Max светлое золото (3.0)",
+    weight: 1.000,
+    type: "tube",
+    tubeRules: {
+        "10-2.5": 0,
+        "20-2.5": 0,
+        "10-3.0": 0,
+        "20-3.0": 36
+    }
+         },
+       {name: "Novel Max белый матовый (3.0)",
+    weight: 1.050,
+    type: "tube",
+    tubeRules: {
+        "10-2.5": 0,
+        "20-2.5": 0,
+        "10-3.0": 0,
+        "20-3.0": 36
+    }
+         },
+       {name: "Novel Max без покрытия (3.0)",
+    weight: 1.000,
+    type: "tube",
+    tubeRules: {
+        "10-2.5": 0,
+        "20-2.5": 0,
+        "10-3.0": 0,
+        "20-3.0": 36
     }
     },
        {name: "Рассеиватель белый матовый 3 м. (3.0)",
