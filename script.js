@@ -1683,6 +1683,18 @@ const tubes = [
 const addButton = document.getElementById("addRow");
 const itemsDiv = document.getElementById("items");
 
+// Добавляем крестик всем строкам, где его ещё нет (в т.ч. самой первой, статической)
+document.querySelectorAll(".item").forEach(row => {
+    if (!row.querySelector(".removeRow")) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "removeRow";
+        btn.title = "Удалить строку";
+        btn.textContent = "×";
+        row.appendChild(btn);
+    }
+});
+
 addButton.addEventListener("click", () => {
     const div = document.createElement("div");
     div.className = "item";
