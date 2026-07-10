@@ -62,7 +62,7 @@ h1::after {
     font-size: 16px;
     pointer-events: none;
 
-    animation: driveAcross 12s linear infinite;
+    animation: driveAcross 5s linear infinite;
 }
 
 h1:hover::after {
@@ -227,10 +227,18 @@ button#total {
 }
 
 /* ===== БЛОК ВРЕМЕНИ ===== */
-.time-box {
+.side-panel {
     position: fixed;
     top: 24px;
     right: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    z-index: 5;
+}
+
+.time-box {
     padding: 14px 20px;
     border-radius: 14px;
     background: rgba(15, 40, 80, 0.45);
@@ -239,6 +247,33 @@ button#total {
     color: #fff;
     text-align: center;
     font-size: 15px;
+}
+
+/* ===== КНОПКА МУЗЫКИ ===== */
+.music-btn {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 14px;
+    background: rgba(15, 40, 80, 0.45);
+    border: 1.5px solid var(--accent-soft);
+    color: #fff;
+    backdrop-filter: blur(10px);
+}
+
+.music-btn:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 12px rgba(77,163,255,0.35);
+    transform: none;
+}
+
+.music-btn .icon {
+    font-size: 15px;
+    line-height: 1;
 }
 #stars {
     position: fixed;
@@ -278,15 +313,52 @@ button#total {
     70%  { opacity: 0.8; }
     100% { opacity: 0; }
 }
-@keyframes fall {
-    from {
-        transform: translate(0, 0);
-        opacity: 1;
-    }
-    to {
-        transform: translate(200px, 300px);
-        opacity: 0;
-    }
+
+/* ===== ПАДАЮЩАЯ ЗВЕЗДА ===== */
+.shooting-star {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow:
+        0 0 6px 1px rgba(255,255,255,0.9),
+        -18px -9px 10px -2px rgba(255,255,255,0.35);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    animation: shootingStarFly 1.6s linear forwards;
+}
+
+@keyframes shootingStarFly {
+    0%   { opacity: 1; transform: translate(0, 0); }
+    85%  { opacity: 1; }
+    100% { opacity: 0; transform: translate(-45vw, 28vh); }
+}
+
+/* ===== ЛУНА ===== */
+#moon {
+    position: fixed;
+    top: 65%;
+    left: -6%;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ffffff, #d7dee8 55%, #9aa7bb 100%);
+    box-shadow: 0 0 26px 6px rgba(255,255,255,0.35);
+    pointer-events: none;
+    z-index: 0;
+    animation: moonArc 7200s linear infinite;
+}
+
+@keyframes moonArc {
+    0%   { left: -6%;  top: 68%; }
+    15%  { left: 14%;  top: 32%; }
+    30%  { left: 30%;  top: 13%; }
+    50%  { left: 50%;  top: 6%;  }
+    70%  { left: 70%;  top: 13%; }
+    85%  { left: 86%;  top: 32%; }
+    100% { left: 106%; top: 68%; }
 }
 /* ===== СКРЫТЬ ЛЮБУЮ ЗАГРУЗКУ ФАЙЛОВ ===== */
 input[type="file"],
