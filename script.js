@@ -1837,12 +1837,12 @@ const musicToggle = document.getElementById("musicToggle");
 
 if (musicToggle) {
     const playlist = [
-        "audio/space-atmosphere.mp3",
-        "audio/adrift-surging.mp3",
-        "audio/far-from-home.mp3",
-        "audio/ambient-pads-loop.mp3",
-        "audio/spring-forest.mp3",
-        "audio/fluorescent-forest.mp3"
+        "Audio/space-atmosphere.mp3",
+        "Audio/adrift-surging.mp3",
+        "Audio/far-from-home.mp3",
+        "Audio/ambient-pads-loop.mp3",
+        "Audio/spring-forest.mp3",
+        "Audio/fluorescent-forest.mp3"
     ];
 
     // перемешиваем плейлист (Fisher-Yates)
