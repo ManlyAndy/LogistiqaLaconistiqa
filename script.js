@@ -1704,7 +1704,7 @@ addButton.addEventListener("click", () => {
             <input type="text" placeholder="Название товара">
             <div class="list"></div>
         </div>
-        <input type="number" placeholder="шт" min="1">
+        <input type="number" placeholder="Кол-во" min="1">
         <button type="button" class="removeRow" title="Удалить строку">×</button>
     `;
 
@@ -1831,6 +1831,74 @@ if (resetBtn) {
        if (resultModal) resultModal.classList.add("hidden")
     });
 }
+
+// ===== ФОНОВАЯ МУЗЫКА =====
+const musicToggle = document.getElementById("musicToggle");
+
+if (musicToggle) {
+    const playlist = [
+        "audio/space-atmosphere.mp3",
+        "audio/adrift-surging.mp3",
+        "audio/far-from-home.mp3",
+        "audio/ambient-pads-loop.mp3",
+        "audio/spring-forest.mp3",
+        "audio/fluorescent-forest.mp3"
+    ];
+
+    // перемешиваем плейлист (Fisher-Yates)
+    function shuffle(array) {
+        const arr = array.slice();
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    let queue = shuffle(playlist);
+    let trackIndex = 0;
+
+    const audio = new Audio();
+    audio.volume = 0.45;
+
+    const iconEl = musicToggle.querySelector(".icon");
+    const labelEl = musicToggle.querySelector(".label");
+
+    function loadTrack(index) {
+        audio.src = queue[index];
+    }
+
+    function playNext() {
+        trackIndex++;
+        if (trackIndex >= queue.length) {
+            queue = shuffle(playlist);
+            trackIndex = 0;
+        }
+        loadTrack(trackIndex);
+        audio.play().catch(() => {});
+    }
+
+    audio.addEventListener("ended", playNext);
+
+    loadTrack(trackIndex);
+
+    let isPlaying = false;
+
+    musicToggle.addEventListener("click", () => {
+        if (!isPlaying) {
+            audio.play().catch(() => {});
+            isPlaying = true;
+            iconEl.textContent = "⏸";
+            labelEl.textContent = "Пауза";
+        } else {
+            audio.pause();
+            isPlaying = false;
+            iconEl.textContent = "▶";
+            labelEl.textContent = "Музыка";
+        }
+    });
+}
+
 function getLengthFromName(name) {
     let match = name.match(/\(([\d.,]+)\s*м\)/i);
 
@@ -2094,24 +2162,27 @@ function createStar() {
 
 // каждые 200 мс появляется новая звезда
 setInterval(createStar, 40);
-function createFallingStar() {
+function createShootingStar() {
     const star = document.createElement("div");
-    star.className = "star";
+    star.className = "shooting-star";
 
-    star.style.left = Math.random() * 100 + "%";
-    star.style.top = "-10px";
-    star.style.width = "2px";
-    star.style.height = "2px";
+    star.style.left = (20 + Math.random() * 50) + "%";
+    star.style.top = (Math.random() * 25) + "%";
 
-    star.style.animation = "fall 3s linear forwards";
     starsContainer.appendChild(star);
 
-    setTimeout(() => star.remove(), 1200);
+    setTimeout(() => star.remove(), 1700);
 }
 
-setInterval(() => {
-    if (Math.random() < 0.55) createFallingStar();
-}, 3000);
+function scheduleShootingStar() {
+    const delay = 15000 + Math.random() * 15000; // раз в 15–30 секунд
+    setTimeout(() => {
+        createShootingStar();
+        scheduleShootingStar();
+    }, delay);
+}
+
+scheduleShootingStar();
 
 function updateTime() {
     const now = new Date();
