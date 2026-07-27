@@ -35,7 +35,7 @@ var modelRules = {
         type: "tube",
     tubeRules: {
         "10-2.5": 25,
-        "20-2.5": 100
+        "20-2.5": 100,
             "20-3.0":100
     }
 },
@@ -44,7 +44,7 @@ var modelRules = {
     type: "tube",
  tubeRules: {
     "10-2.5": 25,
-    "20-2.5": 100
+    "20-2.5": 100,
          "20-3.0":100
  }
 },
@@ -53,7 +53,7 @@ var modelRules = {
     type: "tube",
  tubeRules: {
     "10-2.5": 25,
-    "20-2.5": 100
+    "20-2.5": 100,
          "20-3.0":100
  }
 },
@@ -62,7 +62,7 @@ var modelRules = {
     type: "tube",
  tubeRules: {
     "10-2.5": 25,
-    "20-2.5": 100
+    "20-2.5": 100,
          "20-3.0":100
  }
 },
@@ -71,7 +71,7 @@ var modelRules = {
     type: "tube",
  tubeRules: {
     "10-2.5": 25,
-    "20-2.5": 100
+    "20-2.5": 100,
          "20-3.0":100
  }
 },
@@ -80,7 +80,7 @@ var modelRules = {
     type: "tube",
  tubeRules: {
     "10-2.5": 25,
-    "20-2.5": 100
+    "20-2.5": 100,
          "20-3.0":100
  }
 },
@@ -89,7 +89,7 @@ var modelRules = {
     type: "tube",
  tubeRules: {
     "10-2.5": 25,
-    "20-2.5": 100
+    "20-2.5": 100,
          "20-3.0":100
  }
 },
@@ -98,7 +98,7 @@ var modelRules = {
     type: "tube",
  tubeRules: {
     "10-2.5": 25,
-    "20-2.5": 100
+    "20-2.5": 100,
          "20-3.0":100
  }
 },
@@ -107,7 +107,7 @@ var modelRules = {
     type: "tube",
  tubeRules: {
     "10-2.5": 25,
-    "20-2.5": 100
+    "20-2.5": 100,
          "20-3.0":100
  }
 },
@@ -116,7 +116,7 @@ var modelRules = {
     type: "tube",
  tubeRules: {
     "10-2.5": 25,
-    "20-2.5": 100
+    "20-2.5": 100,
          "20-3.0":100
  }
 },
@@ -125,7 +125,7 @@ var modelRules = {
     type: "tube",
  tubeRules: {
     "10-2.5": 25,
-    "20-2.5": 100
+    "20-2.5": 100,
          "20-3.0":100
  }
 },
@@ -134,7 +134,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 40,
-        "20-2.5": 150
+        "20-2.5": 150,
             "20-3.0":150
     }
     },
@@ -143,7 +143,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 40,
-        "20-2.5": 150
+        "20-2.5": 150,
             "20-3.0":150
     }
 },
@@ -152,7 +152,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 40,
-        "20-2.5": 150
+        "20-2.5": 150,
             "20-3.0":150
     }
 },
@@ -161,7 +161,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 40,
-        "20-2.5": 150
+        "20-2.5": 150,
             "20-3.0":150
     }
     },
@@ -170,7 +170,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 40,
-        "20-2.5": 150
+        "20-2.5": 150,
             "20-3.0":150
     }
     },
@@ -179,7 +179,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 40,
-        "20-2.5": 150
+        "20-2.5": 150,
             "20-3.0":150
     }
     },
@@ -188,7 +188,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 40,
-        "20-2.5": 150
+        "20-2.5": 150,
             "20-3.0":150
     }
     },
@@ -197,7 +197,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 40,
-        "20-2.5": 150
+        "20-2.5": 150,
             "20-3.0":150
     }
     },
@@ -206,7 +206,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 40,
-        "20-2.5": 150
+        "20-2.5": 150,
             "20-3.0":150
     }
     },
@@ -215,7 +215,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 40,
-        "20-2.5": 150
+        "20-2.5": 150,
             "20-3.0":150
     }
     },
@@ -225,7 +225,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 30,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -234,7 +234,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 30,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -243,7 +243,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 30,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -252,7 +252,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 30,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -261,7 +261,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 30,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -270,7 +270,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 30,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -279,7 +279,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 30,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -288,7 +288,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 30,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -297,7 +297,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 30,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -306,7 +306,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 25,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -315,7 +315,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 25,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -324,7 +324,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 25,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -333,7 +333,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 25,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -342,7 +342,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 25,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -351,7 +351,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 25,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -360,7 +360,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 25,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -369,7 +369,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 25,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -378,7 +378,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 25,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -387,7 +387,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 25,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -396,7 +396,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 25,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -405,7 +405,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 25,
-        "20-2.5": 120
+        "20-2.5": 120,
             "20-3.0":120
     }
     },
@@ -414,7 +414,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 15,
-        "20-2.5": 100
+        "20-2.5": 100,
             "20-3.0":100
     }
     },
@@ -423,7 +423,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 15,
-        "20-2.5": 100
+        "20-2.5": 100,
             "20-3.0":100
     }
     },
@@ -432,7 +432,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 15,
-        "20-2.5": 100
+        "20-2.5": 100,
             "20-3.0":100
     }
     },
@@ -441,7 +441,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 15,
-        "20-2.5": 100
+        "20-2.5": 100,
             "20-3.0":100
     }
     },
@@ -450,7 +450,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 15,
-        "20-2.5": 100
+        "20-2.5": 100,
             "20-3.0":100
     }
     },
@@ -459,7 +459,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 15,
-        "20-2.5": 100
+        "20-2.5": 100,
             "20-3.0":100
     }
     },
@@ -468,7 +468,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 15,
-        "20-2.5": 100
+        "20-2.5": 100,
             "20-3.0":100
     }
     },
@@ -477,7 +477,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 15,
-        "20-2.5": 100
+        "20-2.5": 100,
             "20-3.0":100
     }
     },
@@ -486,7 +486,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 15,
-        "20-2.5": 100
+        "20-2.5": 100,
             "20-3.0":100
     }
     },
@@ -495,7 +495,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 15,
-        "20-2.5": 100
+        "20-2.5": 100,
             "20-3.0":100
     }
     },
@@ -504,7 +504,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 15,
-        "20-2.5": 100
+        "20-2.5": 100,
             "20-3.0":100
     }
     },
@@ -513,7 +513,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 15,
-        "20-2.5": 100
+        "20-2.5": 100,
             "20-3.0":100
     }
     },
@@ -522,7 +522,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 15,
-        "20-2.5": 100
+        "20-2.5": 100,
             "20-3.0":100
     }
     },
@@ -531,7 +531,7 @@ var modelRules = {
     type: "tube",
     tubeRules: {
         "10-2.5": 15,
-        "20-2.5": 100
+        "20-2.5": 100,
             "20-3.0":100
     }
     },
@@ -2020,6 +2020,7 @@ function calculatePackaging(orderItems) {
 const groupOptionsList = [];
 
 const tubeGroups = {};
+const allTubeItems = []; // все "тубные" позиции заказа, без разбивки по длине
 
     orderItems.forEach(item => {
         const product = products.find(p => p.name === item.name);
@@ -2037,6 +2038,8 @@ const tubeGroups = {};
 const length = getLengthFromName(product.name);
 if (!length) return;
 
+allTubeItems.push({ product, qty: item.qty });
+
 // группируем по длине
 if (!tubeGroups[length]) {
     tubeGroups[length] = [];
@@ -2052,12 +2055,19 @@ for (const length in tubeGroups) {
     const items = tubeGroups[length];
 
     // делим товары на "жёсткие" (подходит только один диаметр)
-    // и "гибкие" (подходит несколько диаметров)
-    const forcedTotals = {};   // diameter -> { qty, maxItems }
-    const flexibleTotals = {}; // diameter -> { qty, maxItems }
+    // и "гибкие" (подходит несколько диаметров).
+    // Считаем не количество мест, а ДОЛЮ занятого места в тубе
+    // (qty / maxItems), чтобы товары с разной вместимостью могли
+    // честно делить одну и ту же тубу, а не каждый округляться отдельно.
+    const forcedFractions = {};   // diameter -> суммарная доля
+    const flexibleFractions = {}; // diameter -> суммарная доля (если бы ВСЕ гибкие товары поехали в этот диаметр)
 
     items.forEach(({ product, qty }) => {
-        const validDiameters = [];
+        // на один и тот же диаметр может быть несколько подходящих
+        // правил (например "20-2.5" и "20-3.0") — берём самое
+        // выгодное (наибольшую вместимость) для этого диаметра,
+        // а не считаем его дважды
+        const bestMaxItemsByDiameter = {};
 
         for (const ruleKey in product.tubeRules) {
             const [diameter, tubeLength] = ruleKey.split("-").map(Number);
@@ -2066,49 +2076,48 @@ for (const length in tubeGroups) {
             const maxItems = product.tubeRules[ruleKey];
             if (!maxItems || maxItems <= 0) continue;
 
-            validDiameters.push({ diameter, maxItems });
+            if (!bestMaxItemsByDiameter[diameter] || maxItems > bestMaxItemsByDiameter[diameter]) {
+                bestMaxItemsByDiameter[diameter] = maxItems;
+            }
         }
+
+        const validDiameters = Object.keys(bestMaxItemsByDiameter).map(d => ({
+            diameter: Number(d),
+            maxItems: bestMaxItemsByDiameter[d]
+        }));
 
         if (validDiameters.length === 0) return;
 
         if (validDiameters.length === 1) {
             // жёстко привязан к одному диаметру — участвует в любом варианте
             const { diameter, maxItems } = validDiameters[0];
-            if (!forcedTotals[diameter]) forcedTotals[diameter] = { qty: 0, maxItems };
-            forcedTotals[diameter].qty += qty;
+            forcedFractions[diameter] = (forcedFractions[diameter] || 0) + qty / maxItems;
         } else {
             // гибкий — может ехать в любой из этих диаметров
             validDiameters.forEach(({ diameter, maxItems }) => {
-                if (!flexibleTotals[diameter]) flexibleTotals[diameter] = { qty: 0, maxItems };
-                flexibleTotals[diameter].qty += qty;
+                flexibleFractions[diameter] = (flexibleFractions[diameter] || 0) + qty / maxItems;
             });
         }
     });
 
-    const forcedPlaces = {}; // diameter -> places
-    for (const d in forcedTotals) {
-        forcedPlaces[d] = Math.ceil(forcedTotals[d].qty / forcedTotals[d].maxItems);
-    }
-
-    const flexibleDiameters = Object.keys(flexibleTotals);
+    const flexibleDiameters = Object.keys(flexibleFractions);
     const flexibleOptions = flexibleDiameters.length
-        ? flexibleDiameters.map(d => ({
-              diameter: Number(d),
-              places: Math.ceil(flexibleTotals[d].qty / flexibleTotals[d].maxItems)
-          }))
+        ? flexibleDiameters.map(d => ({ diameter: Number(d) }))
         : [null];
 
-    // каждый вариант = жёсткие места (всегда) + один из гибких вариантов
+    // каждый вариант = жёсткие доли (всегда) + доля одного из гибких вариантов,
+    // и только теперь, после сложения долей по одному диаметру, округляем вверх
     const groupOptions = flexibleOptions.map(flexOpt => {
-        const merged = {};
-        for (const d in forcedPlaces) merged[d] = forcedPlaces[d];
+        const mergedFractions = {};
+        for (const d in forcedFractions) mergedFractions[d] = forcedFractions[d];
         if (flexOpt) {
-            merged[flexOpt.diameter] = (merged[flexOpt.diameter] || 0) + flexOpt.places;
+            mergedFractions[flexOpt.diameter] =
+                (mergedFractions[flexOpt.diameter] || 0) + flexibleFractions[flexOpt.diameter];
         }
-        return Object.keys(merged).map(d => ({
+        return Object.keys(mergedFractions).map(d => ({
             diameter: Number(d),
             length: Number(length),
-            places: merged[d]
+            places: Math.ceil(mergedFractions[d])
         }));
     });
 
@@ -2183,9 +2192,61 @@ for (const length in tubeGroups) {
             diameterPart,
             packagingWeight: packagingWeightForCombo,
             productsWeight,
-            totalWeight: totalWeightForCombo
+            totalWeight: totalWeightForCombo,
+            totalTubes: entries.reduce((sum, e) => sum + e.places, 0)
         });
     });
+
+    // === ДОПОЛНИТЕЛЬНО: если весь заказ целиком помещается в ОДИН
+    // и тот же тип трубы (один диаметр + одна длина трубы), пусть
+    // такой вариант тоже появится в списке ===
+    if (allTubeItems.length > 1) {
+        const candidateKeys = new Set();
+        allTubeItems.forEach(({ product }) => {
+            for (const key in product.tubeRules) {
+                if (product.tubeRules[key] > 0) candidateKeys.add(key);
+            }
+        });
+
+        candidateKeys.forEach(pairKey => {
+            const [diameter, tubeLength] = pairKey.split("-").map(Number);
+            let totalFraction = 0;
+            let allFit = true;
+
+            allTubeItems.forEach(({ product, qty }) => {
+                const maxItems = product.tubeRules[pairKey];
+                if (!maxItems || maxItems <= 0) {
+                    allFit = false;
+                    return;
+                }
+                totalFraction += qty / maxItems;
+            });
+
+            if (!allFit) return;
+
+            const places = Math.ceil(totalFraction);
+            const tube = tubes.find(t => t.diameter === diameter && t.maxLength === tubeLength);
+            const packagingWeightForCombo =
+                (tube ? tube.weight * places : 0) + boxesCount * BOX_WEIGHT;
+
+            const comboKey = `${diameter}:${places}`;
+            if (seenCombos.has(comboKey)) return;
+            seenCombos.add(comboKey);
+
+            const diameterPart = `Ø${diameter} — ${places} ${pluralTubes(places)}`;
+            const totalWeightForCombo = packagingWeightForCombo + productsWeight;
+
+            tubeCombos.push({
+                diameterPart,
+                packagingWeight: packagingWeightForCombo,
+                productsWeight,
+                totalWeight: totalWeightForCombo,
+                totalTubes: places
+            });
+        });
+    }
+
+    tubeCombos.sort((a, b) => a.totalTubes - b.totalTubes);
 
     return {
         totalPlaces,
