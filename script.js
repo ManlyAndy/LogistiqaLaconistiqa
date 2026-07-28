@@ -2325,3 +2325,79 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 1000);
+
+// ===== ПОВЕДЕНИЕ КОТА =====
+(function () {
+    const catEl = document.getElementById("cat");
+    const eyeL = document.getElementById("cat-eye-l");
+    const eyeR = document.getElementById("cat-eye-r");
+    const pupilL = document.getElementById("cat-pupil-l");
+    const pupilR = document.getElementById("cat-pupil-r");
+    if (!catEl || !eyeL || !eyeR || !pupilL || !pupilR) return;
+
+    const PUPIL_OFFSET = 4;
+    const NEAR_THRESHOLD = 60;
+    const RUN_SPEED = 6;
+    const ZONE_SHARE = 0.20; // нижние 20% высоты экрана — зона реакции кота
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = 0;
+    let hasMouse = false;
+    let catX = window.innerWidth / 2;
+
+    document.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        hasMouse = true;
+    });
+
+    function moveEye(eyeEl, pupilEl, baseCx, baseCy) {
+        const rect = eyeEl.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const angle = Math.atan2(mouseY - cy, mouseX - cx);
+        pupilEl.setAttribute("cx", baseCx + Math.cos(angle) * PUPIL_OFFSET);
+        pupilEl.setAttribute("cy", baseCy + Math.sin(angle) * PUPIL_OFFSET);
+    }
+
+    function tick() {
+        if (hasMouse) {
+            const zoneTopY = window.innerHeight * (1 - ZONE_SHARE);
+            const inZone = mouseY >= zoneTopY;
+
+            if (inZone) {
+                const dx = mouseX - catX;
+                const dist = Math.abs(dx);
+
+                if (dist > NEAR_THRESHOLD) {
+                    const step = Math.sign(dx) * Math.min(RUN_SPEED, dist);
+                    catX += step;
+                    catEl.classList.add("running");
+                    catEl.classList.remove("swiping");
+                    catEl.style.setProperty("--face", dx > 0 ? "1" : "-1");
+                } else {
+                    catEl.classList.remove("running");
+                    catEl.classList.add("swiping");
+                    catEl.style.setProperty("--face", dx >= 0 ? "1" : "-1");
+                }
+            } else {
+                catEl.classList.remove("running");
+                catEl.classList.remove("swiping");
+            }
+
+            const halfWidth = catEl.getBoundingClientRect().width / 2;
+            const minX = halfWidth;
+            const maxX = window.innerWidth - halfWidth;
+            catX = Math.min(maxX, Math.max(minX, catX));
+
+            catEl.style.left = catX + "px";
+
+            moveEye(eyeL, pupilL, 80, 85);
+            moveEye(eyeR, pupilR, 120, 85);
+        }
+
+        requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+})();
