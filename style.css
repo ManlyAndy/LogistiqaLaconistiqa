@@ -62,7 +62,7 @@ h1::after {
     font-size: 16px;
     pointer-events: none;
 
-    animation: driveAcross 14s linear infinite;
+    animation: driveAcross 5s linear infinite;
 }
 
 h1:hover::after {
@@ -351,6 +351,72 @@ a.music-btn {
     100% { opacity: 0; transform: translate(-45vw, 28vh); }
 }
 
+/* ===== КОТ ===== */
+#cat {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    --face: 1;
+    transform: translateX(-50%) scaleX(var(--face));
+    height: 10vh;
+    width: auto;
+    aspect-ratio: 200 / 190;
+    pointer-events: none;
+    z-index: 2;
+    transition: transform 0.15s ease;
+}
+
+#cat.running {
+    animation: catRunBob 0.35s ease-in-out infinite;
+}
+
+@keyframes catRunBob {
+    0%, 100% { margin-bottom: 0; }
+    50% { margin-bottom: 6px; }
+}
+
+#cat-tail-group {
+    transform-origin: 155px 150px;
+    animation: catTailSwish 3.5s ease-in-out infinite;
+}
+
+#cat.running #cat-tail-group {
+    animation: catTailSwishFast 0.4s ease-in-out infinite;
+}
+
+@keyframes catTailSwishFast {
+    0%, 100% { transform: rotate(6deg); }
+    50% { transform: rotate(-14deg); }
+}
+
+#cat-paw {
+    transform-origin: 118px 178px;
+}
+
+#cat.swiping #cat-paw {
+    animation: catPawSwipe 0.45s ease-in-out infinite;
+}
+
+@keyframes catPawSwipe {
+    0%, 100% { transform: rotate(0deg) translate(0, 0); }
+    50% { transform: rotate(-35deg) translate(-6px, -10px); }
+}
+
+@keyframes catTailSwish {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-8deg); }
+}
+
+#cat-eyes {
+    transform-origin: 100px 85px;
+    animation: catBlink 6s ease-in-out infinite;
+}
+
+@keyframes catBlink {
+    0%, 92%, 100% { transform: scaleY(1); }
+    94% { transform: scaleY(0.1); }
+    96% { transform: scaleY(1); }
+}
 /* ===== ЛУНА ===== */
 #moon {
     position: fixed;
@@ -359,7 +425,14 @@ a.music-btn {
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, #ffffff, #d7dee8 55%, #9aa7bb 100%);
+    background:
+        radial-gradient(circle at 62% 22%, rgba(110,120,135,0.65) 0%, rgba(110,120,135,0.65) 18%, transparent 40%),
+        radial-gradient(circle at 28% 42%, rgba(110,120,135,0.5) 0%, rgba(110,120,135,0.5) 14%, transparent 35%),
+        radial-gradient(circle at 55% 62%, rgba(110,120,135,0.55) 0%, rgba(110,120,135,0.55) 16%, transparent 38%),
+        radial-gradient(circle at 78% 55%, rgba(110,120,135,0.4) 0%, rgba(110,120,135,0.4) 10%, transparent 28%),
+        radial-gradient(circle at 22% 75%, rgba(110,120,135,0.35) 0%, rgba(110,120,135,0.35) 9%, transparent 25%),
+        radial-gradient(circle at 35% 35%, #ffffff, #d7dee8 55%, #9aa7bb 100%);
+    background-blend-mode: multiply, multiply, multiply, multiply, multiply, normal;
     box-shadow: 0 0 26px 6px rgba(255,255,255,0.35);
     pointer-events: none;
     z-index: 0;
