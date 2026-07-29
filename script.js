@@ -2329,21 +2329,22 @@ setInterval(updateTime, 1000);
 // ===== ПОВЕДЕНИЕ КОТА =====
 (function () {
     const catEl = document.getElementById("cat");
-    const eyeL = document.getElementById("cat-eye-l");
-    const eyeR = document.getElementById("cat-eye-r");
-    const pupilL = document.getElementById("cat-pupil-l");
-    const pupilR = document.getElementById("cat-pupil-r");
-    if (!catEl || !eyeL || !eyeR || !pupilL || !pupilR) return;
+    const poseIdle = document.getElementById("cat-pose-idle");
+    const poseLeap = document.getElementById("cat-pose-leap");
+    const poseCatch = document.getElementById("cat-pose-catch");
+    const headGroup = document.getElementById("cat-head-group");
+    if (!catEl || !poseIdle || !poseLeap || !poseCatch || !headGroup) return;
 
-    const PUPIL_OFFSET = 4;
-    const NEAR_THRESHOLD = 60;
-    const RUN_SPEED = 6;
+    const NEAR_THRESHOLD = 70;
+    const LEAP_SPEED = 7;
     const ZONE_SHARE = 0.20; // нижние 20% высоты экрана — зона реакции кота
+    const HEAD_TURN_MAX = 32; // максимальный поворот головы в покое, градусы
 
     let mouseX = window.innerWidth / 2;
     let mouseY = 0;
     let hasMouse = false;
     let catX = window.innerWidth / 2;
+    let state = "idle"; // idle | leap | catch
 
     document.addEventListener("mousemove", (e) => {
         mouseX = e.clientX;
@@ -2351,13 +2352,25 @@ setInterval(updateTime, 1000);
         hasMouse = true;
     });
 
-    function moveEye(eyeEl, pupilEl, baseCx, baseCy) {
-        const rect = eyeEl.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const angle = Math.atan2(mouseY - cy, mouseX - cx);
-        pupilEl.setAttribute("cx", baseCx + Math.cos(angle) * PUPIL_OFFSET);
-        pupilEl.setAttribute("cy", baseCy + Math.sin(angle) * PUPIL_OFFSET);
+    function setState(next) {
+        if (state === next) return;
+        state = next;
+
+        poseIdle.style.display = next === "idle" ? "" : "none";
+        poseLeap.style.display = next === "leap" ? "" : "none";
+        poseCatch.style.display = next === "catch" ? "" : "none";
+
+        catEl.classList.toggle("leaping", next === "leap");
+        catEl.classList.toggle("catching", next === "catch");
+    }
+
+    function updateHeadTurn() {
+        const rect = catEl.getBoundingClientRect();
+        const catCenterX = rect.left + rect.width / 2;
+        const dx = mouseX - catCenterX;
+        const clampedDx = Math.max(-300, Math.min(300, dx));
+        const angle = (clampedDx / 300) * HEAD_TURN_MAX;
+        headGroup.style.transform = `rotate(${angle}deg)`;
     }
 
     function tick() {
@@ -2370,19 +2383,15 @@ setInterval(updateTime, 1000);
                 const dist = Math.abs(dx);
 
                 if (dist > NEAR_THRESHOLD) {
-                    const step = Math.sign(dx) * Math.min(RUN_SPEED, dist);
+                    const step = Math.sign(dx) * Math.min(LEAP_SPEED, dist);
                     catX += step;
-                    catEl.classList.add("running");
-                    catEl.classList.remove("swiping");
-                    catEl.style.setProperty("--face", dx > 0 ? "1" : "-1");
+                    setState("leap");
+                    poseLeap.style.setProperty("--face", dx > 0 ? "1" : "-1");
                 } else {
-                    catEl.classList.remove("running");
-                    catEl.classList.add("swiping");
-                    catEl.style.setProperty("--face", dx >= 0 ? "1" : "-1");
+                    setState("catch");
                 }
             } else {
-                catEl.classList.remove("running");
-                catEl.classList.remove("swiping");
+                setState("idle");
             }
 
             const halfWidth = catEl.getBoundingClientRect().width / 2;
@@ -2392,8 +2401,9 @@ setInterval(updateTime, 1000);
 
             catEl.style.left = catX + "px";
 
-            moveEye(eyeL, pupilL, 80, 85);
-            moveEye(eyeR, pupilR, 120, 85);
+            if (state === "idle") {
+                updateHeadTurn();
+            }
         }
 
         requestAnimationFrame(tick);
