@@ -376,17 +376,17 @@ a.music-btn {
 }
 
 #cat.leaping #cat-pose-leap {
-    animation: catHop 0.45s ease-in-out infinite;
+    animation: catHop 0.42s ease-in-out infinite;
 }
 
 @keyframes catHop {
     0%, 100% { transform: scaleX(var(--face)) translateY(0); }
-    35% { transform: scaleX(var(--face)) translateY(-22px); }
+    35% { transform: scaleX(var(--face)) translateY(-20px); }
     60% { transform: scaleX(var(--face)) translateY(2px); }
 }
 
 #cat-catch-paw {
-    transform-origin: 135px 160px;
+    transform-origin: 138px 165px;
 }
 
 #cat.catching #cat-catch-paw {
@@ -395,7 +395,7 @@ a.music-btn {
 
 @keyframes catPawSwipe {
     0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(-14deg); }
+    50% { transform: rotate(-12deg); }
 }
 
 /* ===== ЛУНА ===== */
