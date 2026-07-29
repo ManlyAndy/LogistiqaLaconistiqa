@@ -1,51 +1,78 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
     <html lang="ru">
     <head>
         <meta charset="UTF-8">
         <title>Расчёт заказа</title>
-        <link rel="stylesheet" href="style.css?v=20260727_2">
+        <link rel="stylesheet" href="style.css?v=20260727_3">
     </head>
     <body>
     <div id="stars"></div>
     <div id="moon"></div>
     <div id="cat" aria-hidden="true">
-        <svg id="cat-svg" viewBox="0 0 200 190" width="100%" height="100%">
-            <g id="cat-tail-group">
-                <path d="M155 150 C 185 140, 190 100, 170 80" stroke="#9683ab" stroke-width="14" stroke-linecap="round" fill="none"/>
+        <svg id="cat-svg" viewBox="0 0 240 210" width="100%" height="100%">
+            <g id="cat-pose-idle">
+                <path d="M70 205 C 58 150, 64 100, 90 75 C 100 65, 140 65, 150 75 C 176 100, 182 150, 170 205 Z" fill="#3d4a5c"/>
+                <path d="M165 197 C 197 186, 207 148, 190 113 C 182 98, 165 96, 157 107" stroke="#3d4a5c" stroke-width="16" stroke-linecap="round" fill="none"/>
+                <path d="M85 112 Q 120 101 155 112" stroke="#2ec4b6" stroke-width="4" fill="none" opacity="0.7"/>
+                <path d="M80 142 Q 120 129 160 142" stroke="#2ec4b6" stroke-width="4" fill="none" opacity="0.7"/>
+                <path d="M78 172 Q 120 159 162 172" stroke="#2ec4b6" stroke-width="4" fill="none" opacity="0.7"/>
+                <ellipse cx="100" cy="207" rx="12" ry="7" fill="#3d4a5c"/>
+                <ellipse cx="140" cy="207" rx="12" ry="7" fill="#3d4a5c"/>
+                <g id="cat-head-group">
+                    <ellipse cx="120" cy="80" rx="30" ry="26" fill="#3d4a5c"/>
+                    <polygon points="95,68 87,35 110,60" fill="#3d4a5c"/>
+                    <polygon points="145,68 153,35 130,60" fill="#3d4a5c"/>
+                    <polygon points="87,64 82,45 98,58" fill="#2b3340"/>
+                    <polygon points="153,64 158,45 142,58" fill="#2b3340"/>
+                </g>
             </g>
-            <ellipse cx="100" cy="150" rx="58" ry="42" fill="#c7bfd6"/>
-            <ellipse cx="75" cy="188" rx="14" ry="10" fill="#c7bfd6"/>
-            <path d="M60 145 Q 55 165 65 185 Q 75 190 85 185" stroke="#9683ab" stroke-width="3" fill="none" opacity="0.6"/>
-            <circle cx="100" cy="88" r="50" fill="#c7bfd6"/>
-            <path d="M55 75 Q 70 68 85 75" stroke="#9683ab" stroke-width="3" fill="none" opacity="0.55"/>
-            <path d="M115 75 Q 130 68 145 75" stroke="#9683ab" stroke-width="3" fill="none" opacity="0.55"/>
-            <path d="M60 120 Q 100 130 140 120" stroke="#9683ab" stroke-width="3" fill="none" opacity="0.4"/>
-            <polygon points="58,55 70,10 95,50" fill="#c7bfd6"/>
-            <polygon points="68,45 76,20 90,48" fill="#9683ab"/>
-            <polygon points="142,55 130,10 105,50" fill="#c7bfd6"/>
-            <polygon points="132,45 124,20 110,48" fill="#9683ab"/>
-            <line x1="45" y1="95" x2="10" y2="90" stroke="#ded6e8" stroke-width="1.5"/>
-            <line x1="45" y1="102" x2="10" y2="104" stroke="#ded6e8" stroke-width="1.5"/>
-            <line x1="155" y1="95" x2="190" y2="90" stroke="#ded6e8" stroke-width="1.5"/>
-            <line x1="155" y1="102" x2="190" y2="104" stroke="#ded6e8" stroke-width="1.5"/>
-            <g id="cat-eyes">
-                <ellipse id="cat-eye-l" cx="80" cy="85" rx="13" ry="15" fill="#ffffff"/>
-                <ellipse id="cat-eye-r" cx="120" cy="85" rx="13" ry="15" fill="#ffffff"/>
-                <circle id="cat-pupil-l" cx="80" cy="85" r="6" fill="#4a3b5c"/>
-                <circle id="cat-pupil-r" cx="120" cy="85" r="6" fill="#4a3b5c"/>
+            <g id="cat-pose-leap" style="display:none">
+                <path d="M50 118 C 15 108, 0 82, 12 55" stroke="#3d4a5c" stroke-width="13" stroke-linecap="round" fill="none"/>
+                <path d="M70 132 L 40 108" stroke="#3d4a5c" stroke-width="14" stroke-linecap="round"/>
+                <ellipse cx="37" cy="105" rx="9" ry="7" fill="#3d4a5c"/>
+                <path d="M60 138 L 30 124" stroke="#3d4a5c" stroke-width="14" stroke-linecap="round"/>
+                <ellipse cx="27" cy="121" rx="9" ry="7" fill="#3d4a5c"/>
+                <ellipse cx="125" cy="115" rx="80" ry="26" fill="#3d4a5c" transform="rotate(-6 125 115)"/>
+                <path d="M95 105 Q 125 96 158 103" stroke="#2ec4b6" stroke-width="4" fill="none" opacity="0.7" transform="rotate(-6 125 115)"/>
+                <path d="M85 122 Q 125 112 162 119" stroke="#2ec4b6" stroke-width="4" fill="none" opacity="0.7" transform="rotate(-6 125 115)"/>
+                <path d="M170 132 L 200 172" stroke="#3d4a5c" stroke-width="15" stroke-linecap="round"/>
+                <ellipse cx="202" cy="175" rx="10" ry="8" fill="#3d4a5c"/>
+                <path d="M155 137 L 180 177" stroke="#3d4a5c" stroke-width="15" stroke-linecap="round"/>
+                <ellipse cx="182" cy="180" rx="10" ry="8" fill="#3d4a5c"/>
+                <circle cx="192" cy="98" r="23" fill="#3d4a5c"/>
+                <polygon points="180,78 186,58 199,76" fill="#3d4a5c"/>
+                <polygon points="199,78 206,60 213,78" fill="#3d4a5c"/>
+                <ellipse cx="210" cy="102" rx="8" ry="6" fill="#3d4a5c"/>
+                <ellipse cx="198" cy="92" rx="4" ry="5" fill="#bff2ea"/>
+                <circle cx="199" cy="92" r="2" fill="#16232a"/>
+                <polygon points="206,100 212,100 209,106" fill="#d98a93"/>
             </g>
-            <path d="M65 106 Q 100 132 135 106 Q 118 124 100 124 Q 82 124 65 106 Z" fill="#4a3b5c"/>
-            <polygon points="80,110 86,110 83,117" fill="#ffffff"/>
-            <polygon points="95,116 101,116 98,123" fill="#ffffff"/>
-            <polygon points="112,110 118,110 115,117" fill="#ffffff"/>
-            <g id="cat-paw">
-                <ellipse cx="128" cy="178" rx="15" ry="11" fill="#c7bfd6"/>
-                <path d="M118 178 Q 128 172 138 178" stroke="#9683ab" stroke-width="2" fill="none" opacity="0.5"/>
+            <g id="cat-pose-catch" style="display:none">
+                <ellipse cx="120" cy="150" rx="38" ry="55" fill="#3d4a5c"/>
+                <path d="M95 130 Q 120 122 145 130" stroke="#2ec4b6" stroke-width="4" fill="none" opacity="0.7"/>
+                <path d="M92 155 Q 120 146 148 155" stroke="#2ec4b6" stroke-width="4" fill="none" opacity="0.7"/>
+                <ellipse cx="100" cy="195" rx="14" ry="18" fill="#3d4a5c"/>
+                <g id="cat-catch-paw">
+                    <path d="M135 160 Q 150 130 145 95" stroke="#3d4a5c" stroke-width="20" stroke-linecap="round" fill="none"/>
+                    <ellipse cx="144" cy="90" rx="13" ry="10" fill="#3d4a5c"/>
+                </g>
+                <circle cx="120" cy="80" r="34" fill="#3d4a5c"/>
+                <polygon points="95,65 88,35 112,58" fill="#3d4a5c"/>
+                <polygon points="145,65 152,35 128,58" fill="#3d4a5c"/>
+                <polygon points="88,60 84,45 98,56" fill="#2b3340"/>
+                <polygon points="152,60 156,45 142,56" fill="#2b3340"/>
+                <ellipse cx="108" cy="76" rx="7" ry="9" fill="#bff2ea"/>
+                <ellipse cx="132" cy="76" rx="7" ry="9" fill="#bff2ea"/>
+                <circle cx="108" cy="73" r="3" fill="#16232a"/>
+                <circle cx="132" cy="73" r="3" fill="#16232a"/>
+                <polygon points="114,92 126,92 120,100" fill="#d98a93"/>
+                <path d="M120 100 Q 112 106 106 100" stroke="#16232a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <path d="M120 100 Q 128 106 134 100" stroke="#16232a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
             </g>
         </svg>
     </div>
     <div class="container">
-        <h1>Logistiqa Laconistiq</h1>
+        <h1>Logistiqa Laconistiqa</h1>
     <div class="side-panel">
         <div class="time-box">
             <div id="moscowTime">-</div>
@@ -63,7 +90,7 @@
         <div id="items">
             <div class="item">
                 <div class="autocomplete">
-                    <input type="text" placeholder="Наименование">
+                    <input type="text" placeholder="какой плинтус ?">
                     <div class="list"></div>
                 </div>
                 <input type="number" placeholder="шт" min="1">
@@ -85,5 +112,5 @@
         </div>
     </div>
     </body>
-    <script src="script.js?v=20260727_8" defer></script>
+    <script src="script.js?v=20260729_1" defer></script>
     </html>
