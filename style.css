@@ -62,7 +62,7 @@ h1::after {
     font-size: 16px;
     pointer-events: none;
 
-    animation: driveAcross 12s linear infinite;
+    animation: driveAcross 5s linear infinite;
 }
 
 h1:hover::after {
@@ -356,67 +356,48 @@ a.music-btn {
     position: fixed;
     bottom: 0;
     left: 50%;
-    --face: 1;
-    transform: translateX(-50%) scaleX(var(--face));
+    transform: translateX(-50%);
     height: 10vh;
     width: auto;
-    aspect-ratio: 200 / 190;
+    aspect-ratio: 240 / 210;
     pointer-events: none;
     z-index: 2;
-    transition: transform 0.15s ease;
 }
 
-#cat.running {
-    animation: catRunBob 0.35s ease-in-out infinite;
+#cat-head-group {
+    transform-origin: 120px 95px;
+    transition: transform 0.2s ease-out;
 }
 
-@keyframes catRunBob {
-    0%, 100% { margin-bottom: 0; }
-    50% { margin-bottom: 6px; }
+#cat-pose-leap {
+    --face: 1;
+    transform-origin: 125px 115px;
+    transform: scaleX(var(--face));
 }
 
-#cat-tail-group {
-    transform-origin: 155px 150px;
-    animation: catTailSwish 3.5s ease-in-out infinite;
+#cat.leaping #cat-pose-leap {
+    animation: catHop 0.45s ease-in-out infinite;
 }
 
-#cat.running #cat-tail-group {
-    animation: catTailSwishFast 0.4s ease-in-out infinite;
+@keyframes catHop {
+    0%, 100% { transform: scaleX(var(--face)) translateY(0); }
+    35% { transform: scaleX(var(--face)) translateY(-22px); }
+    60% { transform: scaleX(var(--face)) translateY(2px); }
 }
 
-@keyframes catTailSwishFast {
-    0%, 100% { transform: rotate(6deg); }
-    50% { transform: rotate(-14deg); }
+#cat-catch-paw {
+    transform-origin: 135px 160px;
 }
 
-#cat-paw {
-    transform-origin: 118px 178px;
-}
-
-#cat.swiping #cat-paw {
-    animation: catPawSwipe 0.45s ease-in-out infinite;
+#cat.catching #cat-catch-paw {
+    animation: catPawSwipe 0.5s ease-in-out infinite;
 }
 
 @keyframes catPawSwipe {
-    0%, 100% { transform: rotate(0deg) translate(0, 0); }
-    50% { transform: rotate(-35deg) translate(-6px, -10px); }
-}
-
-@keyframes catTailSwish {
     0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(-8deg); }
+    50% { transform: rotate(-14deg); }
 }
 
-#cat-eyes {
-    transform-origin: 100px 85px;
-    animation: catBlink 6s ease-in-out infinite;
-}
-
-@keyframes catBlink {
-    0%, 92%, 100% { transform: scaleY(1); }
-    94% { transform: scaleY(0.1); }
-    96% { transform: scaleY(1); }
-}
 /* ===== ЛУНА ===== */
 #moon {
     position: fixed;
