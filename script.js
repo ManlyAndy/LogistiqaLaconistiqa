@@ -2333,24 +2333,39 @@ setInterval(updateTime, 1000);
     const poseLeap = document.getElementById("cat-pose-leap");
     const poseCatch = document.getElementById("cat-pose-catch");
     const headGroup = document.getElementById("cat-head-group");
+    const leapFrames = [
+        document.getElementById("leap-frame-a"),
+        document.getElementById("leap-frame-b"),
+        document.getElementById("leap-frame-c")
+    ];
     if (!catEl || !poseIdle || !poseLeap || !poseCatch || !headGroup) return;
+    if (leapFrames.some(f => !f)) return;
 
     const NEAR_THRESHOLD = 70;
     const LEAP_SPEED = 7;
     const ZONE_SHARE = 0.20; // нижние 20% высоты экрана — зона реакции кота
     const HEAD_TURN_MAX = 32; // максимальный поворот головы в покое, градусы
+    const GALLOP_FRAME_MS = 110; // скорость смены кадров бега (раскадровка)
 
     let mouseX = window.innerWidth / 2;
     let mouseY = 0;
     let hasMouse = false;
     let catX = window.innerWidth / 2;
     let state = "idle"; // idle | leap | catch
+    let leapFrameIndex = 0;
+    let lastFrameSwitch = 0;
 
     document.addEventListener("mousemove", (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
         hasMouse = true;
     });
+
+    function showLeapFrame(index) {
+        leapFrames.forEach((f, i) => {
+            f.style.display = i === index ? "" : "none";
+        });
+    }
 
     function setState(next) {
         if (state === next) return;
@@ -2362,6 +2377,12 @@ setInterval(updateTime, 1000);
 
         catEl.classList.toggle("leaping", next === "leap");
         catEl.classList.toggle("catching", next === "catch");
+
+        if (next === "leap") {
+            leapFrameIndex = 0;
+            lastFrameSwitch = 0;
+            showLeapFrame(0);
+        }
     }
 
     function updateHeadTurn() {
@@ -2373,7 +2394,7 @@ setInterval(updateTime, 1000);
         headGroup.style.transform = `rotate(${angle}deg)`;
     }
 
-    function tick() {
+    function tick(timestamp) {
         if (hasMouse) {
             const zoneTopY = window.innerHeight * (1 - ZONE_SHARE);
             const inZone = mouseY >= zoneTopY;
@@ -2387,6 +2408,12 @@ setInterval(updateTime, 1000);
                     catX += step;
                     setState("leap");
                     poseLeap.style.setProperty("--face", dx > 0 ? "1" : "-1");
+
+                    if (!lastFrameSwitch || timestamp - lastFrameSwitch >= GALLOP_FRAME_MS) {
+                        leapFrameIndex = (leapFrameIndex + 1) % leapFrames.length;
+                        showLeapFrame(leapFrameIndex);
+                        lastFrameSwitch = timestamp;
+                    }
                 } else {
                     setState("catch");
                 }
