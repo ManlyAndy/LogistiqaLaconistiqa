@@ -62,7 +62,7 @@ h1::after {
     font-size: 16px;
     pointer-events: none;
 
-    animation: driveAcross 15s linear infinite;
+    animation: driveAcross 5s linear infinite;
 }
 
 h1:hover::after {
@@ -383,19 +383,6 @@ a.music-btn {
     0%, 100% { transform: scaleX(var(--face)) translateY(0); }
     35% { transform: scaleX(var(--face)) translateY(-20px); }
     60% { transform: scaleX(var(--face)) translateY(2px); }
-}
-
-#cat-catch-paw {
-    transform-origin: 132px 165px;
-}
-
-#cat.catching #cat-catch-paw {
-    animation: catPawSwipe 0.5s ease-in-out infinite;
-}
-
-@keyframes catPawSwipe {
-    0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(-12deg); }
 }
 
 /* ===== ЛУНА ===== */
