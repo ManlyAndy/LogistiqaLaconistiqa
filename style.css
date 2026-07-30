@@ -62,7 +62,7 @@ h1::after {
     font-size: 16px;
     pointer-events: none;
 
-    animation: driveAcross 12s linear infinite;
+    animation: driveAcross 5s linear infinite;
 }
 
 h1:hover::after {
@@ -386,7 +386,7 @@ a.music-btn {
 }
 
 #cat-catch-paw {
-    transform-origin: 138px 165px;
+    transform-origin: 132px 165px;
 }
 
 #cat.catching #cat-catch-paw {
