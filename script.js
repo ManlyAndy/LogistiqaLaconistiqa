@@ -2331,17 +2331,15 @@ setInterval(updateTime, 1000);
     const catEl = document.getElementById("cat");
     const poseIdle = document.getElementById("cat-pose-idle");
     const poseLeap = document.getElementById("cat-pose-leap");
-    const poseCatch = document.getElementById("cat-pose-catch");
     const headGroup = document.getElementById("cat-head-group");
     const leapFrames = [
         document.getElementById("leap-frame-a"),
         document.getElementById("leap-frame-b"),
         document.getElementById("leap-frame-c")
     ];
-    if (!catEl || !poseIdle || !poseLeap || !poseCatch || !headGroup) return;
+    if (!catEl || !poseIdle || !poseLeap || !headGroup) return;
     if (leapFrames.some(f => !f)) return;
 
-    const NEAR_THRESHOLD = 70;
     const LEAP_SPEED = 7;
     const ZONE_SHARE = 0.20; // нижние 20% высоты экрана — зона реакции кота
     const HEAD_TURN_MAX = 32; // максимальный поворот головы в покое, градусы
@@ -2351,7 +2349,7 @@ setInterval(updateTime, 1000);
     let mouseY = 0;
     let hasMouse = false;
     let catX = window.innerWidth / 2;
-    let state = "idle"; // idle | leap | catch
+    let state = "idle"; // idle | leap
     let leapFrameIndex = 0;
     let lastFrameSwitch = 0;
 
@@ -2373,10 +2371,8 @@ setInterval(updateTime, 1000);
 
         poseIdle.style.display = next === "idle" ? "" : "none";
         poseLeap.style.display = next === "leap" ? "" : "none";
-        poseCatch.style.display = next === "catch" ? "" : "none";
 
         catEl.classList.toggle("leaping", next === "leap");
-        catEl.classList.toggle("catching", next === "catch");
 
         if (next === "leap") {
             leapFrameIndex = 0;
@@ -2401,21 +2397,15 @@ setInterval(updateTime, 1000);
 
             if (inZone) {
                 const dx = mouseX - catX;
-                const dist = Math.abs(dx);
+                const step = Math.sign(dx) * Math.min(LEAP_SPEED, Math.abs(dx));
+                catX += step;
+                setState("leap");
+                poseLeap.style.setProperty("--face", dx >= 0 ? "1" : "-1");
 
-                if (dist > NEAR_THRESHOLD) {
-                    const step = Math.sign(dx) * Math.min(LEAP_SPEED, dist);
-                    catX += step;
-                    setState("leap");
-                    poseLeap.style.setProperty("--face", dx > 0 ? "1" : "-1");
-
-                    if (!lastFrameSwitch || timestamp - lastFrameSwitch >= GALLOP_FRAME_MS) {
-                        leapFrameIndex = (leapFrameIndex + 1) % leapFrames.length;
-                        showLeapFrame(leapFrameIndex);
-                        lastFrameSwitch = timestamp;
-                    }
-                } else {
-                    setState("catch");
+                if (!lastFrameSwitch || timestamp - lastFrameSwitch >= GALLOP_FRAME_MS) {
+                    leapFrameIndex = (leapFrameIndex + 1) % leapFrames.length;
+                    showLeapFrame(leapFrameIndex);
+                    lastFrameSwitch = timestamp;
                 }
             } else {
                 setState("idle");
