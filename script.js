@@ -2428,3 +2428,102 @@ setInterval(updateTime, 1000);
 
     requestAnimationFrame(tick);
 })();
+
+// ===== СПИСОК ТОВАРОВ (КАТАЛОГ ПО КАТЕГОРИЯМ) =====
+(function () {
+    const openBtn = document.getElementById("openCatalog");
+    const closeBtn = document.getElementById("closeCatalog");
+    const catalogModal = document.getElementById("catalogModal");
+    const treeContainer = document.getElementById("catalogTree");
+    if (!openBtn || !closeBtn || !catalogModal || !treeContainer) return;
+
+    function extractLeadingNumber(name) {
+        const withoutLength = name.replace(/\([^)]*\)\s*$/, "").trim();
+        const match = withoutLength.match(/\d+([.,]\d+)?/);
+        return match ? parseFloat(match[0].replace(",", ".")) : Infinity;
+    }
+
+    function addRowWithProduct(name) {
+        const rows = document.querySelectorAll(".item");
+        const lastRow = rows[rows.length - 1];
+        const lastInput = lastRow ? lastRow.querySelector('input[type="text"]') : null;
+
+        let targetRow;
+        if (lastInput && !lastInput.value.trim()) {
+            targetRow = lastRow;
+        } else {
+            addButton.click();
+            const newRows = document.querySelectorAll(".item");
+            targetRow = newRows[newRows.length - 1];
+        }
+
+        const textInput = targetRow.querySelector('input[type="text"]');
+        const qtyInput = targetRow.querySelector('input[type="number"]');
+        if (textInput) textInput.value = name;
+        if (qtyInput) qtyInput.focus();
+    }
+
+    function buildTree() {
+        const categories = {};
+
+        products.forEach(product => {
+            const firstWord = product.name.trim().split(/\s+/)[0];
+            if (!categories[firstWord]) categories[firstWord] = [];
+            categories[firstWord].push(product.name);
+        });
+
+        const categoryNames = Object.keys(categories).sort((a, b) => a.localeCompare(b, "ru"));
+
+        treeContainer.innerHTML = "";
+
+        categoryNames.forEach(catName => {
+            const items = categories[catName].slice().sort((a, b) => {
+                const numA = extractLeadingNumber(a);
+                const numB = extractLeadingNumber(b);
+                if (numA !== numB) return numA - numB;
+                return a.localeCompare(b, "ru");
+            });
+
+            const catDiv = document.createElement("div");
+            catDiv.className = "catalog-category";
+
+            const header = document.createElement("div");
+            header.className = "catalog-category-header";
+            header.innerHTML = `<span class="catalog-arrow">▸</span><span>${catName} (${items.length})</span>`;
+            header.addEventListener("click", () => {
+                catDiv.classList.toggle("open");
+            });
+
+            const itemsWrap = document.createElement("div");
+            itemsWrap.className = "catalog-items";
+
+            items.forEach(name => {
+                const itemDiv = document.createElement("div");
+                itemDiv.className = "catalog-item";
+                itemDiv.textContent = name;
+                itemDiv.addEventListener("click", () => {
+                    addRowWithProduct(name);
+                    catalogModal.classList.add("hidden");
+                });
+                itemsWrap.appendChild(itemDiv);
+            });
+
+            catDiv.appendChild(header);
+            catDiv.appendChild(itemsWrap);
+            treeContainer.appendChild(catDiv);
+        });
+    }
+
+    openBtn.addEventListener("click", () => {
+        buildTree();
+        catalogModal.classList.remove("hidden");
+    });
+
+    closeBtn.addEventListener("click", () => {
+        catalogModal.classList.add("hidden");
+    });
+
+    catalogModal.addEventListener("click", (e) => {
+        if (e.target === catalogModal) catalogModal.classList.add("hidden");
+    });
+})();
