@@ -62,7 +62,7 @@ h1::after {
     font-size: 16px;
     pointer-events: none;
 
-    animation: driveAcross 15s linear infinite;
+    animation: driveAcross 5s linear infinite;
 }
 
 h1:hover::after {
@@ -369,6 +369,16 @@ a.music-btn {
     transition: transform 0.2s ease-out;
 }
 
+#cat-tail-group {
+    transform-origin: 118px 198px;
+    animation: catTailSwing 2.2s ease-in-out infinite;
+}
+
+@keyframes catTailSwing {
+    0%, 100% { transform: rotate(-14deg); }
+    50% { transform: rotate(14deg); }
+}
+
 #cat-pose-leap {
     --face: 1;
     transform-origin: 125px 115px;
@@ -430,7 +440,82 @@ label input[type="file"],
 #addRow {
     margin-top: 6px;
     margin-bottom: 18px;
-    width: 100%
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.catalog-open-btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* ===== СПИСОК ТОВАРОВ (КАТАЛОГ) ===== */
+#catalogTree {
+    text-align: left;
+    max-height: 55vh;
+    overflow-y: auto;
+    margin: 10px 0;
+}
+
+.catalog-category {
+    margin: 4px 0;
+}
+
+.catalog-category-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: rgba(10, 30, 60, 0.5);
+    border: 1.5px solid var(--accent-soft);
+    font-weight: 600;
+    color: #fff;
+    user-select: none;
+    transition: border-color 0.2s ease;
+}
+
+.catalog-category-header:hover {
+    border-color: var(--accent);
+}
+
+.catalog-arrow {
+    display: inline-block;
+    transition: transform 0.15s ease;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.catalog-category.open > .catalog-category-header .catalog-arrow {
+    transform: rotate(90deg);
+}
+
+.catalog-items {
+    display: none;
+    flex-direction: column;
+    padding-left: 20px;
+    margin-top: 4px;
+    gap: 2px;
+}
+
+.catalog-category.open > .catalog-items {
+    display: flex;
+}
+
+.catalog-item {
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #cfe0ff;
+    transition: background-color 0.15s ease;
+}
+
+.catalog-item:hover {
+    background-color: rgba(77,163,255,0.2);
 }
 
 /* ===== КРЕСТИК УДАЛЕНИЯ СТРОКИ ===== */
