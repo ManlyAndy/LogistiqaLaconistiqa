@@ -62,7 +62,7 @@ h1::after {
     font-size: 16px;
     pointer-events: none;
 
-    animation: driveAcross 15s linear infinite;
+    animation: driveAcross 5s linear infinite;
 }
 
 h1:hover::after {
@@ -449,6 +449,7 @@ label input[type="file"],
 .catalog-open-btn {
     width: 100%;
     margin-top: 10px;
+    margin-bottom: 14px;
 }
 
 /* ===== СПИСОК ТОВАРОВ (КАТАЛОГ) ===== */
