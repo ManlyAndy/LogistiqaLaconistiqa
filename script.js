@@ -2326,108 +2326,6 @@ function updateTime() {
 updateTime();
 setInterval(updateTime, 1000);
 
-// ===== ПОВЕДЕНИЕ КОТА =====
-(function () {
-    const catEl = document.getElementById("cat");
-    const poseIdle = document.getElementById("cat-pose-idle");
-    const poseLeap = document.getElementById("cat-pose-leap");
-    const headGroup = document.getElementById("cat-head-group");
-    const leapFrames = [
-        document.getElementById("leap-frame-a"),
-        document.getElementById("leap-frame-b"),
-        document.getElementById("leap-frame-c")
-    ];
-    if (!catEl || !poseIdle || !poseLeap || !headGroup) return;
-    if (leapFrames.some(f => !f)) return;
-
-    const LEAP_SPEED = 7;
-    const ZONE_SHARE = 0.20; // нижние 20% высоты экрана — зона реакции кота
-    const HEAD_TURN_MAX = 32; // максимальный поворот головы в покое, градусы
-    const GALLOP_FRAME_MS = 110; // скорость смены кадров бега (раскадровка)
-
-    let mouseX = window.innerWidth / 2;
-    let mouseY = 0;
-    let hasMouse = false;
-    let catX = window.innerWidth / 2;
-    let state = "idle"; // idle | leap
-    let leapFrameIndex = 0;
-    let lastFrameSwitch = 0;
-
-    document.addEventListener("mousemove", (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        hasMouse = true;
-    });
-
-    function showLeapFrame(index) {
-        leapFrames.forEach((f, i) => {
-            f.style.display = i === index ? "" : "none";
-        });
-    }
-
-    function setState(next) {
-        if (state === next) return;
-        state = next;
-
-        poseIdle.style.display = next === "idle" ? "" : "none";
-        poseLeap.style.display = next === "leap" ? "" : "none";
-
-        catEl.classList.toggle("leaping", next === "leap");
-
-        if (next === "leap") {
-            leapFrameIndex = 0;
-            lastFrameSwitch = 0;
-            showLeapFrame(0);
-        }
-    }
-
-    function updateHeadTurn() {
-        const rect = catEl.getBoundingClientRect();
-        const catCenterX = rect.left + rect.width / 2;
-        const dx = mouseX - catCenterX;
-        const clampedDx = Math.max(-300, Math.min(300, dx));
-        const angle = (clampedDx / 300) * HEAD_TURN_MAX;
-        headGroup.style.transform = `rotate(${angle}deg)`;
-    }
-
-    function tick(timestamp) {
-        if (hasMouse) {
-            const zoneTopY = window.innerHeight * (1 - ZONE_SHARE);
-            const inZone = mouseY >= zoneTopY;
-
-            if (inZone) {
-                const dx = mouseX - catX;
-                const step = Math.sign(dx) * Math.min(LEAP_SPEED, Math.abs(dx));
-                catX += step;
-                setState("leap");
-                poseLeap.style.setProperty("--face", dx >= 0 ? "1" : "-1");
-
-                if (!lastFrameSwitch || timestamp - lastFrameSwitch >= GALLOP_FRAME_MS) {
-                    leapFrameIndex = (leapFrameIndex + 1) % leapFrames.length;
-                    showLeapFrame(leapFrameIndex);
-                    lastFrameSwitch = timestamp;
-                }
-            } else {
-                setState("idle");
-            }
-
-            const halfWidth = catEl.getBoundingClientRect().width / 2;
-            const minX = halfWidth;
-            const maxX = window.innerWidth - halfWidth;
-            catX = Math.min(maxX, Math.max(minX, catX));
-
-            catEl.style.left = catX + "px";
-
-            if (state === "idle") {
-                updateHeadTurn();
-            }
-        }
-
-        requestAnimationFrame(tick);
-    }
-
-    requestAnimationFrame(tick);
-})();
 
 // ===== СПИСОК ТОВАРОВ (КАТАЛОГ ПО КАТЕГОРИЯМ) =====
 (function () {
@@ -2526,4 +2424,47 @@ setInterval(updateTime, 1000);
     catalogModal.addEventListener("click", (e) => {
         if (e.target === catalogModal) catalogModal.classList.add("hidden");
     });
+})();
+
+// ===== ПОЛЁТ РАКЕТЫ =====
+(function () {
+    const rocket = document.getElementById("rocket");
+    if (!rocket) return;
+
+    const FLIGHT_DURATION = 8000; // мс, время полёта от точки до точки
+    const MARGIN = 60; // отступ от краёв экрана, чтобы ракета не улетала за пределы
+
+    function randomPoint() {
+        const maxX = Math.max(MARGIN, window.innerWidth - MARGIN);
+        const maxY = Math.max(MARGIN, window.innerHeight - MARGIN);
+        return {
+            x: MARGIN + Math.random() * (maxX - MARGIN),
+            y: MARGIN + Math.random() * (maxY - MARGIN)
+        };
+    }
+
+    let current = randomPoint();
+    rocket.style.left = current.x + "px";
+    rocket.style.top = current.y + "px";
+
+    function flyToNext() {
+        const next = randomPoint();
+        const dx = next.x - current.x;
+        const dy = next.y - current.y;
+        const angleDeg = Math.atan2(dy, dx) * (180 / Math.PI);
+
+        // иконка ракеты по умолчанию направлена по диагонали вверх-вправо (~-45°)
+        rocket.style.transform = `rotate(${angleDeg + 45}deg)`;
+        rocket.style.left = next.x + "px";
+        rocket.style.top = next.y + "px";
+
+        current = next;
+    }
+
+    function scheduleFlight() {
+        flyToNext();
+        setTimeout(scheduleFlight, FLIGHT_DURATION);
+    }
+
+    setTimeout(scheduleFlight, 400);
 })();
